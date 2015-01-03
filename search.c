@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:23:11 by lubaujar          #+#    #+#             */
-/*   Updated: 2014/12/31 04:10:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/03 06:05:09 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,27 @@ int		search_flag(char *s, int caract, t_infos *lst)
 {
 	t_infos	*tmp;
 	int		len;
+	int		i;
+	char	*flags;
 
+	i = 0;
+	flags = ft_strnew(2);
 	tmp = lst;
 	if (is_flag(s[caract + 1]) == 1)	
-	{	/* check just 1 flag */
-		tmp->flag = s[caract + 1];
-		len = caract + 1;
+	{
+		flags[i++] = s[caract + 1];
+		if (is_flag(s[caract + 2]) == 1)
+			flags[i++] = s[caract + 2];
+		len = caract + i;
 	}
 	else if (is_flag(s[caract + 1]) == 0)
 		len = caract;
+	flags[i] = '\0';
+	tmp->flag = flags;
 	return (len);
 }
 
-int		search_height(char *s, int caract, t_infos *lst)
+int		search_width(char *s, int caract, t_infos *lst)
 {
 	int		i;
 	int		width;
@@ -86,17 +94,39 @@ int		search_precision(char *s, int caract, t_infos *lst)
 void	search_modifier(char *s, int caract, t_infos *lst)
 {
 	int		i;
+	char	*modifier;
 	t_infos	*tmp;
 
 	i = 0;
 	tmp = lst;
-	printf("string entry: %s\n", s);
-	printf("caract entry: %c\n", s[caract]);
+	modifier = ft_strnew(2);
 	while (s[caract])
 	{
 		if (is_modifier(s[caract]) == 1)
-			tmp->modifier = s[caract];
+		{
+			modifier[i] = s[caract];
+			i++;
+		}
 		caract++;
 	}
-	printf("modifier: %c\n", tmp->modifier);
+	modifier[i] = '\0';
+	tmp->modifier = modifier;
+}
+
+void	search_converter_types(char *s, int caract, t_infos *lst)
+{
+	int 	i;
+	t_infos	*tmp;
+
+	i = 0;
+	tmp = lst;
+	while (s[caract])
+	{
+		if ((is_converter_min(s[caract]) == 1) || (is_convert_maj(s[caract]) == 1))
+		{
+			tmp->type = s[caract];
+			break ;
+		}
+		caract++;
+	}
 }

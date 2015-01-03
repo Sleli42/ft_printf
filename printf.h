@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 18:50:43 by lubaujar          #+#    #+#             */
-/*   Updated: 2014/12/31 04:10:43 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/03 06:05:19 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,21 @@
 #include "../../libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdarg.h>
+/*
+typedef struct	s_list
+{
+	struct s_infos	*troncon;
+	struct s_list	*next;
+				t_list;
+}
+*/
 typedef struct	s_infos
 {
-	char	flag;
+	char	*flag;
 	int		width;
 	int		precision;
-	char	modifier;
+	char	*modifier;
 	char	type;
 }				t_infos;
 
@@ -31,5 +39,6 @@ int		is_flag(char c);
 
 //	search
 int		search_flag(char *s, int caract, t_infos *lst);
+void	display_struct(t_infos lst);
 
 #endif

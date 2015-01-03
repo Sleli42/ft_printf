@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/03 06:05:12 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/01/03 06:05:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		ft_printf(const char *rfmt, ...)
+void	convert_int(va_list arg, t_infos *lst)
 {
-	va_list	arg;
+	int		integer;
 	int		i;
-	int		len;
-	char	*cpy;
-	t_infos	new;
+	int		witdh;
+	t_infos	*tmp;
 
-	i = 0;
-	cpy = ft_strdup(rfmt);
-	va_start(arg, rfmt);
-	while (cpy[i])
-	{
-		if (cpy[i] == '%')
-		{
-			detect_infos(cpy, i, &new);
-			define_convert(&new, arg);
-		}
-		i++;
-	}
-	va_end(arg);
-}
-
-int		main(void)
-{
-	int		i;
-
-	i = 4242;
-	ft_printf("la string: |%+d)|", i);
-	return (0);
+	witdh = 0;
+	integer = va_arg(arg, int);
+	tmp = lst;
+	if (tmp->flag != NULL)
+		find_flag(tmp->flag, integer);
+	ft_putnbr(integer);
 }
