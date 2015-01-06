@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 18:50:43 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/03 06:05:19 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/06 06:41:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int		is_flag(char c);
 //	search
 int		search_flag(char *s, int caract, t_infos *lst);
 void	display_struct(t_infos lst);
+
 
 #endif

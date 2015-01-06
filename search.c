@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:23:11 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/03 06:05:09 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/06 06:41:22 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	search_converter_types(char *s, int caract, t_infos *lst)
 	tmp = lst;
 	while (s[caract])
 	{
-		if ((is_converter_min(s[caract]) == 1) || (is_convert_maj(s[caract]) == 1))
+		if ((is_converter_min(s[caract]) == 1) || (is_converter_maj(s[caract]) == 1))
 		{
 			tmp->type = s[caract];
 			break ;
