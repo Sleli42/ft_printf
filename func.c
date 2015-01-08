@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/07 06:50:22 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/08 03:11:57 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,20 @@ void	find_flag_int(char *flag, int integer, t_infos *lst)
 		c_int = find_modifier(tmp->modifier, integer);
 	if (flag[0] == '+')
 	{
-		if (integer >= 0 && c_int != ft_itoa(integer))
+		if (ft_atoi(c_int) >= 0 && c_int != ft_itoa(integer))
 		{
-			c_int = recover_int(c_int);
+			c_int = recover_int(c_int, tmp->modifier, tmp->precision);
 			temp = c_int;
 		}
+		else if (integer < 0)
+			temp = c_int;
 		else
 			temp = cpy_int_without_sign(c_int);
 	}
 	else
 		temp = c_int;
 	if (tmp->precision != 0 && tmp->precision > ft_strlen(c_int))
-		temp = add_precision_int(tmp->precision, temp, integer);
+		temp = add_precision_int(tmp->precision, temp, integer, tmp->modifier);
 	if (tmp->width != 0 && tmp->width > tmp->precision || tmp->width != 0)
 	{
 		temp = add_width_int(tmp->width, temp);
@@ -80,7 +82,10 @@ char	*find_modifier(char *modifier, int integer)
 {
 	char	*ret;
 
-	if (*modifier == 'h')	
+	if (*modifier == 'h')
+	{
 		ret = convert_int_short(integer);
-	return (ret);
+		return (ret);
+	}
+	return (modifier);
 }

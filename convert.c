@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/07 06:50:27 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/08 03:08:54 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void	convert_int(va_list arg, t_infos *lst)
 	tmp = lst;
 	if (tmp->flag != NULL)
 		find_flag_int(tmp->flag, integer, tmp);
+	else
+		ft_putnbr(integer);
 }

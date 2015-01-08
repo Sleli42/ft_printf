@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/07 06:50:25 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/08 03:13:03 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		main(void)
 {
 	int		i;
 
-	i = 32790;
-	printf("[printf]test:\t |%+.13hd|\n", i);
-	ft_printf("[ft_printf]test: |%+.13hd|\n", i);
+	i = -32790;
+	printf("[printf]test:\t |%+20.10hd|\n", i);
+	ft_printf("[ft_printf]test: |%+20.10hd|\n", i);
 	return (0);
 }

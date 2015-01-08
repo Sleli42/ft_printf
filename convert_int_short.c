@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/07 02:43:19 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/07 06:50:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/08 02:43:10 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*convert_int_short(int integer)
 	else if (integer > 32767)
 	{
 		izi = convert_positive_int(integer);
+		return (izi);
 	}
 	return (NULL);
 }

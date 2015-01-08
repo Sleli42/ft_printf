@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 18:50:43 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/07 06:50:30 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/08 01:56:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int		is_flag(char c);
 int		search_flag(char *s, int caract, t_infos *lst);
 void	display_struct(t_infos lst);
 
-char	*recover_int(char *c_int);
-char	*add_precision_int(int precision, char *c_int, int integer);
+char	*recover_int(char *c_int, char *modifier, int integer);
+char	*add_precision_int(int precision, char *c_int, int integer, char *modifier);
 char	*add_width_int(int width, char *temp);
 char	*cpy_int_without_sign(char *c_int);
 char	*find_modifier(char *modifier, int integer);
