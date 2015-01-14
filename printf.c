@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/08 03:13:03 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/14 09:30:28 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,15 @@ int		ft_printf(const char *rfmt, ...)
 
 int		main(void)
 {
-	int		i;
+	long long int		i;
+	long long int		j;
 
-	i = -32790;
+
+	j = -42424;
+	i = 42424;
 	printf("[printf]test:\t |%+20.10hd|\n", i);
 	ft_printf("[ft_printf]test: |%+20.10hd|\n", i);
+	printf("[printf]test:\t |%+20.10hd|\n", j);
+	ft_printf("[ft_printf]test: |%+20.10hd|\n", j);
 	return (0);
 }

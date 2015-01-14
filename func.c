@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/08 03:11:57 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/14 09:30:35 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,42 @@ void	define_convert(t_infos *lst, va_list arg)
 		convert_int(arg, tmp);
 }
 
-void	find_flag_int(char *flag, int integer, t_infos *lst)
+void	find_flag_int(char *flag, long long int integer, t_infos *lst)
 {
 	t_infos	*tmp;
 	char	*c_int;
 	char	*temp;
 
 	tmp = lst;
-	c_int = ft_itoa(integer);
+	c_int = ft_itoa_long(integer);
 	if (is_modifier(tmp->modifier[0]) == 1)
 		c_int = find_modifier(tmp->modifier, integer);
 	if (flag[0] == '+')
 	{
-		if (ft_atoi(c_int) >= 0 && c_int != ft_itoa(integer))
+		if (integer >= 0 && c_int != ft_itoa_long(integer))
 		{
 			c_int = recover_int(c_int, tmp->modifier, tmp->precision);
 			temp = c_int;
 		}
+		/*else if (ft_atoi_long(c_int) > 0)
+			printf("pakpak\n");*/
 		else if (integer < 0)
+		{
 			temp = c_int;
+		}
 		else
+		{
 			temp = cpy_int_without_sign(c_int);
+		}
 	}
 	else
 		temp = c_int;
-	if (tmp->precision != 0 && tmp->precision > ft_strlen(c_int))
+	if (tmp->precision != 0 && tmp->precision > ft_strlen(c_int)
+			|| tmp->precision != 0)
+	{
 		temp = add_precision_int(tmp->precision, temp, integer, tmp->modifier);
-	if (tmp->width != 0 && tmp->width > tmp->precision || tmp->width != 0)
+	}
+	if (tmp->width != 0 && tmp->width > tmp->precision)
 	{
 		temp = add_width_int(tmp->width, temp);
 		if (tmp->width - ft_strlen(temp) + 1 == 0)
@@ -74,17 +83,26 @@ void	find_flag_int(char *flag, int integer, t_infos *lst)
 		}
 	}
 	else if (tmp->width != 0 && tmp->width < tmp->precision)
+	{
 		ft_putstr(temp);
+		return ;
+	}
 	ft_putstr(temp);
 }
 
-char	*find_modifier(char *modifier, int integer)
+char	*find_modifier(char *modifier, long long int integer)
 {
-	char	*ret;
+	t_infos *tmp;
 
+	char	*ret;
 	if (*modifier == 'h')
 	{
 		ret = convert_int_short(integer);
+		return (ret);
+	}
+	if (*modifier == 'l' || modifier == "ll")
+	{
+		ret = ft_itoa_long(integer);
 		return (ret);
 	}
 	return (modifier);

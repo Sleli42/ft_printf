@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/07 02:43:19 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/08 02:43:10 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/14 09:30:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*convert_int_short(int integer)
 	int		tmp;
 	int		ret;
 	char 	*izi;
+	char	*izi2;
 
 	if (integer <= 32767 && integer >= -32768)
 		return (ft_itoa(integer));
@@ -49,15 +50,23 @@ char	*convert_negative_int(int integer)
 {
 	int tmp;
 	int ret;
+	int	i;
+	char	*izi;
+	char	*temp;
 
+	i = 0;
 	if (integer < -32767)
 	{
 		tmp = (-32768) - integer;
 	//	printf("lucas est fatigue: %d\n", tmp);
 		ret = 32768 - tmp;
-	//	printf("lucas est naze lol:%d\n", ret);
+		temp = ft_itoa(ret);
+		izi = ft_strnew(ft_strlen(temp) + 1);
+		izi[0] = '+';
+		while (*temp)
+			izi[++i] = *temp++;
 	}
-	return (ft_itoa(ret));
+	return (izi);
 }
 
 
@@ -75,3 +84,5 @@ char	*convert_positive_int(int integer)
 	}
 	return (ft_itoa(ret));
 }
+
+

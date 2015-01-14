@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 22:38:12 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/08 03:05:31 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/14 09:30:37 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ char	*cpy_int_without_sign(char *c_int)
 	ret = ft_strnew(ft_strlen(c_int));
 	i = 1;
 	j = 0;
-	if (ft_atoi(c_int) < 0)
-		i = 0;
+	if (ft_atoi_long(c_int) < 0)
+		i = 1;
 	while (j < ft_strlen(c_int))
 		ret[j++] = c_int[i++];
 	ret[j] = '\0';
@@ -36,7 +36,8 @@ char	*recover_int(char *c_int, char *modifier, int precision)
 
 	i = 0;
 	ret = ft_strnew(ft_strlen(c_int) + 1);
-	if (is_modifier(modifier[0]) != 1 || precision == 0)
+	if ((is_modifier(modifier[0]) != 1 && precision == 0)
+			|| (is_modifier(modifier[0]) == 1 && precision == 0 && c_int[0] != '-'))
 	{
 		ret[0] = '+';
 		i = 1;
@@ -47,36 +48,50 @@ char	*recover_int(char *c_int, char *modifier, int precision)
 	return (ret);
 }
 
-char	*add_precision_int(int precision, char *c_int, int integer, char *modifier)
+char	*add_precision_int(int precision, char *c_int, long long int integer, char *modifier)
 {
 	char	*ret;
 	int		i;
+	int 	j;
 
+	printf("test1 %s\n", ret);
 	i = 0;
-	ret = ft_strnew(precision + 1);
-	if (integer > 32767 && is_modifier(*modifier) == 1)
+	j = precision - ft_strlen(c_int) + 1;
+	if (ft_strlen(c_int) > precision)
+		ret = ft_strnew(ft_strlen(c_int) + 1);
+	else
+		ret = ft_strnew(precision + 1);	
+	if (integer > 32767 && is_modifier(modifier[0]) == 'h')
 	{
-		i = 1;
 		ret[0] = '-';
+		printf("yolo");
 	}
-	else if ((integer >= 0 && integer <= 32767) || (ft_atoi(c_int) >= 0 && c_int[0] != '-'))
+	else if ((integer >= 0 && integer <= 32767)
+		   || (integer >= 0 && c_int[0] != '-'))
 	{
-		i = 1;
 		ret[0] = '+';
 	}
-	else
+	else if ((c_int[0] == '-' && integer >= 0 && integer <= 32767)
+			|| (c_int[0] == '-' && integer < 0 && precision > ft_strlen(c_int)))
 	{
 		ret[0] = '-';
 		c_int = cpy_int_without_sign(c_int);
-		i = 1;
+		j = j + 1;
 	}
-	if (c_int[0] == '+' || c_int[0] == '-')
+	else if ((c_int[0] == '+' || c_int[0] == '-')
+		   	&& (*modifier != 'l' && modifier != "ll" && *modifier != 'h'))
+	{
 		c_int[0] = '0';
-	while (i <= precision - ft_strlen(c_int))
-		ret[i++] = '0';
-	while (i < precision + 1 && *c_int)
+	}
+	while (i < j && j > 0)
+	{
+		ret[++i] = '0';
+		printf("ret incrementation :%c\n", ret[i]);
+	}	
+	while (*c_int)
 		ret[i++] = *c_int++;
 	ret[i] = '\0';
+	printf("result precision %s\n", ret);
 	return (ret);
 }
 
