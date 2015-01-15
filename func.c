@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/14 09:30:35 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/15 10:59:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	detect_infos(char *cpy, int caract, t_infos *new)
 		tmp->width = 0;
 	if (tmp->precision < 0 || tmp->precision > 10000)
 		tmp->precision = 0;
+	if (tmp->flag == NULL)
+		tmp->flag = '\0';
 }
 
 void	define_convert(t_infos *lst, va_list arg)
@@ -38,7 +40,7 @@ void	define_convert(t_infos *lst, va_list arg)
 		convert_int(arg, tmp);
 }
 
-void	find_flag_int(char *flag, long long int integer, t_infos *lst)
+/*void	find_flag_int(char *flag, long long int integer, t_infos *lst)
 {
 	t_infos	*tmp;
 	char	*c_int;
@@ -55,8 +57,8 @@ void	find_flag_int(char *flag, long long int integer, t_infos *lst)
 			c_int = recover_int(c_int, tmp->modifier, tmp->precision);
 			temp = c_int;
 		}
-		/*else if (ft_atoi_long(c_int) > 0)
-			printf("pakpak\n");*/
+		else if (ft_atoi_long(c_int) > 0)
+			printf("pakpak\n");
 		else if (integer < 0)
 		{
 			temp = c_int;
@@ -106,4 +108,4 @@ char	*find_modifier(char *modifier, long long int integer)
 		return (ret);
 	}
 	return (modifier);
-}
+}*/

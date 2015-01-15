@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 18:50:43 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/13 07:26:38 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/15 14:50:31 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_infos
 	int		width;
 	int		precision;
 	char	*modifier;
-	int		type;
+	char	type;
 }				t_infos;
 
 //	if_infos
@@ -50,9 +50,18 @@ char	*find_modifier(char *modifier, long long int integer);
 char	*convert_int_short(int integer);
 char	*convert_negative_int(int integer);
 char	*convert_positive_int(int integer);
-char	*ft_strnew(size_t size);
 void	ft_putnbr_long(long long int integer);
 char	*ft_itoa_long(long long int integer);
 
+/* new 15/01 */
+
+char	*add_precision(char *integer, unsigned int precision);
+char	*add_width(char *integer, unsigned int width, char *flag, unsigned int precision);
+char	*add_flag(char *integer, char flag);
+char	*add_flag_plus(char *integer);
+char	*cpy_integer_with_sign(char *integer);
+char	*ft_strnew(unsigned int size);
+char 	*add_width_less(char *integer, unsigned int width);
+char	*add_flag_space(char *integer);
 
 #endif

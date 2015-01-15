@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:23:11 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/14 05:56:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/15 11:01:43 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		search_flag(char *s, int caract, t_infos *lst)
 	else if (is_flag(s[caract + 1]) == 0)
 	{
 		len = caract;
-		tmp->flag = NULL;
+		tmp->flag = "1";
 		return (len);
 	}
 	flags[i] = '\0';

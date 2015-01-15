@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/15 06:05:54 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/15 14:50:25 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,32 @@ void	convert_int(va_list arg, t_infos *lst)
 	tmp = lst;
 	if (tmp->modifier[0] == 'h')
 		integer = (short int)integer;
-	if (tmp->modifier[0] != 'h' || tmp->modifier[0] != 'l')
+	if (integer >= -2147483647 && integer <= 2147483647)
 		integer = (int)integer;
-	ret = ft_itoa(integer);
-	if (is_flag(tmp->flag[0]))
+	ret = ft_itoa_long(integer);
+	if (is_flag(tmp->flag[0]) == 1)
 		ret = add_flag(ret ,tmp->flag[0]);
 	if (tmp->precision != 0)
 	{
 		ret = add_precision(ret, (unsigned int)tmp->precision);
-		if (tmp->width != 0 && tmp->width > tmp->precision)
-			ret = add_width(ret, (unsigned int)tmp->width);
+		if (tmp->width != 0 && tmp->width > tmp->precision && tmp->flag[0] != '-')
+			ret = add_width(ret, (unsigned int)tmp->width, tmp->flag, tmp->precision);
+		else if (tmp->width != 0 && tmp->width > tmp->precision && tmp->flag[0] == '-')
+			ret = add_width_less(ret, (unsigned int)tmp->width);
+	//	printf("ret1[%c]\n", ret[0]);
+		if (tmp->flag[0] == ' ' && ret[0] != '-' && ret[0] != '+')
+			ret = add_flag_space(ret);
 		ft_putstr(ret);
 		return ;
 	}
 	if (tmp->width != 0)
-		ret = add_width(ret, (unsigned int)tmp->width);
+		ret = add_width(ret, (unsigned int)tmp->width, tmp->flag, tmp->precision);
+//	printf("ret[%c]\n", ret[0]);
+	if (tmp->flag[0] == ' ' && ret[0] != '-' && ret[0] != '+')
+		ret = add_flag_space(ret);
 	ft_putstr(ret);
+	free(ret);
+
 	/*
 	if (tmp->flag != NULL)
 	{

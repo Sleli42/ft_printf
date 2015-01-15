@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 03:45:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/15 08:09:09 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/15 14:50:28 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ char	*add_precision(char *integer, unsigned int precision)
 	}
 	else if (integer[0] != '-')
 	{
+		if (integer[0] == '+')
+		{
+			ret[i++] = '+';
+			integer[0] = '0';
+			while ((i - 1) < precision - ft_strlen(integer))
+				ret[i++] = '0';
+			while (*integer)
+				ret[i++] = *integer++;
+			return (ret);
+		}		
 		while (i < precision - ft_strlen(integer))
 			ret[i++] = '0';
 		while (*integer)
@@ -38,41 +48,74 @@ char	*add_precision(char *integer, unsigned int precision)
 	return (ret);
 }
 
-char	*add_width(char *integer, unsigned int width)
+char	*add_width(char *integer, unsigned int width, char *flag, unsigned int precision)
 {
 	char	*ret;
 	int		i;
 
-	//	printf("tailel inte: %d\n", ft_strlen(integer));
+	if (flag[0] == '0' && precision < width && precision != 0)
+		flag[0] = 'p';
+	if (*flag == '-')
+	{
+		ret = add_width_less(integer, width);
+		return (ret);
+	}
 	if (width <= ft_strlen(integer))
 		return (integer);
 	ret = ft_strnew(width);
 	i = 0;
-	if (integer[0] == '-')
+	while (i < width - ft_strlen(integer))
 	{
-		//	printf("len: %d\n\n", ft_strlen(integer));
-		//	printf("width: %d\n\n", width);
-		while (i < width - ft_strlen(integer))
+		if (flag[0] == '0')
+		{
+			ret[0] = '-';
+			ret[++i] = '0';
+			integer[0] = '0';
+		}
+		else
 			ret[i++] = ' ';
-		while (*integer)
-			ret[i++] = *integer++;
 	}
-	if (integer[0] != '-')
-	{
-		while (i < width - ft_strlen(integer))
-			ret[i++] = ' ';
-		while (*integer)
-			ret[i++] = *integer++;
-	}
+	while (*integer)
+		ret[i++] = *integer++;
 	return (ret);
 }
+char	*add_width_less(char *integer, unsigned int	width)
+{
+	char	*ret;
+	int		i;
 
+	if (width <= ft_strlen(integer))
+		return (integer);
+	ret = ft_strnew(width);
+	i = 0;
+		while (*integer)
+			ret[i++] = *integer++;
+		while (i < width)
+			ret[i++] = ' ';
+	return (ret);
+}
 char	*add_flag(char *integer, char flag)
 {
 	char	*ret;
 
 	if (flag == '+')
 		ret = add_flag_plus(integer);
+	else
+		ret = integer;
+	return (ret);		
+}
+char	*add_flag_space(char *integer)
+{
+	int 	i;
+	char 	*ret;
+
+	ret = ft_strnew(ft_strlen(integer) + 1 );
+	ret[0] = ' ';
+	i = 1;
+	while (*integer)	
+	{
+		ret[i++] = *integer++;
+	}
 	return (ret);
 }
 
