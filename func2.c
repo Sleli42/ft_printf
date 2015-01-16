@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 03:45:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/15 14:50:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/16 13:09:47 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*add_precision(char *integer, unsigned int precision)
 
 	ret = ft_strnew(precision);
 	i = 0;
+	printf("\n%s\n\n", integer);
 	if (integer[0] == '-')
 	{
 		ret[i++] = '-';

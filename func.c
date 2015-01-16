@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/15 10:59:48 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/16 13:09:57 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	define_convert(t_infos *lst, va_list arg)
 	tmp = lst;
 	if (is_int(tmp->type) == 1)
 		convert_int(arg, tmp);
+	if ((tmp->type) == 's')
+		convert_string(arg, tmp);
+	if (tmp->type == 'c')
+		convert_char(arg, tmp);
 }
 
 /*void	find_flag_int(char *flag, long long int integer, t_infos *lst)
