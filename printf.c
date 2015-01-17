@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/16 13:09:56 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/17 21:47:12 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int		main(void)
 	long long int		i;
 	long long int		j;
 	char	*s;
-
+	wchar_t c = L'暖'; 
 
 	j = 42424;
 	i = 42424;
 	s = "baba au wuhm";
-	printf("[printf]test:\t |%s|\n", s);
-	ft_printf("[ft_printf]test: |%s|\n\n", s);
+	//printf("[printf]test:\t |%C|\n", c);
+	//ft_printf("[ft_printf]test: |%ls|\n\n", c);
 	printf("[printf]test:\t |%42.42s|\n", s);
 	ft_printf("[ft_printf]test: |%42.42s|\n\n", s);
 	printf("[printf]test:\t |%021s|\n", s);
@@ -60,7 +60,7 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%-.4s|\n\n", s);
 	printf("[printf]test:\t |%-20s|\n", s);
 	ft_printf("[ft_printf]test: |%-20s|\n\n", s);
-	/*printf("[printf]test:\t |% .17d|\n", i);
+	printf("[printf]test:\t |% .17d|\n", i);
 	ft_printf("[ft_printf]test: |% .17d|\n\n", i);
 	printf("[printf]test:\t |% 10.10d|\n", i);
 	ft_printf("[ft_printf]test: |% 10.10d|\n\n", i);
@@ -91,7 +91,7 @@ int		main(void)
 	printf("[printf]test:\t |%-10d|\n", i);
 	ft_printf("[ft_printf]test: |%-10d|\n\n", i);
 	printf("[printf]test:\t |%-10.12hd|\n", i);
-	ft_printf("[ft_printf]test: |%-10.12hd|\n\n", i);*/
+	ft_printf("[ft_printf]test: |%-10.12hd|\n\n", i);
 	//printf("|%#10p|\n", i);
 	//printf("|%#20p|\n", i);
 	//printf("|%#15p|\n", i);

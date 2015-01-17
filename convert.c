@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/16 13:09:49 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/17 21:46:43 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	convert_string(va_list arg, t_infos *lst)
 	string = va_arg(arg, char *);
 	tmp = lst;
 //	if (tmp->modifier[0] == 'l')
+//		convert_wchar(arg);
 	if (tmp->precision != 0)
 		string = add_precision_string(string, tmp->precision);
 	if (tmp->width != 0)
@@ -70,3 +71,12 @@ void	convert_char(va_list arg, t_infos *lst)
 	if (s >= 0 && s <= 255)
 		ft_putchar((char)s);
 }
+
+/*void	convert_wchar(va_list arg)
+{
+	wchar_t c;
+
+
+	c = va_arg(arg, wchar_t);
+	printf("%ls\n", c);
+}*/

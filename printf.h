@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 18:50:43 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/15 14:50:31 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/17 19:42:29 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <wchar.h>
 /*
 typedef struct	s_list
 {
@@ -63,5 +64,9 @@ char	*cpy_integer_with_sign(char *integer);
 char	*ft_strnew(unsigned int size);
 char 	*add_width_less(char *integer, unsigned int width);
 char	*add_flag_space(char *integer);
+char	*add_precision_string(char *s, int precision);
+char	*add_width_string(char *s, int width, char *flag);
 
+/* new 17/01 */
+void	convert_wchar(va_list arg);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 22:38:12 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/14 09:30:37 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/17 21:37:09 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ char	*recover_int(char *c_int, char *modifier, int precision)
 	return (ret);
 }
 
-char	*add_precision_int(int precision, char *c_int, long long int integer, char *modifier)
+/*char	*add_precision_int(int precision, char *c_int, long long int integer, char *modifier)
 {
 	char	*ret;
 	int		i;
 	int 	j;
 
-	printf("test1 %s\n", ret);
 	i = 0;
 	j = precision - ft_strlen(c_int) + 1;
 	if (ft_strlen(c_int) > precision)
@@ -62,15 +61,10 @@ char	*add_precision_int(int precision, char *c_int, long long int integer, char 
 	else
 		ret = ft_strnew(precision + 1);	
 	if (integer > 32767 && is_modifier(modifier[0]) == 'h')
-	{
 		ret[0] = '-';
-		printf("yolo");
-	}
 	else if ((integer >= 0 && integer <= 32767)
 		   || (integer >= 0 && c_int[0] != '-'))
-	{
 		ret[0] = '+';
-	}
 	else if ((c_int[0] == '-' && integer >= 0 && integer <= 32767)
 			|| (c_int[0] == '-' && integer < 0 && precision > ft_strlen(c_int)))
 	{
@@ -84,14 +78,10 @@ char	*add_precision_int(int precision, char *c_int, long long int integer, char 
 		c_int[0] = '0';
 	}
 	while (i < j && j > 0)
-	{
 		ret[++i] = '0';
-		printf("ret incrementation :%c\n", ret[i]);
-	}	
 	while (*c_int)
 		ret[i++] = *c_int++;
 	ret[i] = '\0';
-	printf("result precision %s\n", ret);
 	return (ret);
 }
 
@@ -99,13 +89,16 @@ char	*add_width_int(int width, char *temp)
 {
 	char	*ret;
 	int		i;
+	t_infos *tmp;
 
 	i = 0;
 	ret = ft_strnew(width + 1);
+	if (tmp->precision != '0')
+		ret = add_precision(tmp->precision, temp);
 	while (i < width - ft_strlen(temp))
 		ret[i++] = ' ';
 	while (i < width)
 		ret[i++] = *temp++;
 	ret[i] = '\0';
 	return (ret);
-}
+}*/
