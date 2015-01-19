@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:33:51 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/15 05:12:50 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/19 13:04:00 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		is_converter_min(char c)
 
 int		is_converter_maj(char c)
 {
-	if ((c == 'S') || (c == 'D') || (c == 'O') || (c == 'U') || (c == 'x') || (c == 'C'))
+	if ((c == 'S') || (c == 'D') || (c == 'O') || (c == 'U') || (c == 'X') || (c == 'C'))
 			return 1;
 	return (0);
 }

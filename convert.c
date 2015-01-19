@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/17 21:46:43 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/19 17:45:00 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	convert_string(va_list arg, t_infos *lst)
 {
 	char	*string;
 	t_infos	*tmp;
-
-	string = va_arg(arg, char *);
+	
 	tmp = lst;
-//	if (tmp->modifier[0] == 'l')
-//		convert_wchar(arg);
+	//if (tmp->modifier[0] == 'l')
+	//	ft_print_hex(arg);
+	string = va_arg(arg, char *);
 	if (tmp->precision != 0)
 		string = add_precision_string(string, tmp->precision);
 	if (tmp->width != 0)
@@ -65,18 +65,77 @@ void	convert_string(va_list arg, t_infos *lst)
 
 void	convert_char(va_list arg, t_infos *lst)
 {
-	int	s;
+	int	c;
 	
-	s = va_arg(arg, int);
-	if (s >= 0 && s <= 255)
-		ft_putchar((char)s);
+	c = va_arg(arg, int);
+	if (c >= 0 && c <= 255)
+		ft_putchar((char)c);
 }
 
-/*void	convert_wchar(va_list arg)
+void	convert_hex(va_list arg, t_infos *lst)
 {
-	wchar_t c;
+	t_infos				*tmp;
+	unsigned long int	deci;
+	char				*hex;
 
+	tmp = lst;
+	deci = va_arg(arg, unsigned long int);
+	if (tmp->modifier[0] == 'h')
+		deci = (short int)deci;
+	if (tmp->type == 'X')
+		hex = hexa_convert(deci, 1, tmp->flag[0]);
+	else
+		hex = hexa_convert(deci, 0, tmp->flag[0]);
+	ft_putstr(hex);
+}
 
-	c = va_arg(arg, wchar_t);
-	printf("%ls\n", c);
-}*/
+void	convert_unsigned(va_list arg, t_infos *lst)
+{
+	t_infos				*tmp;
+	unsigned long int	integer;
+	char				*ret;
+
+	tmp = lst;
+	integer = va_arg(arg, unsigned long int);
+	if (tmp->modifier[0] == 'h')
+		integer = (short)integer;
+	ret = ft_itoa_long(integer);
+	if (tmp->precision > ft_strlen(ret))
+		ret = add_u_precision(ret, tmp->precision);
+	if (tmp->width > ft_strlen(ret))
+		ret = add_u_width(ret, tmp->width, tmp->flag[0], tmp->precision);
+	ft_putstr(ret);
+}
+
+void	convert_octal(va_list arg, t_infos *lst)
+{
+	t_infos				*tmp;
+	unsigned long int	integer;
+	char				*ret;
+
+	tmp = lst;
+	integer = va_arg(arg, unsigned long int);
+	if (tmp->modifier[0] == 'h')
+		integer = (short)integer;
+	ret = octal_convert(integer, tmp->flag[0]);
+	if (tmp->precision > ft_strlen(ret))
+		ret = add_o_precision(ret, tmp->precision);
+	if (tmp->width > ft_strlen(ret))
+		ret = add_o_width(ret, tmp->width, tmp->flag[0], tmp->precision);
+	ft_putstr(ret);
+}
+
+void	convert_pointer(va_list arg, t_infos *lst)
+{
+	t_infos			*tmp;
+	unsigned int	addr;
+	char			*ret;
+	char			*temp;
+
+	tmp = lst;
+	addr = va_arg(arg, unsigned int);
+	temp = hexa_convert((int)addr, 0, tmp->flag[0]);
+	ret = add_0x7fff_addr(temp);
+	ft_putstr(ret);
+	//ft_putnbr(addr);
+}

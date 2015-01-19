@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/17 19:43:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/19 17:26:10 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,74 +42,63 @@ void	define_convert(t_infos *lst, va_list arg)
 		convert_string(arg, tmp);
 	if (tmp->type == 'c')
 		convert_char(arg, tmp);
+	if (tmp->type == 'x' || tmp->type == 'X')
+		convert_hex(arg, tmp);
+	if (tmp->type == 'u' || tmp->type == 'u')
+		convert_unsigned(arg, tmp);
+	if (tmp->type == 'o' || tmp->type == 'O')
+		convert_octal(arg, tmp);
+	if (tmp->type == 'p')
+		convert_pointer(arg, tmp);
 }
 
-/*void	find_flag_int(char *flag, long long int integer, t_infos *lst)
+char	*add_u_precision(char *integer, int precision)
 {
-	t_infos	*tmp;
-	char	*c_int;
-	char	*temp;
-
-	tmp = lst;
-	c_int = ft_itoa_long(integer);
-	if (is_modifier(tmp->modifier[0]) == 1)
-		c_int = find_modifier(tmp->modifier, integer);
-	if (flag[0] == '+')
-	{
-		if (integer >= 0 && c_int != ft_itoa_long(integer))
-		{
-			c_int = recover_int(c_int, tmp->modifier, tmp->precision);
-			temp = c_int;
-		}
-		else if (ft_atoi_long(c_int) > 0)
-			printf("pakpak\n");
-		else if (integer < 0)
-		{
-			temp = c_int;
-		}
-		else
-		{
-			temp = cpy_int_without_sign(c_int);
-		}
-	}
-	else
-		temp = c_int;
-	if (tmp->precision != 0 && tmp->precision > ft_strlen(c_int)
-			|| tmp->precision != 0)
-	{
-		temp = add_precision_int(tmp->precision, temp, integer, tmp->modifier);
-	}
-	if (tmp->width != 0 && tmp->width > tmp->precision)
-	{
-		temp = add_width_int(tmp->width, temp);
-		if (tmp->width - ft_strlen(temp) + 1 == 0)
-		{
-			ft_putstr(temp);
-			return ;
-		}
-	}
-	else if (tmp->width != 0 && tmp->width < tmp->precision)
-	{
-		ft_putstr(temp);
-		return ;
-	}
-	ft_putstr(temp);
-}
-
-char	*find_modifier(char *modifier, long long int integer)
-{
-	t_infos *tmp;
-
 	char	*ret;
-	if (*modifier == 'h')
+	int		i;
+
+	ret = ft_strnew(precision);
+	i = 0;
+	while (i < precision - ft_strlen(integer))
+		ret[i++] = '0';
+	while (*integer)
+		ret[i++] = *integer++;
+	return (ret);
+}
+
+char	*add_u_width(char *integer, int width, char flag, int precision)
+{
+	char	*ret;
+	int		i;
+
+	ret = ft_strnew(width);
+	i = 0;
+	if (flag == '-')
 	{
-		ret = convert_int_short(integer);
+		ret = offset_left(integer, width);
 		return (ret);
 	}
-	if (*modifier == 'l' || modifier == "ll")
+	while (i < width - ft_strlen(integer))
 	{
-		ret = ft_itoa_long(integer);
-		return (ret);
+		if (flag == '0' && precision == 0)
+			ret[i++] = '0';
+		else
+			ret[i++] = ' ';
 	}
-	return (modifier);
-}*/
+	while (*integer)
+		ret[i++] = *integer++;
+	return (ret);
+}
+
+char	*offset_left(char *integer, int width)
+{
+	char	*ret;
+	int		i;
+
+	i = 0;
+	while (*integer)
+		ret[i++] = *integer++;
+	while (i < width)
+		ret[i++] = ' ';
+	return (ret);
+}
