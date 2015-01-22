@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 06:17:13 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 12:52:50 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	convert_int(va_list arg, t_infos *lst)
 	tmp = lst;
 	if (tmp->modifier[0] == 'h')
 		integer = (short int)integer;
-	if (tmp->modifier[0] != 'h' && tmp->modifier[0] != 'l')
+	if (tmp->modifier[0] != 'h' && tmp->modifier[0] != 'l' && tmp->type != 'D')
 	{
 		integer = (int)integer;
 		ret = ft_itoa(integer);
@@ -31,7 +31,7 @@ void	convert_int(va_list arg, t_infos *lst)
 		ret = ft_itoa_long(integer);
 	if (is_flag(tmp->flag[0]) == 1)
 		ret = add_flag(ret ,tmp->flag[0]);
-	if (tmp->precision != 0)
+	if (tmp->precision != 0 && tmp->precision > ft_strlen(ret))
 	{
 		ret = add_precision(ret, (unsigned int)tmp->precision);
 		if (tmp->width != 0 && tmp->width > tmp->precision && tmp->flag[0] != '-')
@@ -57,7 +57,14 @@ void	convert_string(va_list arg, t_infos *lst)
 	t_infos	*tmp;
 	
 	tmp = lst;
+	//if (tmp->modifier[0] == 'l')
+	//	ft_put_w(arg);
 	string = va_arg(arg, char *);
+	if (string == NULL)
+	{
+		ft_putstr("(null)");
+		return ;
+	}
 	if (tmp->precision != 0)
 		string = add_precision_string(string, tmp->precision);
 	if (tmp->width != 0)
@@ -67,11 +74,28 @@ void	convert_string(va_list arg, t_infos *lst)
 
 void	convert_char(va_list arg, t_infos *lst)
 {
-	int	c;
+	unsigned int	c;
 	
-	c = va_arg(arg, int);
-	if (c >= 0 && c <= 255)
-		ft_putchar((char)c);
+	c = va_arg(arg, unsigned int);
+	c = (char)c;
+	if (c >= 0 && c <= 126)
+		ft_putchar(c);
+}
+
+void	convert_wchar(va_list arg, t_infos *lst)
+{
+	unsigned int	wc;
+	char			*wchar_bin;
+
+	wc = va_arg(arg, unsigned int);
+	if (wc >= 0 && wc <= 126)
+		ft_putchar((char)wc);
+	else
+	{
+		wchar_bin = binary_convert(wc);
+		//printf("wchar = %s\n", wchar_bin);
+		cmp_msk(wchar_bin);
+	}
 }
 
 void	convert_hex(va_list arg, t_infos *lst)

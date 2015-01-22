@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 04:05:51 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 10:38:33 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ void	define_convert(t_infos *lst, va_list arg)
 		convert_string(arg, tmp);
 	if (tmp->type == 'c')
 		convert_char(arg, tmp);
+	if (tmp->type == 'C')
+		convert_wchar(arg, tmp);
 	if (tmp->type == 'x' || tmp->type == 'X')
 		convert_hex(arg, tmp);
-	if (tmp->type == 'u' || tmp->type == 'u')
+	if (tmp->type == 'u' || tmp->type == 'U')
 		convert_unsigned(arg, tmp);
 	if (tmp->type == 'o' || tmp->type == 'O')
 		convert_octal(arg, tmp);

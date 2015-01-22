@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 06:15:45 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 12:53:31 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		main(void)
 	unsigned long		uuu;
 	long long int		i;
 	long long int		longg;
+	long long int		longgg;
 	int					test;
 	int					ooo;
 	char	*s;
@@ -61,16 +62,13 @@ int		main(void)
 	wchar_t c = L'暖'; 
 
 	longg = 3333333333333;
+	longgg = 4242424242424242;
 	i = 214221;
 	test = 4242;
 	s = "baba au whum";
 	addr = (char *)"poneeyyy";
 
-	printf("printf = %d\n", NULL);
-	//ft_printf("printf = |%d\n|", NULL);
-	printf("printf = |%s\n|", NULL);
-	//printf("printf = |%s\n|", NULL);
-	/*printf("\t\t\t\t-->[TEST %%o]<--\n\n");
+/*	printf("\t\t\t\t-->[TEST %%o]<--\n\n");
 	printf("[printf]test:\t |%o|\n", i);
 	ft_printf("[ft_printf]test: |%o|\n\n", i);
 	printf("[printf]test:\t |%ho|\n", i);
@@ -141,6 +139,9 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%-20u|\n\n", i);
 	printf("[printf]test:\t |%-20.8u|\n", i);
 	ft_printf("[ft_printf]test: |%-20.8u|\n\n", i);
+	printf("\t\t\t\t-->[TEST %%U]<--\n\n");
+	printf("[printf]test:\t |%U|\n", i);
+	ft_printf("[ft_printf]test: |%U|\n\n", i);
 	printf("\t\t\t\t-->[TEST %%s]<--\n\n");
 	printf("[printf]test:\t |%s|\n", s);
 	ft_printf("[ft_printf]test: |%s|\n\n", s);
@@ -188,12 +189,26 @@ int		main(void)
 	printf("[printf]test:\t |%-10d|\n", i);
 	ft_printf("[ft_printf]test: |%-10d|\n\n", i);
 	printf("[printf]test:\t |%-10.12hd|\n", i);
-	ft_printf("[ft_printf]test: |%-10.12hd|\n\n", i);*/
-	/*printf("\t\t\t\t-->[TEST %%D]<--\n\n");
+	ft_printf("[ft_printf]test: |%-10.12hd|\n\n", i);
+	printf("\t\t\t\t-->[TEST %%D]<--\n\n");
 	printf("[printf]test:\t |%D|\n", longg);
 	ft_printf("[ft_printf]test: |%D|\n\n", longg);
+	printf("[printf]test:\t |%D|\n", longgg);
+	ft_printf("[ft_printf]test: |%D|\n\n", longgg);
 	printf("[printf]test:\t |%14D|\n", longg);
 	ft_printf("[ft_printf]test: |%14D|\n\n", longg);
+	printf("[printf]test:\t |%14D|\n", longg);
+	ft_printf("[ft_printf]test: |%14D|\n\n", longg);
+	printf("[printf]test:\t |%.15D|\n", longg);
+	ft_printf("[ft_printf]test: |%.15D|\n\n", longg);
+	printf("[printf]test:\t |%.17D|\n", longgg);
+	ft_printf("[ft_printf]test: |%.17D|\n\n", longgg);
+	printf("[printf]test:\t |%21.17D|\n", longgg);
+	ft_printf("[ft_printf]test: |%21.17D|\n\n", longgg);
+	printf("[printf]test:\t |%-21.17D|\n", longgg);
+	ft_printf("[ft_printf]test: |%-21.17D|\n\n", longgg);
+	printf("[printf]test:\t |%.15D|\n", longgg);
+	ft_printf("[ft_printf]test: |%.15D|\n\n", longgg);
 	printf("\t\t\t\t-->[TEST %%p]<--\n\n");
 	printf("[printf]test:\t |%p|\n", &test);
 	ft_printf("[ft_printf]test: |%p|\n\n", &test);
@@ -211,9 +226,20 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%15p|\n\n", &ooo);
 	printf("[printf]test:\t |%14p|\n", &uuu);
 	ft_printf("[ft_printf]test: |%14p|\n\n", &uuu);
+	printf("[printf]test:\t |%.14p|\n", &uuu);
+	ft_printf("[ft_printf]test: |%.14p|\n\n", &uuu);
+	printf("[printf]test:\t |%20.14p|\n", &uuu);
+	ft_printf("[ft_printf]test: |%20.14p|\n\n", &uuu);
 	printf("[printf]test:\t |%16p|\n", 0);
-	ft_printf("[ft_printf]test: |%16p|\n\n", 0);
-	printf("\t\t\t\t-->[OTHER TEST]<--\n\n");
+	ft_printf("[ft_printf]test: |%16p|\n\n", 0);*/
+	printf("\t\t\t\t-->[TEST %%C]<--\n\n");
+	printf("[printf]test:\t |%C|\n", '4');
+	ft_printf("[ft_printf]test: |%C|\n\n", '4');
+	printf("[printf]test:\t |%C|\n", L'猫');
+	ft_printf("[ft_printf]test: |%C|\n\n", L'猫');
+	printf("[printf]test:\t |%C%C|\n", '4', '2');
+	ft_printf("[ft_printf]test: |%C%C|\n\n", '4', '2');
+/*	printf("\t\t\t\t-->[OTHER TEST]<--\n\n");
 	printf("[printf]test:\t |%%|\n");
 	ft_printf("[ft_printf]test: |%%|\n\n");
 	printf("[printf]test:\t |%%poney|\n");
@@ -223,6 +249,10 @@ int		main(void)
 	printf("negative: %d\n", -22);
 	ft_printf("negative: %d\n", -22);
 	printf("positive: %d\n", 42);
-	ft_printf("positive: %d\n", 42);*/
+	ft_printf("positive: %d\n", 42);
+	printf("printf = \t|%d|\n", NULL);
+	ft_printf("ft_printf = \t|%d|\n", NULL);
+	printf("printf = \t|%s|\n", NULL);
+	ft_printf("ft_printf = \t|%s|\n", NULL);*/
 	return (0);
 }

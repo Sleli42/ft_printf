@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_lst.c                                         :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/21 11:27:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 13:13:44 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/22 12:55:21 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/01/22 13:14:59 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "printf.h"
+#include "printf.h"
 
-t_stat	new_elem()
-
-
-
-void	lst_add(char *s, int i, va_list arg)
+char		*ft_strrev(char *str)
 {
-	t_ 
-}*/
+	int			i;
+	int			length;
+	char		tmp;
+
+	if (str)
+	{
+		i = 0;
+		length = ft_strlen(str);
+		while (i < length / 2)
+		{
+			tmp = str[i];
+			str[i] = str[length - i - 1];
+			str[length - i - 1] = tmp;
+			i++;
+		}
+	}
+	return (str);
+}

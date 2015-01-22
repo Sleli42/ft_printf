@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 09:54:14 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 04:05:35 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 09:32:26 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ char	*add_width_string(char *s, int width, char *flag)
 
 	ret = ft_strnew(width);
 	i = 0;
-	//printf("flag: %s\n", flag);
+	if (s == NULL)
+	{
+		ft_putstr("(null)");
+		return ;
+	}
 	if (width < ft_strlen(s) || width == ft_strlen(s))
 		return (s);
 	if (flag[0] == '-')
