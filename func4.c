@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:26:45 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/19 17:45:29 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/21 21:46:58 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,20 +94,18 @@ char	*add_o_width(char *s, int width, char flag, int precision)
 	return (ret);
 }
 
-char	*add_0x7fff_addr(char *s)
+char	*add_0x1_addr(char *s)
 {
 	char *ret;
 	int	i;
 
-	ret = ft_strnew(ft_strlen(s) + 7);
-	i = 3;
+	ret = ft_strnew(ft_strlen(s) + 4);
+	i = 0;
 	if (s)
 	{
-		ret[0] = '0';
-		ret[1] = 'x';
-		ret[2] = '7';
-		while (i < 6)
-			ret[i++] = 'f';
+		ret[i++] = '0';
+		ret[i++] = 'x';
+		//ret[2] = '1';
 		while (*s)
 			ret[i++] = *s++;
 		return (ret);

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 09:54:14 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/19 17:41:24 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 04:05:35 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,21 +91,30 @@ static int		hexa_value_maj(int n)
 	return (0);
 }
 
-char	*add_0x_addr(char *s, int spec)
+char	*add_0x_addr(char *s, int spec, int precision, int width)
 {
 	char	*ret;
 	char	*tmp;
 	int		i;
 
-	ret = (char *)malloc(sizeof(ft_strlen(s)) + 2);
+	ret = (char *)malloc(sizeof(ft_strlen(s)) + 3);
 	i = 2;
 	ret[0] = '0';
 	if (spec == 0)
 		ret[1] = 'x';
 	else if (spec == 1)
 		ret[1] = 'X';
+	if (ft_strlen(s) < 12 && ft_strlen(s) >= 8)
+	{
+		if (s[0] != '7')
+			ret[i++] = '1';
+	}
 	while (*s)
 		ret[i++] = *s++;
+	if (precision > 0)
+		ret = add_precision_addr(ret, precision);
+	if (width > 0)
+		ret = add_width_addr(ret, width);
 	return (ret);
 }
 
@@ -137,7 +146,7 @@ char			*hexa_convert(unsigned long int n, int spec, char flag)
 			i--;
 		}
 		if (flag == '#')
-			ret = add_0x_addr(ret, spec);
+			ret = add_0x_addr(ret, spec, 0, 0);
 	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/19 17:45:00 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 06:17:13 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ void	convert_int(va_list arg, t_infos *lst)
 	tmp = lst;
 	if (tmp->modifier[0] == 'h')
 		integer = (short int)integer;
-	if (integer >= -2147483647 && integer <= 2147483647)
+	if (tmp->modifier[0] != 'h' && tmp->modifier[0] != 'l')
+	{
 		integer = (int)integer;
-	ret = ft_itoa_long(integer);
+		ret = ft_itoa(integer);
+	}
+	else
+		ret = ft_itoa_long(integer);
 	if (is_flag(tmp->flag[0]) == 1)
 		ret = add_flag(ret ,tmp->flag[0]);
 	if (tmp->precision != 0)
@@ -53,8 +57,6 @@ void	convert_string(va_list arg, t_infos *lst)
 	t_infos	*tmp;
 	
 	tmp = lst;
-	//if (tmp->modifier[0] == 'l')
-	//	ft_print_hex(arg);
 	string = va_arg(arg, char *);
 	if (tmp->precision != 0)
 		string = add_precision_string(string, tmp->precision);
@@ -128,14 +130,13 @@ void	convert_octal(va_list arg, t_infos *lst)
 void	convert_pointer(va_list arg, t_infos *lst)
 {
 	t_infos			*tmp;
-	unsigned int	addr;
+	unsigned long int	addr;
 	char			*ret;
 	char			*temp;
 
 	tmp = lst;
-	addr = va_arg(arg, unsigned int);
-	temp = hexa_convert((int)addr, 0, tmp->flag[0]);
-	ret = add_0x7fff_addr(temp);
+	addr = va_arg(arg, unsigned long int);
+	temp = hexa_convert((unsigned long int)addr, 0, tmp->flag[0]);
+	ret = add_0x_addr(temp, 0, tmp->precision, tmp->width);
 	ft_putstr(ret);
-	//ft_putnbr(addr);
 }

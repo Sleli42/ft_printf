@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/19 17:26:10 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 04:05:51 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	define_convert(t_infos *lst, va_list arg)
 	t_infos	*tmp;
 
 	tmp = lst;
-	if (is_int(tmp->type) == 1)
+	if (is_int(tmp->type) == 1 || tmp->type == 'D')
 		convert_int(arg, tmp);
 	if ((tmp->type) == 's')
 		convert_string(arg, tmp);

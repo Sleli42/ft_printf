@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/19 17:54:24 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/22 06:15:45 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int		ft_printf(const char *rfmt, ...)
 	int		i;
 	int		len;
 	char	*cpy;
-	t_infos	new;
+	t_infos	*new;
 
 	i = 0;
 	cpy = ft_strdup(rfmt);
+	new = NULL;
 	va_start(arg, rfmt);
 	while (cpy[i])
 	{
@@ -32,11 +33,14 @@ int		ft_printf(const char *rfmt, ...)
 		}
 		if (cpy[i] == '%')
 		{
-			detect_infos(cpy, i, &new);
+			new = (t_infos *)malloc(sizeof(t_infos));
+			detect_infos(cpy, i, new);
 		//	affiche_detect(&new);
-			define_convert(&new, arg);
-			while (cpy[i] != new.type)
+			define_convert(new, arg);
+			while (cpy[i] != new->type)
 				i++;
+			free(new);
+			//printf("c_current:%c\n", cpy[i]);
 		}
 		else
 			ft_putchar(cpy[i]);
@@ -47,20 +51,26 @@ int		ft_printf(const char *rfmt, ...)
 
 int		main(void)
 {
+	unsigned long		uuu;
 	long long int		i;
-	long long int		j;
+	long long int		longg;
 	int					test;
+	int					ooo;
 	char	*s;
 	void	*addr;
 	wchar_t c = L'暖'; 
 
-	j = 42424;
+	longg = 3333333333333;
 	i = 214221;
 	test = 4242;
 	s = "baba au whum";
 	addr = (char *)"poneeyyy";
 
-	printf("\t\t-->[TEST %%o]<--\n\n");
+	printf("printf = %d\n", NULL);
+	//ft_printf("printf = |%d\n|", NULL);
+	printf("printf = |%s\n|", NULL);
+	//printf("printf = |%s\n|", NULL);
+	/*printf("\t\t\t\t-->[TEST %%o]<--\n\n");
 	printf("[printf]test:\t |%o|\n", i);
 	ft_printf("[ft_printf]test: |%o|\n\n", i);
 	printf("[printf]test:\t |%ho|\n", i);
@@ -83,7 +93,7 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%-15o|\n\n", i);
 	printf("[printf]test:\t |%-15.9o|\n", i);
 	ft_printf("[ft_printf]test: |%-15.9o|\n\n", i);
-	printf("\t\t-->[TEST %%x]<--\n\n");
+	printf("\t\t\t\t-->[TEST %%x]<--\n\n");
 	printf("[printf]test:\t |%x|\n", i);
 	ft_printf("[ft_printf]test: |%x|\n\n", i);
 	printf("[printf]test:\t |%X|\n", i);
@@ -93,7 +103,7 @@ int		main(void)
 	printf("[printf]test:\t |%#x|\n", i);
 	ft_printf("[ft_printf]test: |%#x|\n\n", i);
 	printf("[printf]test:\t |%hx|\n", i);
-	ft_printf("[ft_printf]test: |%hx|\n", i);
+	ft_printf("[ft_printf]test: |%hx|\n\n", i);
 	printf("[printf]test:\t |%d|\n", i);
 	ft_printf("[ft_printf]test: |%d|\n\n", i);
 	printf("[printf]test:\t |%x|\n", i);
@@ -106,7 +116,7 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%#x|\n\n", i);
 	printf("[printf]test:\t |%hx|\n", i);
 	ft_printf("[ft_printf]test: |%hx|\n\n", i);
-	printf("\t\t-->[TEST %%u]<--\n\n");
+	printf("\t\t\t\t-->[TEST %%u]<--\n\n");
 	printf("[printf]test:\t |%u|\n", i);
 	ft_printf("[ft_printf]test: |%u|\n\n", i);
 	printf("[printf]test:\t |%20u|\n", i);
@@ -131,7 +141,7 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%-20u|\n\n", i);
 	printf("[printf]test:\t |%-20.8u|\n", i);
 	ft_printf("[ft_printf]test: |%-20.8u|\n\n", i);
-	printf("\t\t-->[TEST %%s]<--\n\n");
+	printf("\t\t\t\t-->[TEST %%s]<--\n\n");
 	printf("[printf]test:\t |%s|\n", s);
 	ft_printf("[ft_printf]test: |%s|\n\n", s);
 	printf("[printf]test:\t |%42.42s|\n", s);
@@ -146,7 +156,7 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%-20.4s|\n\n", s);
 	printf("[printf]test:\t |%-.4s|\n", s);
 	ft_printf("[ft_printf]test: |%-.4s|\n\n", s);
-	printf("\t\t-->[TEST %%d]<--\n\n");
+	printf("\t\t\t\t-->[TEST %%d]<--\n\n");
 	printf("[printf]test:\t |% .17d|\n", i);
 	ft_printf("[ft_printf]test: |% .17d|\n\n", i);
 	printf("[printf]test:\t |% 10.10d|\n", i);
@@ -178,18 +188,41 @@ int		main(void)
 	printf("[printf]test:\t |%-10d|\n", i);
 	ft_printf("[ft_printf]test: |%-10d|\n\n", i);
 	printf("[printf]test:\t |%-10.12hd|\n", i);
-	ft_printf("[ft_printf]test: |%-10.12hd|\n\n", i);
-	printf("\t\t-->[TEST %%p]<--\n\n");
+	ft_printf("[ft_printf]test: |%-10.12hd|\n\n", i);*/
+	/*printf("\t\t\t\t-->[TEST %%D]<--\n\n");
+	printf("[printf]test:\t |%D|\n", longg);
+	ft_printf("[ft_printf]test: |%D|\n\n", longg);
+	printf("[printf]test:\t |%14D|\n", longg);
+	ft_printf("[ft_printf]test: |%14D|\n\n", longg);
+	printf("\t\t\t\t-->[TEST %%p]<--\n\n");
 	printf("[printf]test:\t |%p|\n", &test);
 	ft_printf("[ft_printf]test: |%p|\n\n", &test);
 	printf("[printf]test:\t |%p|\n", &s);
 	ft_printf("[ft_printf]test: |%p|\n\n", &s);
 	printf("[printf]test:\t |%p|\n", &addr);
 	ft_printf("[ft_printf]test: |%p|\n\n", &addr);
-	printf("\t\t-->[OTHER TEST]<--\n\n");
+	printf("[printf]test:\t |%p|\n", addr);
+	ft_printf("[ft_printf]test: |%p|\n\n", addr);
+	printf("[printf]test:\t |%p|\n", 0);
+	ft_printf("[ft_printf]test: |%p|\n\n", 0);
+	printf("[printf]test:\t |%p|\n", 0);
+	ft_printf("[ft_printf]test: |%p|\n\n", 0);
+	printf("[printf]test:\t |%15p|\n", &ooo);
+	ft_printf("[ft_printf]test: |%15p|\n\n", &ooo);
+	printf("[printf]test:\t |%14p|\n", &uuu);
+	ft_printf("[ft_printf]test: |%14p|\n\n", &uuu);
+	printf("[printf]test:\t |%16p|\n", 0);
+	ft_printf("[ft_printf]test: |%16p|\n\n", 0);
+	printf("\t\t\t\t-->[OTHER TEST]<--\n\n");
 	printf("[printf]test:\t |%%|\n");
 	ft_printf("[ft_printf]test: |%%|\n\n");
 	printf("[printf]test:\t |%%poney|\n");
 	ft_printf("[ft_printf]test: |%%poney|\n\n");
+	printf("%da%db%dc\n", 1, 12, -2);
+	ft_printf("%da%db%dc\n", 1, 12, -2);
+	printf("negative: %d\n", -22);
+	ft_printf("negative: %d\n", -22);
+	printf("positive: %d\n", 42);
+	ft_printf("positive: %d\n", 42);*/
 	return (0);
 }
