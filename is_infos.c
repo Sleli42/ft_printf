@@ -42,3 +42,14 @@ int		is_converter_maj(char c)
 			return 1;
 	return (0);
 }
+ 
+ /*int 	check_percentage(char *c, int i)
+ {
+ 	int j;
+
+ 	if (cpy[i] == '%' && cpy[i + 2] == '%')
+ 	{
+ 		if (cpy[i])
+ 	}
+ 	return (1);
+ }*/

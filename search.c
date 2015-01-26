@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:23:11 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/21 21:46:03 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/25 21:49:39 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ void	search_modifier(char *s, int caract, t_infos *lst)
 		caract++;
 	}
 	modifier[i] = '\0';
-	tmp->modifier = modifier;
+	if (modifier)
+		tmp->modifier = modifier;
+	else
+		tmp->modifier = NULL;
 }
 
 void	search_converter_types(char *s, int caract, t_infos *lst)
@@ -126,11 +129,22 @@ void	search_converter_types(char *s, int caract, t_infos *lst)
 	tmp = lst;
 	while (s[caract])
 	{
+		if ((s[caract] >= 'a' && s[caract] <= 'z') || (s[caract] >= 'A' && s[caract] <= 'Z'))
+		{
+			if (is_converter_maj(s[caract]) == 0 && is_converter_min(s[caract]) == 0 && is_modifier(s[caract]) == 0)
+			{
+				//printf("yolo\n");
+				tmp->type = 0;
+				break ;
+			}
+		}
 		if ((is_converter_min(s[caract]) == 1) || (is_converter_maj(s[caract]) == 1))
 		{
 			tmp->type = s[caract];
 			break ;
 		}
+		else 
+			tmp->type = 0;
 		caract++;
 	}
 }

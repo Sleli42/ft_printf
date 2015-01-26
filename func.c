@@ -6,13 +6,13 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 04:05:51 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/25 21:30:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	detect_infos(char *cpy, int caract, t_infos *new)
+int	detect_infos(char *cpy, int caract, t_infos *new)
 {
 	int		len;
 	t_infos	*tmp;
@@ -31,25 +31,32 @@ void	detect_infos(char *cpy, int caract, t_infos *new)
 		tmp->flag = '\0';
 }
 
-void	define_convert(t_infos *lst, va_list arg)
+int		define_convert(t_infos *lst, va_list arg)
 {
 	t_infos	*tmp;
+	int		val;
 
 	tmp = lst;
+	val = 0;
 	if (is_int(tmp->type) == 1 || tmp->type == 'D')
-		convert_int(arg, tmp);
+		val = convert_int(arg, tmp);
 	if ((tmp->type) == 's')
-		convert_string(arg, tmp);
+		val = convert_string(arg, tmp);
 	if (tmp->type == 'c')
-		convert_char(arg, tmp);
+		val = convert_char(arg, tmp);
+	if (tmp->type == 'C')
+		val = convert_wchar(arg, tmp);
 	if (tmp->type == 'x' || tmp->type == 'X')
-		convert_hex(arg, tmp);
-	if (tmp->type == 'u' || tmp->type == 'u')
-		convert_unsigned(arg, tmp);
+		val = convert_hex(arg, tmp);
+	if (tmp->type == 'u' || tmp->type == 'U')
+		val = convert_unsigned(arg, tmp);
 	if (tmp->type == 'o' || tmp->type == 'O')
-		convert_octal(arg, tmp);
+		val = convert_octal(arg, tmp);
 	if (tmp->type == 'p')
-		convert_pointer(arg, tmp);
+		val = convert_pointer(arg, tmp);
+	if (tmp->type == 0)
+		return (0);
+	return (val);
 }
 
 char	*add_u_precision(char *integer, int precision)

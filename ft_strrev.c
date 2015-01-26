@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:49:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/22 23:52:53 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/22 12:55:21 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/01/23 14:55:27 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-size_t	ft_strlen(char const *s)
+char		*ft_strrev(char *str)
 {
-	char const	*p_s = s;
+	int			i;
+	int			length;
+	char		tmp;
 
-	while (*p_s)
-		p_s++;
-	return (p_s - s);
+	if (str)
+	{
+		i = 0;
+		length = (ft_strlen(str));
+		while (i < length / 2)
+		{
+			tmp = str[i];
+			str[i] = str[length - i - 1];
+			str[length - i - 1] = tmp;
+			i++;
+		}
+	}
+	return (str);
 }
+
