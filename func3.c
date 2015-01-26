@@ -6,7 +6,11 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 09:54:14 by lubaujar          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/01/26 06:11:43 by lubaujar         ###   ########.fr       */
+=======
+/*   Updated: 2015/01/22 09:32:26 by lubaujar         ###   ########.fr       */
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +48,11 @@ char	*add_width_string(char *s, int width, char *flag)
 	if (s == NULL)
 	{
 		ft_putstr("(null)");
+<<<<<<< HEAD
 		return (s);
+=======
+		return ;
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	}
 	if (width < ft_strlen(s) || width == ft_strlen(s))
 		return (s);

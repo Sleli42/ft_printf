@@ -6,7 +6,11 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 00:21:34 by lubaujar          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/01/23 16:30:37 by lubaujar         ###   ########.fr       */
+=======
+/*   Updated: 2015/01/22 16:42:24 by lubaujar         ###   ########.fr       */
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +80,33 @@ char	*binary_convert(unsigned int value)
 	}
 	return (ret);
 }
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 void	cmp_msk(char *wchar_bin)
 {
 	char	*tab[4];
 	char	*rev;
+<<<<<<< HEAD
 	char	*mask;
 	char	*tmp;
 	char	*tmp2;
 	int		i;
 	int		j;
 	int		ct;
+=======
+	char	*cpy;
+	int		i;
+	int		j;
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 
 	tab[0] = "0xxxxxxx";
 	tab[1] = "110xxxxx10xxxxxx";
 	tab[2] = "1110xxxx10xxxxxx10xxxxxx";
 	tab[3] = "11110xxx10xxxxxx10xxxxxx10xxxxxx";
+<<<<<<< HEAD
 	printf("mask: %d\n", ft_strlen(mask));
 	printf("wchar: %d\n", ft_strlen(wchar_bin));
 	tmp2 = ft_strrev(wchar_bin);
@@ -161,3 +176,42 @@ void	cmp_msk(char *wchar_bin)
 	}
 }
 */
+=======
+	i = 0;
+	j = 0;
+	if (ft_strlen(wchar_bin) > 8 && ft_strlen(wchar_bin) <= 16)
+	{
+		if (wchar_bin)
+		{
+			while (wchar_bin[i])
+			{
+				printf("wchar_bin c : %c\n", wchar_bin[i]);
+				i++;
+			}
+			cpy = tab[1];
+			rev = (char *)malloc(sizeof(char) * ft_strlen(cpy) + 1);
+			printf("wchar_bin: %s\n", wchar_bin);
+			printf("cpy: %s\n", cpy);
+			while (*cpy)
+			{
+				if (*cpy != 'x')
+					rev[j++] = *cpy;
+				if (*cpy == 'x')
+				{
+					printf("wchar_bin c : %c\n", wchar_bin[i]);
+					rev[j++] = wchar_bin[i];
+					i--;
+				}
+				printf("|%c|\t", *cpy);
+				printf("|%c|\n", *wchar_bin);
+				cpy++;
+				wchar_bin++;
+			}
+		}
+		printf("rev: %s\n", rev);
+	//	printf("i = %d\n", i);
+	//	printf("tab[1]: %s\n", tab[1]);
+	}
+}
+
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac

@@ -6,7 +6,11 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:13:40 by lubaujar          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/01/26 06:11:26 by lubaujar         ###   ########.fr       */
+=======
+/*   Updated: 2015/01/22 12:53:31 by lubaujar         ###   ########.fr       */
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +128,13 @@ int		main(void)
 	s = "baba au whum";
 	addr = (char *)"poneeyyy";
 
+<<<<<<< HEAD
 	printf("Coucou les %D!", 42);
 	ft_printf("Coucou les %D!", 42);
 	printf("\t\t\t\t-->[TEST %%o]<--\n\n");
+=======
+/*	printf("\t\t\t\t-->[TEST %%o]<--\n\n");
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	printf("[printf]test:\t |%o|\n", i);
 	ft_printf("[ft_printf]test: |%o|\n\n", i);
 	printf("[printf]test:\t |%ho|\n", i);
@@ -289,7 +297,11 @@ int		main(void)
 	printf("[printf]test:\t |%20.14p|\n", &uuu);
 	ft_printf("[ft_printf]test: |%20.14p|\n\n", &uuu);
 	printf("[printf]test:\t |%16p|\n", 0);
+<<<<<<< HEAD
 	ft_printf("[ft_printf]test: |%16p|\n\n", 0);
+=======
+	ft_printf("[ft_printf]test: |%16p|\n\n", 0);*/
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	printf("\t\t\t\t-->[TEST %%C]<--\n\n");
 	printf("[printf]test:\t |%C|\n", '4');
 	ft_printf("[ft_printf]test: |%C|\n\n", '4');
@@ -297,7 +309,11 @@ int		main(void)
 	ft_printf("[ft_printf]test: |%C|\n\n", L'猫');
 	printf("[printf]test:\t |%C%C|\n", '4', '2');
 	ft_printf("[ft_printf]test: |%C%C|\n\n", '4', '2');
+<<<<<<< HEAD
 	printf("\t\t\t\t-->[OTHER TEST]<--\n\n");
+=======
+/*	printf("\t\t\t\t-->[OTHER TEST]<--\n\n");
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	printf("[printf]test:\t |%%|\n");
 	ft_printf("[ft_printf]test: |%%|\n\n");
 	printf("[printf]test:\t |%%poney|\n");
@@ -311,11 +327,15 @@ int		main(void)
 	printf("printf = \t|%d|\n", NULL);
 	ft_printf("ft_printf = \t|%d|\n", NULL);
 	printf("printf = \t|%s|\n", NULL);
+<<<<<<< HEAD
 	ft_printf("ft_printf = \t|%s|\n", NULL);
 	ft_printf("111%s333\n", "222");
 	//printf("% Zoooo\n");
 	//ft_printf("% Zoooo\n");
 	printf("%20      wwwwwbcd\n");
+=======
+	ft_printf("ft_printf = \t|%s|\n", NULL);*/
+>>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	return (0);
 }
 */
