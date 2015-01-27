@@ -6,11 +6,11 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:33:51 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/19 13:04:00 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/27 01:53:46 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "includes/printf.h"
 
 int		is_flag(char c)
 {

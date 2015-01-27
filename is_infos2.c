@@ -6,11 +6,11 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 01:58:02 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/17 19:10:05 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/27 01:53:57 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "includes/printf.h"
 
 int		is_int(char c)
 {

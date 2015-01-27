@@ -6,11 +6,11 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 19:23:11 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/25 21:49:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/27 01:55:07 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "includes/printf.h"
 
 int		search_flag(char *s, int caract, t_infos *lst)
 {

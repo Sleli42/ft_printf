@@ -6,15 +6,12 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 10:49:01 by lubaujar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/01/26 06:11:46 by lubaujar         ###   ########.fr       */
-=======
+/*   Updated: 2015/01/27 01:55:18 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/01/22 06:47:04 by lubaujar         ###   ########.fr       */
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "includes/printf.h"
 
 char	*ft_itoa_ulong(unsigned long long int n)
 {

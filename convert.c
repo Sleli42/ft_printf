@@ -6,15 +6,12 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/03 04:15:15 by lubaujar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/01/26 06:11:38 by lubaujar         ###   ########.fr       */
-=======
+/*   Updated: 2015/01/27 01:52:27 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/01/22 12:52:50 by lubaujar         ###   ########.fr       */
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "includes/printf.h"
 
 int		convert_int(va_list arg, t_infos *lst)
 {
@@ -24,11 +21,8 @@ int		convert_int(va_list arg, t_infos *lst)
 
 	integer = va_arg(arg, long long int);
 	tmp = lst;
-<<<<<<< HEAD
 	if (tmp->modifier[0] == 'h' && tmp->type != 'D')
-	{
 		integer = (short)integer;
-	}
 	if (tmp->modifier[0] == 'h' && tmp->type == 'D'
 			|| (tmp->modifier[0] == 'h' && tmp->modifier[1] == 'h' && tmp->type == 'D'))
 	{
@@ -36,27 +30,20 @@ int		convert_int(va_list arg, t_infos *lst)
 		ret = ft_uitoa(integer);
 	}
 	if (tmp->modifier[0] == 'h' && tmp->modifier[1] == 'h' && is_int(tmp->type) == 1)
-	{
 		integer = (char)integer;
-	}
 	if (tmp->modifier[0] != 'h' && tmp->modifier[0] != 'l' && tmp->type != 'D' && tmp->modifier[0] != 'j' && tmp->modifier[0] != 'z')
-=======
+
 	if (tmp->modifier[0] == 'h')
 		integer = (short int)integer;
 	if (tmp->modifier[0] != 'h' && tmp->modifier[0] != 'l' && tmp->type != 'D')
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	{
 		integer = (int)integer;
 		ret = ft_itoa(integer);
 	}
 	if (tmp->type == 'j')
-	{
 		ret = ft_itoa_long(integer);
-	}
 	else
-	{
 		ret = ft_itoa_long(integer);
-	}
 	if (is_flag(tmp->flag[0]) == 1)
 		ret = add_flag(ret ,tmp->flag[0]);
 	if (tmp->precision != 0 && tmp->precision > ft_strlen(ret))
@@ -97,7 +84,6 @@ int		convert_string(va_list arg, t_infos *lst)
 	if (string == NULL)
 	{
 		ft_putstr("(null)");
-<<<<<<< HEAD
 		return (6);
 	}
 	if (string == '\0')
@@ -106,9 +92,6 @@ int		convert_string(va_list arg, t_infos *lst)
 	{
 		ft_putchar(*string);
 		return (1);
-=======
-		return ;
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	}
 	if (tmp->precision != 0)
 		string = add_precision_string(string, tmp->precision);
@@ -120,7 +103,6 @@ int		convert_string(va_list arg, t_infos *lst)
 
 int		convert_char(va_list arg, t_infos *lst)
 {
-<<<<<<< HEAD
 	t_infos			*tmp;
 	int				i;
 	unsigned int	c;
@@ -149,14 +131,6 @@ int		convert_char(va_list arg, t_infos *lst)
 			ft_putchar(c);
 	}
 	return (1);
-=======
-	unsigned int	c;
-	
-	c = va_arg(arg, unsigned int);
-	c = (char)c;
-	if (c >= 0 && c <= 126)
-		ft_putchar(c);
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 }
 
 void	convert_wchar(va_list arg, t_infos *lst)
@@ -167,20 +141,13 @@ void	convert_wchar(va_list arg, t_infos *lst)
 	wc = va_arg(arg, unsigned int);
 	if (wc >= 0 && wc <= 126)
 		ft_putchar((char)wc);
-<<<<<<< HEAD
 /*	else
-=======
 	else
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	{
 		wchar_bin = binary_convert(wc);
 		//printf("wchar = %s\n", wchar_bin);
 		cmp_msk(wchar_bin);
-<<<<<<< HEAD
 	}*/
-=======
-	}
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 }
 
 int		convert_hex(va_list arg, t_infos *lst)

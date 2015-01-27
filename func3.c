@@ -6,15 +6,12 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 09:54:14 by lubaujar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/01/26 06:11:43 by lubaujar         ###   ########.fr       */
-=======
+/*   Updated: 2015/01/27 01:53:07 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/01/22 09:32:26 by lubaujar         ###   ########.fr       */
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "includes/printf.h"
 
 char	*add_precision_string(char *s, int precision)
 {
@@ -48,13 +45,10 @@ char	*add_width_string(char *s, int width, char *flag)
 	if (s == NULL)
 	{
 		ft_putstr("(null)");
-<<<<<<< HEAD
 		return (s);
-=======
 		return ;
->>>>>>> 6a28af0bcf888285c38135839391b5e3289c1eac
 	}
-	if (width < ft_strlen(s) || width == ft_strlen(s))
+	if (width <= ft_strlen(s))
 		return (s);
 	if (flag[0] == '-')
 	{
@@ -68,10 +62,10 @@ char	*add_width_string(char *s, int width, char *flag)
 	{
 		while (i < width - ft_strlen(s))
 		{
-			if (flag[0] != '0')
-				ret[i++] = ' ';
-			else 
+			if (flag[0] == '0')
 				ret[i++] = '0';
+			else 
+				ret[i++] = ' ';
 		}
 		while (*s)
 			ret[i++] = *s++;
