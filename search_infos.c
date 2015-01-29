@@ -6,34 +6,34 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/27 20:42:18 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/29 03:37:23 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/printf.h"
 
-char	*search_flag(char *s)
+char	*search_flag(char *s, int c)
 {
 	char	*flags;
 	int		i;
 
 	i = 0;
 	flags = (char *)malloc(sizeof(char) * 2);
-	while (*s)
+	while (s[c])
 	{
-		if (is_flag(*s) == 1)
+		if (is_flag(s[c]) == 1)
 		{
-			flags[i++] = *s++;
-			if (is_flag(*s) == 1)
-				flags[i++] = *s++;
+			flags[i++] = s[c++];
+			if (is_flag(s[c]) == 1)
+				flags[i++] = s[c++];
 		}
-		*s++;
+		c++;
 	}
 	flags[i] = '\0';
 	return (flags);
 }
 
-int		search_width(char *s)
+int		search_width(char *s, int c)
 {
 	int		width;
 	int		i;
@@ -42,11 +42,11 @@ int		search_width(char *s)
 	width = 0;
 	i = 0;
 	wdt = (char *)malloc(sizeof(char) + 1);
-	while (*s && *s != '.')
+	while (s[c] && s[c] != '.')
 	{
-		if (*s >= '0' && *s <= '9')
-			wdt[i++] = *s;
-		*s++;
+		if (s[c] >= '0' && s[c] <= '9')
+			wdt[i++] = s[c];
+		c++;
 	}
 	wdt[i] = '\0';
 	if (wdt)
@@ -57,7 +57,7 @@ int		search_width(char *s)
 	return (0);
 }
 
-int		search_prec(char *s)
+int		search_prec(char *s, int c)
 {
 	int 	prec;
 	int		i;
@@ -65,13 +65,13 @@ int		search_prec(char *s)
 
 	i = 0;
 	pr = (char *)malloc(sizeof(char) + 1);
-	while (*s != '.')
-		*s++;
-	while (*s)
+	while (s[c] != '.')
+		c++;
+	while (s[c])
 	{
-		if (*s >= '0' && *s <= '9')
-			pr[i++] = *s;
-		*s++;
+		if (s[c] >= '0' && s[c] <= '9')
+			pr[i++] = s[c];
+		c++;
 	}
 	pr[i] = '\0';
 	if (pr)
@@ -82,37 +82,34 @@ int		search_prec(char *s)
 	return (0);
 }
 
-char	*search_modif(char *s)
+char	*search_modif(char *s, int c)
 {
 	char	*modif;
 	int		i;
 
 	modif = (char *)malloc(sizeof(char) + 1);
 	i = 0;
-	while (*s)
+	while (s[c])
 	{
-		if (is_modif(*s) == 1)
+		if (is_modif(s[c]) == 1)
 		{
-			modif[i++] = *s++;
-			if (is_modif(*s) == 1)
-				modif[i++] = *s;
+			modif[i++] = s[c++];
+			if (is_modif(s[c]) == 1)
+				modif[i++] = s[c];
 		}
-		*s++;
+		c++;
 	}
 	modif[i] = '\0';
 	return (modif);
 }
 
-char	search_conv(char *s)
+char	search_conv(char *s, int c)
 {
-	int		i;
-
-	i = 0;
-	while (s[i])
+	while (s[c])
 	{
-		if (is_conv(s[i]) == 1)
-			return (s[i]);
-		i++;
+		if (is_conv(s[c]) == 1 && s[c - 1] == '%')
+			return (s[c]);
+		c++;
 	}
 	return ('\0');
 }

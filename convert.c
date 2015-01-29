@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/28 05:26:04 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/29 03:37:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		convert_int(va_list arg, t_infos *infos)
 	char			*ret;
 
 	integer = va_arg(arg, long long int);
+	//printf("irecu: %d", integer);
 	if (infos->modif[0] == 'h')
 	{
 		if (infos->modif[1] == 'h')
@@ -29,8 +30,33 @@ int		convert_int(va_list arg, t_infos *infos)
 	else if (infos->modif[0] == 'l' && infos->modif[1] != 'l')
 		integer = (long int)integer;
 	else if (is_modif(infos->modif[0]) == 0)
+	{
 		integer = (int)integer;
-	ret = ft_itoa_long(integer);
+		ret = ft_itoa(integer);
+	}
+	else
+		ret = ft_itoa_long(integer);
+	ft_putstr(ret);
+	return (ft_strlen(ret));
+}
+
+int		convert_unsigned(va_list arg, t_infos *infos)
+{
+	unsigned long int	u;
+	char				*ret;
+
+	u = va_arg(arg, unsigned long int);
+	if (infos->modif[0] == 'h')
+	{
+		if (infos->modif[1] == 'h')
+			u = (unsigned char)u;
+		else
+			u = (unsigned short)u;
+	}
+	if (infos->conv == 'u')
+		ret = ft_uitoa((unsigned int)u);
+	else
+		ret = ft_itoa_long((unsigned long int)u);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -55,8 +81,22 @@ int		convert_pointer(va_list arg, t_infos *infos)
 	char				*ret;
 
 	addr = va_arg(arg, unsigned long int);
-	ret = baseHexa(addr);
+	ret = baseHexa(addr, 0);
 	ret = add0xAddr(ret);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
+}
+
+int		convert_char(va_list arg, t_infos *infos)
+{
+	unsigned int	c;
+
+	c = va_arg(arg, unsigned int);
+	c = (char)c;
+	if (c >= 0 && c <= 126)
+	{
+		ft_putchar(c);
+		return (1);
+	}
+	return (0);
 }

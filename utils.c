@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 21:00:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/28 05:26:06 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/29 03:13:46 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,19 @@ static int		hexaValue(int n)
 	return (0);
 }
 
-char	*baseHexa(unsigned long int n)
+static int		hexaValueMaj(int n)
+{
+	if (0 <= n && n <= 9)
+		return (48 + n);
+	else if (10 <= n && n <= 15)
+	{
+		n = n - 10;
+		return (65 + n);
+	}
+	return (0);
+}
+
+char	*baseHexa(unsigned long long int n, int spec)
 {
 	char			*ret;
 	int				i;
@@ -44,8 +56,39 @@ char	*baseHexa(unsigned long int n)
 		while (i >= 0)
 		{
 			tmp = n % 16;
-			ret[i] = hexaValue(tmp);
+			if (spec == 0)
+				ret[i] = hexaValue(tmp);
+			if (spec == 1)
+				ret[i] = hexaValueMaj(tmp);
 			n = n / 16;
+			i--;
+		}
+	}
+	return (ret);
+}
+
+char		*baseOctal(unsigned long long int n)
+{
+	char			*ret;
+	int				i;
+	unsigned long int		tmp;
+
+	tmp = n;
+	i = 0;
+	while (tmp > 7)
+	{
+		tmp = tmp / 8;
+		i++;
+	}
+	ret = (char *)malloc(sizeof(char) * i + 1);
+	if (ret)
+	{
+		ret[i + 1] = '\0';
+		while (i >= 0)
+		{
+			tmp = n % 8;
+			ret[i] = 48 + tmp;
+			n = n / 8;
 			i--;
 		}
 	}

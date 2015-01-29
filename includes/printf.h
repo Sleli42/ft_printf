@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/28 05:26:08 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/29 03:37:18 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include "../../../libft/libft.h"
 
 typedef struct	s_infos
 {
@@ -34,11 +35,11 @@ int		define_convert(va_list arg, t_infos *infos);
 
 /* infos */
 
-char	*search_flag(char *s);
-char	*search_modif(char *s);
-char	search_conv(char *s);
-int		search_width(char *s);
-int		search_prec(char *s);
+char	*search_flag(char *s, int c);
+char	*search_modif(char *s, int c);
+char	search_conv(char *s, int c);
+int		search_width(char *s, int c);
+int		search_prec(char *s, int c);
 
 int		is_flag(char c);
 int		is_conv(char c);
@@ -49,19 +50,16 @@ int		is_modif(char c);
 int		convert_int(va_list arg, t_infos *infos);
 int		convert_string(va_list arg, t_infos *infos);
 int		convert_pointer(va_list arg, t_infos *infos);
+int		convert_unsigned(va_list arg, t_infos *infos);
+int		convert_octal(va_list arg, t_infos *infos);
+int		convert_hexa(va_list arg, t_infos *infos);
 
 /* utils */
 
 static int	hexaValue(int n);
-char	*baseHexa(unsigned long int n);
+static int	hexaValueMaj(int n);
+char	*baseHexa(unsigned long long int n, int spec);
+char	*baseOctal(unsigned long long int n);
 char	*add0xAddr(char *s);
-
-/* funcs */
-
-char	*ft_itoa_long(long long int n);
-char	*ft_itoa(int n);
-int		ft_atoi(char *s);
-char	ft_putchar(char c);
-int		ft_strlen(char *s);
 
 #endif
