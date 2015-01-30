@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_long.c                                     :+:      :+:    :+:   */
+/*   ft_uitoa_long.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/27 21:15:31 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 06:18:41 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/30 06:20:01 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/01/30 06:24:14 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*ft_itoa_long(long long int n)
+char	*ft_uitoa_long(unsigned long int n)
 {
 	char	*ret;
-	long long int		temp_n;
+	unsigned long int		temp_n;
 	size_t	size_ret;
 	char	sign;
 
-	sign = (n < 0) ? -1 : 1;
-	size_ret = 2 + (n < 0);
+	sign = 1;
+	size_ret = 2;
 	temp_n = n;
 	while ((n = n / 10))
 		size_ret++;
@@ -31,7 +31,5 @@ char	*ft_itoa_long(long long int n)
 	ret[size_ret--] = sign * (n % 10) + '0';
 	while ((n = n / 10))
 		ret[size_ret--] = sign * (n % 10) + '0';
-	if (sign < 0)
-		ret[size_ret] = '-';
 	return (ret);
 }

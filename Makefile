@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/01/29 00:30:16 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/01/30 06:24:29 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = convert.c\
 	  ft_itoa.c\
 	  ft_uitoa.c\
 	  ft_itoa_long.c\
+	  ft_uitoa_long.c\
 	  ft_putchar.c\
 	  ft_putstr.c\
 	  ft_strlen.c\

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 03:51:21 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 07:45:37 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int		main(void)
 	unsigned int	l;
 	char			*str;
 
-/*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
+	/*ft_printf("test with string %d and after samere\n", 42);
+	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
 

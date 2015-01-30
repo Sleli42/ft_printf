@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 02:49:33 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 07:06:08 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int		convert_octal(va_list arg, t_infos *infos)
 	o = va_arg(arg, unsigned long long int);
 	if (infos->modif[0] == 'h')
 	{
-		if (infos->modif[1] == 'h')
+		if (infos->modif[1] == 'h' && infos->conv == 'o')
 			o = (unsigned char)o;
 		else
 			o = (unsigned short)o;
 	}
-	if (infos->conv == 'o')
+	if (infos->conv == 'o' && is_modif(infos->modif[0]) == 0)
 		o = (unsigned int)o;
 	ret = baseOctal(o);
 	ft_putstr(ret);

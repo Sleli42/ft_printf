@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:23:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 03:51:23 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 07:44:39 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,32 @@ int		ft_printf(const char *rfmt, ...)
 			new = (t_infos *)malloc(sizeof(t_infos));
 			detect_infos((char*)rfmt, j, new);
 			return_value += define_convert(arg, new);
-			if (rfmt[j] == '%' && rfmt[j + 1] == ' ' && !new->conv)
-				j++;
-			if (new->conv != 'B')
+			if (new->conv == 'B')
+			{
+				while (rfmt[j + 1] == ' ')
+					j++;
+				if (rfmt[j + 1] == '%')
+				{
+					ft_putchar('%');
+					j = j + 1;
+					i = i + 1;
+				}
+			}
+			else
 			{
 				while (rfmt[j] != new->conv)
 					j++;
 			}
-		//	printf("%c-", rfmt[j]);
 		}
 		else
 		{
-			ft_putchar(rfmt[j]);
+			if ((rfmt[j] == '%' && rfmt[j + 1] == '%'))
+			{
+				ft_putchar('%');
+				j = j + 1;
+			}
+			else
+				ft_putchar(rfmt[j]);
 			i++;
 		}
 		j++;

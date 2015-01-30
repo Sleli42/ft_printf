@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 03:51:25 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 07:44:41 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,15 @@ char	search_conv(char *s, int c)
 	{
 		if (is_conv(s[c]))
 			return (s[c]);
+		if (s[c + 1] == ' ')
+		{
+			while (s[c + 1] == ' ')
+				c++;
+			if (is_conv(s[c + 1]))
+				return (s[c]);
+			else
+				return ('B');
+		}
 		else if (s[c + 1] == '%' && !is_conv(s[c]))
 			return ('B');
 		c++;
