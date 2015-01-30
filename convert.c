@@ -6,12 +6,11 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 03:37:20 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 03:51:27 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-//#include "../../libft/libft.h"
 
 int		convert_int(va_list arg, t_infos *infos)
 {
@@ -19,22 +18,21 @@ int		convert_int(va_list arg, t_infos *infos)
 	char			*ret;
 
 	integer = va_arg(arg, long long int);
-	//printf("irecu: %d", integer);
-	if (infos->modif[0] == 'h')
+	if (!is_modif(infos->modif[0]))
+	{
+		integer = (int)integer;
+		ret = ft_itoa(integer);
+	}
+	else if (infos->modif[0] == 'h')
 	{
 		if (infos->modif[1] == 'h')
 			integer = (signed char)integer;
 		else
 			integer = (short)integer;
-	}
-	else if (infos->modif[0] == 'l' && infos->modif[1] != 'l')
-		integer = (long int)integer;
-	else if (is_modif(infos->modif[0]) == 0)
-	{
-		integer = (int)integer;
 		ret = ft_itoa(integer);
 	}
-	else
+	if (infos->conv == 'D' || infos->modif[0] == 'l'
+			|| infos->modif[0] == 'j')
 		ret = ft_itoa_long(integer);
 	ft_putstr(ret);
 	return (ft_strlen(ret));

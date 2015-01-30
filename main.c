@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 03:37:34 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 03:51:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ int		main(void)
 	unsigned int	l;
 	char			*str;
 
+/*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
+	printf("\n");
+	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
+
 	printf("\t\t--->[ %%d ]<---\n");
 	printf("\t\t--->[ %%d ]<---\n\n");
 	printf("\t\t [ MODIF ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][d]\t-->|%d|\n", INT_MAX);
 	printf("[printf][d]\t-->|%d|\n\n", INT_MIN);
 	ft_printf("\t[d]\t-->|%d|\n", INT_MAX);
@@ -53,7 +58,8 @@ int		main(void)
 	printf("\t\t--->[ %%s ]<---\n");
 	printf("\t\t--->[ %%s ]<---\n\n");
 	printf("\t\t [ SIMPLE TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][s]\t-->|%s|\n", "abcde");
 	ft_printf("\t[s]\t-->|%s|\n\n", "abcde");
 	printf("[printf][s]\t-->|!!%s!!|\n", "??");
@@ -70,7 +76,8 @@ int		main(void)
 	printf("\t\t--->[ %%p ]<---\n");
 	printf("\t\t--->[ %%p ]<---\n\n");
 	printf("\t\t [ SIMPLE TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][p]\t-->|%p|\n", &i);
 	ft_printf("\t[p]\t-->|%p|\n\n", &i);
 	printf("[printf][p]\t-->|%p|\n", &l);
@@ -83,7 +90,8 @@ int		main(void)
 	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 	
 	printf("\t\t [ MULTI TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][.]\t-->|!!%s??%p??%d!!|\n", "string", &i, 42);
 	ft_printf("\t[.]\t-->|!!%s??%p??%d!!|\n\n", "string", &i, 42);
 	printf("[printf][..]\t-->|!!%d??%s??%p!!|\n", 21, "babaAuWhum", &str);
@@ -94,7 +102,8 @@ int		main(void)
 	printf("\t\t--->[ %%c ]<---\n");
 	printf("\t\t--->[ %%c ]<---\n\n");
 	printf("\t\t [ SIMPLE TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][c]\t-->|(.%c.)|\n", 'y');
 	ft_printf("\t[c]\t-->|(.%c.)|\n\n", 'y');
 	printf("[printf][c]\t-->|(.%c.) ** (.%c.)|\n", 'y', 'y');
@@ -111,7 +120,8 @@ int		main(void)
 	printf("\t\t--->[ %%u ]<---\n");
 	printf("\t\t--->[ %%u ]<---\n\n");
 	printf("\t\t [ SIMPLE TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][u]\t-->|%u|\n", 42);
 	ft_printf("\t[u]\t-->|%u|\n\n", 42);
 	printf("[printf][u]\t-->|%u && %u|\n", 42, 21);
@@ -126,7 +136,8 @@ int		main(void)
 	printf("\t\t--->[ %%U ]<---\n");
 	printf("\t\t--->[ %%U ]<---\n\n");
 	printf("\t\t [ SIMPLE TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][U]\t-->|%U|\n", 42);
 	ft_printf("\t[U]\t-->|%U|\n\n", 42);
 	printf("[printf][U]\t-->|%u|\n", ULONG_MAX);
@@ -139,7 +150,8 @@ int		main(void)
 	printf("\t\t--->[ %%o ]<---\n");
 	printf("\t\t--->[ %%o ]<---\n\n");
 	printf("\t\t [ SIMPLE TEST ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][o]\t-->|%o|\n", 42);
 	ft_printf("\t[o]\t-->|%o|\n\n", 42);
 	printf("[printf][o]\t-->|%o|\n", UINT_MAX);
@@ -154,7 +166,8 @@ int		main(void)
 	printf("\t\t--->[ %%O ]<---\n");
 	printf("\t\t--->[ %%O ]<---\n\n");
 	printf("\t\t [ simple test ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][O]\t-->|%O|\n", 42);
 	ft_printf("\t[O]\t-->|%O|\n\n", 42);
 	printf("[printf][O]\t-->|%O|\n", ULONG_MAX);
@@ -169,7 +182,8 @@ int		main(void)
 	printf("\t\t--->[ %%x ]<---\n");
 	printf("\t\t--->[ %%x ]<---\n\n");
 	printf("\t\t [ simple test ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][x]\t-->|%x|\n", 42);
 	ft_printf("\t[x]\t-->|%x|\n\n", 42);
 	printf("[printf][x]\t-->|%o|\n", UINT_MAX);
@@ -182,7 +196,8 @@ int		main(void)
 	printf("\t\t--->[ %%X ]<---\n");
 	printf("\t\t--->[ %%X ]<---\n\n");
 	printf("\t\t [ simple test ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][X]\t-->|%X|\n", 42);
 	ft_printf("\t[x]\t-->|%X|\n\n", 42);
 	printf("[printf][X]\t-->|%X|\n", UINT_MAX);
@@ -195,7 +210,8 @@ int		main(void)
 	printf("\t\t--->[ oth ]<---\n");
 	printf("\t\t--->[ oth ]<---\n\n");
 	printf("\t\t [ simple test ]\n\n");
-	printf("\t****************************\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
 	printf("[printf][oth]\t-->|%%|\n");
 	ft_printf("\t[oth]\t-->|%%|\n\n");
 	printf("[printf][oth]\t-->|aa%%bb|\n");

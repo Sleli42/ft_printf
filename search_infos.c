@@ -6,30 +6,44 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 03:37:23 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 03:51:25 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "printf.h"
 
 char	*search_flag(char *s, int c)
 {
 	char	*flags;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	flags = (char *)malloc(sizeof(char) * 2);
-	while (s[c])
+	if (s[c + 1] == ' ' && s[c + 2] == ' ')
 	{
-		if (is_flag(s[c]) == 1)
-		{
-			flags[i++] = s[c++];
-			if (is_flag(s[c]) == 1)
-				flags[i++] = s[c++];
-		}
-		c++;
+		c = c + 1;
+		while (s[c] == ' ')
+			c++;
 	}
-	flags[i] = '\0';
+	while (i < c)
+		i++;
+	while (s[i] && s[i + 1] != '%' && j < 1)
+	{
+		if (is_flag(s[i]))
+		{
+			flags[j] = s[i];
+			if (is_flag(s[i + 1]))
+				flags[++j] = s[i + 1];
+			else
+				flags[++j] == '\0';
+		}
+		i++;
+	}
+	flags[++j] = '\0';
+	if (!is_flag(flags[0]))
+		flags[0] = '\0';
 	return (flags);
 }
 
@@ -64,42 +78,44 @@ int		search_prec(char *s, int c)
 	char	*pr;
 
 	i = 0;
+	prec = 0;
 	pr = (char *)malloc(sizeof(char) + 1);
-	while (s[c] != '.')
+	while (s[c] != '.' && s[c + 1] != '%')
 		c++;
-	while (s[c])
+	if (s[c + 1] >= '0' && s[c + 1] <= '9')
 	{
-		if (s[c] >= '0' && s[c] <= '9')
-			pr[i++] = s[c];
-		c++;
+		c = c + 1;
+		while (s[c] >= '0' && s[c] <= '9')
+			pr[i++] = s[c++];
 	}
 	pr[i] = '\0';
 	if (pr)
-	{
 		prec = ft_atoi(pr);
-		return (prec);
-	}
-	return (0);
+	return (prec);
 }
 
 char	*search_modif(char *s, int c)
 {
 	char	*modif;
-	int		i;
+	int		j;
 
 	modif = (char *)malloc(sizeof(char) + 1);
-	i = 0;
-	while (s[c])
+	j = 0;
+	while (s[c] && s[c + 1] != '%')
 	{
-		if (is_modif(s[c]) == 1)
+		if (is_modif(s[c]))
 		{
-			modif[i++] = s[c++];
-			if (is_modif(s[c]) == 1)
-				modif[i++] = s[c];
+			modif[j] = s[c];
+			if (is_modif(s[c + 1]))
+				modif[++j] = s[c + 1];
+			else
+				modif[++j] = '\0';
 		}
 		c++;
 	}
-	modif[i] = '\0';
+	modif[++j] = '\0';
+	if (!is_modif(modif[0]))
+		modif[0] = '\0';
 	return (modif);
 }
 
@@ -107,9 +123,11 @@ char	search_conv(char *s, int c)
 {
 	while (s[c])
 	{
-		if (is_conv(s[c]) == 1 && s[c - 1] == '%')
+		if (is_conv(s[c]))
 			return (s[c]);
+		else if (s[c + 1] == '%' && !is_conv(s[c]))
+			return ('B');
 		c++;
 	}
-	return ('\0');
+	return ('B');
 }

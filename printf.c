@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:23:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 03:37:16 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/30 03:51:23 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,19 @@ int		ft_printf(const char *rfmt, ...)
 	return_value = 0;
 	while (rfmt[j])
 	{
-		if (rfmt[j] == '%' && (rfmt[j + 1] == '%' ||
-					rfmt[j + 1] == ' ' && rfmt[j + 2] == '%'))
-		{
-			ft_putchar('%');
-			i++;
-			j++;
-		}
-		else if (rfmt[j] == '%' && rfmt[j + 1] != '%')
+		if (rfmt[j] == '%' && rfmt[j + 1] != '%')
 		{
 			new = (t_infos *)malloc(sizeof(t_infos));
-			detect_infos((char*)rfmt, rfmt[j], new);
+			detect_infos((char*)rfmt, j, new);
 			return_value += define_convert(arg, new);
 			if (rfmt[j] == '%' && rfmt[j + 1] == ' ' && !new->conv)
 				j++;
-			if (new->conv != '\0')
+			if (new->conv != 'B')
 			{
 				while (rfmt[j] != new->conv)
 					j++;
 			}
-			//printf("%c-", rfmt[j]);
+		//	printf("%c-", rfmt[j]);
 		}
 		else
 		{
@@ -67,11 +60,16 @@ void	detect_infos(char *s, int c, t_infos *infos)
 /* a refaire */
 	tmp = infos;
 	tmp->flag = search_flag(s, c);
+	//printf("flags: |%s|\n", tmp->flag);
 	tmp->width = search_width(s, c);
+	//printf("width: |%d|\n", tmp->width);
 	tmp->prec = search_prec(s, c);
+	//printf("prec: |%d|\n", tmp->prec);
 	tmp->modif = search_modif(s, c);
+	//printf("modif: |%s|\n", tmp->modif);
 	tmp->conv = search_conv(s, c);
-	printf("conv find: %c\n", tmp->conv);
+	//printf("conv: |%c|\n", tmp->conv);
+//	printf("conv find: %c\n", tmp->conv);
 }
 
 int		define_convert(va_list arg, t_infos *infos)
