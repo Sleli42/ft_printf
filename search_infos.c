@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 03:45:20 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 07:19:34 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ int		search_width(char *s, int c)
 	width = 0;
 	i = 0;
 	wdt = (char *)malloc(sizeof(char) + 1);
-	while (s[c] && s[c] != '.')
+	while (s[c] && (s[c] != '.'))
 	{
 		if (s[c] >= '0' && s[c] <= '9')
 			wdt[i++] = s[c];
+		if (s[c + 1] >= 'a' && s[c + 1] <= 'z')
+			break;
 		c++;
 	}
 	wdt[i] = '\0';
@@ -70,7 +72,7 @@ int		search_width(char *s, int c)
 		width = ft_atoi(wdt);
 		return (width);
 	}
-	return (0);
+	return (width);
 }
 
 int		search_prec(char *s, int c)

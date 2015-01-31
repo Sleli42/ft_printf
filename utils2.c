@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 00:58:29 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 04:59:00 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 07:51:05 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,36 @@ char	*addWidth(char *s, int width, char *flag)
 			while (i < width - ft_strlen(s))
 				ret[i++] = ' ';
 		}
+		while (*s)
+			ret[i++] = *s++;
+	}
+	ret[i] = '\0';
+	return (ret);
+}
+
+char	*addWidth0x(char *s, int width, char *flag)
+{
+	char	*ret;
+	int		i;
+
+	ret = (char *)malloc(sizeof(char) * width + 1);
+	i = 0;
+	if (flag[0] == '0' || flag[0] == '-')
+	{
+		while (*s)
+			ret[i++] = *s++;
+		while (i < width)
+		{
+			if (flag[0] == '-')
+				ret[i++] = ' ';
+			else
+				ret[i++] = '0';
+		}
+	}
+	else
+	{
+		while (i < width - ft_strlen(s))
+			ret[i++] = ' ';
 		while (*s)
 			ret[i++] = *s++;
 	}

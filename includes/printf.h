@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 04:59:07 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 07:04:30 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ char	*add0xAddr(char *s);
 char	*addPrec(char *s, int prec);
 char	*addPrecString(char *s, int prec);
 char	*addWidth(char *s, int width, char *flag);
+char	*addWidth0x(char *s, int width, char *flag);
 
 #endif
