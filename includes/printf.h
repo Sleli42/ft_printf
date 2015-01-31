@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 06:20:49 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 04:59:07 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,11 @@ static int	hexaValueMaj(int n);
 char	*baseHexa(unsigned long long int n, int spec);
 char	*baseOctal(unsigned long long int n);
 char	*add0xAddr(char *s);
+
+/* utils 2 */
+
+char	*addPrec(char *s, int prec);
+char	*addPrecString(char *s, int prec);
+char	*addWidth(char *s, int width, char *flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:23:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 07:44:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 04:59:05 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,20 @@ int		ft_printf(const char *rfmt, ...)
 				{
 					ft_putchar('%');
 					j = j + 1;
-					i = i + 1;
+					return_value = return_value + 1;
+				}
+				if (new->width > 0)
+				{
+					while (++i < new->width)
+					{
+						if (rfmt[j + 1] >= '0' && rfmt[j + 1] <= '9')
+							j++;
+						if (new->flag[0] == '0')
+							ft_putchar('0');
+						else
+							ft_putchar(' ');
+						return_value++;
+					}
 				}
 			}
 			else
@@ -58,13 +71,13 @@ int		ft_printf(const char *rfmt, ...)
 			}
 			else
 				ft_putchar(rfmt[j]);
-			i++;
+			return_value = return_value + 1;
 		}
 		j++;
 	}
 	free(new);
 	va_end(arg);
-	return (return_value + (i));
+	return (return_value);
 }
 
 void	detect_infos(char *s, int c, t_infos *infos)

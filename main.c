@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 07:45:37 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 04:59:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,49 @@ int		main(void)
 	unsigned int	l;
 	char			*str;
 
-	/*ft_printf("test with string %d and after samere\n", 42);
-	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
+	ft_printf("111%s333\n", "222");
+/*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
 
-	printf("\t\t--->[ %%d ]<---\n");
+	/*printf("\t\t--->[ %%d ]<---\n");
 	printf("\t\t--->[ %%d ]<---\n\n");
 	printf("\t\t [ MODIF ]\n\n");
 	printf("\t*********************************\n");
 	printf("\t*********************************\n\n");
 	printf("[printf][d]\t-->|%d|\n", INT_MAX);
-	printf("[printf][d]\t-->|%d|\n\n", INT_MIN);
-	ft_printf("\t[d]\t-->|%d|\n", INT_MAX);
+	ft_printf("\t[d]\t-->|%d|\n\n", INT_MAX);
+	printf("[printf][d]\t-->|%d|\n", INT_MIN);
 	ft_printf("\t[d]\t-->|%d|\n\n", INT_MIN);
 	printf("[printf][hd]\t-->|%hd|\n", SHRT_MAX);
-	printf("[printf][hd]\t-->|%hd|\n\n", SHRT_MIN);
-	ft_printf("\t[hd]\t-->|%hd|\n", SHRT_MAX);
+	ft_printf("\t[hd]\t-->|%hd|\n\n", SHRT_MAX);
+	printf("[printf][hd]\t-->|%hd|\n", SHRT_MIN);
 	ft_printf("\t[hd]\t-->|%hd|\n\n", SHRT_MIN);
 	printf("[printf][hhd]\t-->|%hhd|\n", SCHAR_MAX);
-	printf("[printf][hhd]\t-->|%hhd|\n\n", SCHAR_MIN);
-	ft_printf("\t[hhd]\t-->|%hhd|\n", SCHAR_MAX);
+	ft_printf("\t[hhd]\t-->|%hhd|\n\n", SCHAR_MAX);
+	printf("[printf][hhd]\t-->|%hhd|\n", SCHAR_MIN);
 	ft_printf("\t[hhd]\t-->|%hhd|\n\n", SCHAR_MIN);
 	printf("[printf][ld]\t-->|%ld|\n", LONG_MAX);
-	printf("[printf][ld]\t-->|%ld|\n\n", LONG_MIN);
-	ft_printf("\t[ld]\t-->|%ld|\n", LONG_MAX);
+	ft_printf("\t[ld]\t-->|%ld|\n\n", LONG_MAX);
+	printf("[printf][ld]\t-->|%ld|\n", LONG_MIN);
 	ft_printf("\t[ld]\t-->|%ld|\n\n", LONG_MIN);
 	printf("[printf][lld]\t-->|%lld|\n", LLONG_MAX);
-	printf("[printf][lld]\t-->|%lld|\n\n", LLONG_MIN);
-	ft_printf("\t[lld]\t-->|%lld|\n", LLONG_MAX);
+	ft_printf("\t[lld]\t-->|%lld|\n\n", LLONG_MAX);
+	printf("[printf][lld]\t-->|%lld|\n", LLONG_MIN);
 	ft_printf("\t[lld]\t-->|%lld|\n\n", LLONG_MIN);
 	printf("[printf][jd]\t-->|%jd|\n", LLONG_MAX);
-	printf("[printf][jd]\t-->|%jd|\n\n", LLONG_MIN);
-	ft_printf("\t[jd]\t-->|%jd|\n", LLONG_MAX);
+	ft_printf("\t[jd]\t-->|%jd|\n\n", LLONG_MAX);
+	printf("[printf][jd]\t-->|%jd|\n", LLONG_MIN);
 	ft_printf("\t[jd]\t-->|%jd|\n\n", LLONG_MIN);
+	printf("\t\t [ .PREC ]\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
+	printf("[printf][d]\t-->|%.7d|\n", 42);
+	ft_printf("\t[d]\t-->|%.7d|\n\n", 42);
+	printf("[printf][d]\t-->|%.7d|\n", -42);
+	ft_printf("\t[d]\t-->|%.7d|\n\n", -42);*/
 
-	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
+/*	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 
 	printf("\t\t--->[ %%s ]<---\n");
 	printf("\t\t--->[ %%s ]<---\n\n");
@@ -216,6 +223,7 @@ int		main(void)
 	printf("[printf][oth]\t-->|%%|\n");
 	ft_printf("\t[oth]\t-->|%%|\n\n");
 	printf("[printf][oth]\t-->|aa%%bb|\n");
-	ft_printf("\t[oth]\t-->|aa%%bb|\n\n");
+	ft_printf("\t[oth]\t-->|aa%%bb|\n\n");*/
+	ft_printf("{%03c}", 'h');
 	return (0);
 }

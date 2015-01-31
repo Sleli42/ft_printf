@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/30 07:44:41 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/01/31 03:45:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*search_flag(char *s, int c)
 	{
 		if (is_flag(s[i]))
 		{
+			if (s[i - 1] >= '0' && s[i - 1] <= '9')
+				i++;
 			flags[j] = s[i];
 			if (is_flag(s[i + 1]))
 				flags[++j] = s[i + 1];
