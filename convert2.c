@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 03:59:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/03 21:02:14 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		convert_octal(va_list arg, t_infos *infos)
 	if (infos->conv == 'o' && is_modif(infos->modif[0]) == 0)
 		o = (unsigned int)o;
 	ret = baseOctal(o);
+	if (infos->flag[0] == '#' && o != 0)
+		ret = addSharpOctal(ret);
 	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
 	ft_putstr(ret);
@@ -48,9 +50,17 @@ int		convert_hexa(va_list arg, t_infos *infos)
 			x = (unsigned short)x;
 	}
 	if (infos->conv == 'x')
+	{
 		ret = baseHexa(x, 0);
+		if (infos->flag[0] == '#' && x != 0)
+			ret = addSharpHexa(ret, 0);
+	}
 	else
+	{
 		ret = baseHexa(x, 1);
+		if (infos->flag[0] == '#' && x != 0)
+			ret = addSharpHexa(ret, 1);
+	}
 	if (infos->width > 0 && infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
 	ft_putstr(ret);

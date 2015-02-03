@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 00:58:29 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 07:51:05 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/03 20:54:57 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,19 @@ char	*addWidth0x(char *s, int width, char *flag)
 	}
 	ret[i] = '\0';
 	return (ret);
+}
+
+char	*addSharpOctal(char *s)
+{
+	char	*ret;
+	int		i;
+
+	ret = (char *)malloc(sizeof(char) * ft_strlen(s) + 2);
+	i = 0;
+	ret[i++] = '0';
+	while (*s)
+		ret[i++] = *s++;
+	ret[i] = '\0';
+	return (ret);
+
 }

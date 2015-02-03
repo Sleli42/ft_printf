@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 07:04:30 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/03 21:07:08 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include "../../../libft/libft.h"
+#include "../../libft/libft.h"
 
 typedef struct	s_infos
 {
@@ -29,7 +29,7 @@ typedef struct	s_infos
 }				t_infos;
 
 int		ft_printf(const char *rfmt, ...);
-void	detect_infos(char *s, int c, t_infos *infos);
+int		detect_infos(char *s, int c, t_infos *infos);
 void	display_infos(t_infos *stt);
 int		define_convert(va_list arg, t_infos *infos);
 
@@ -68,5 +68,11 @@ char	*addPrec(char *s, int prec);
 char	*addPrecString(char *s, int prec);
 char	*addWidth(char *s, int width, char *flag);
 char	*addWidth0x(char *s, int width, char *flag);
+char	*addSharpOctal(char *s);
+
+/* utils 3 */
+
+char	*addSharpHexa(char *s, int spec);
+char	*addPlus(char *s);
 
 #endif

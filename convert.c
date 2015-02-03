@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/31 07:51:07 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/03 21:07:06 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		convert_int(va_list arg, t_infos *infos)
 	if (infos->conv == 'D' || infos->modif[1] == 'l'
 			|| infos->modif[0] == 'j' || infos->modif[0] == 'z')
 		ret = ft_itoa_long(integer);
+	if (infos->flag[0] == '+' && ret[0] != '-')
+		ret = addPlus(ret);
 	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
 	if (infos->width > 0 && infos->width > ft_strlen(ret))
