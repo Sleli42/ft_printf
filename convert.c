@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 08:59:33 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 09:57:35 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ int		convert_string(va_list arg, t_infos *infos)
 		ft_putstr("(null)");
 		return (6);
 	}
-//	if (infos->prec > 0)
-//		string = addPrecString(string, infos->prec);
+	if (infos->prec > 0 || infos->prec == -1)
+		string = addPrecString(string, infos->prec);
 	if (infos->width > 0 && infos->width > ft_strlen(string))
 		string = addWidth(string, infos->width, infos->flag);
 	ft_putstr(string);
@@ -132,6 +132,8 @@ int		convert_pointer(va_list arg, t_infos *infos)
 	addr = va_arg(arg, unsigned long int);
 	ret = baseHexa(addr, 0);
 	ret = add0xAddr(ret);
+	if (infos->prec > 0 || infos->prec == - 1)
+		ret = addPrecAddr(ret, infos->prec);
 	if (infos->width > 0 && infos->width > ft_strlen(ret))
 		ret = addWidth0x(ret, infos->width, infos->flag);
 	ft_putstr(ret);

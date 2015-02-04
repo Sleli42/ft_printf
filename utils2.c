@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 00:58:29 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:12:20 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 09:46:53 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,19 @@ char	*addPrecString(char *s, int prec)
 	int		i;
 
 	i = 0;
-	if (prec < ft_strlen(s))
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + prec) + 1);
+	if (prec == -1)
+	{
+		while (i < ft_strlen(s))
+			ret[i++] = ' ';
+			
+	}
+	else if (ft_strlen(s) < prec)
+	{
+		while (*s)
+			ret[i++] = *s++;
+	}
+	else if (prec < ft_strlen(s))
 	{
 		while (i < prec)
 			ret[i++] = *s++;
