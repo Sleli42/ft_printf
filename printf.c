@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:23:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/03 21:07:04 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 09:07:31 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		detect_infos(char *s, int c, t_infos *infos)
 	if (tmp->flag[0] != '\0')
 		i += ft_strlen(tmp->flag);
 	//printf("i: %d\n", i);
-	//printf("flags: |%s|\n", tmp->flag);
+//	printf("flags: |%s|\n", tmp->flag);
 	tmp->width = search_width(s, c);
 	if (tmp->width != 0)
 		i += ft_strlen(ft_itoa(tmp->width));
@@ -132,9 +132,9 @@ int		detect_infos(char *s, int c, t_infos *infos)
 	if (tmp->conv != 'B')
 		i += 1;
 	//printf("i: %d\n", i);
-	//printf("conv: |%c|\n", tmp->conv);
+//	printf("conv: |%c|\n", tmp->conv);
 	return (i);
-	//printf("conv: |%c|\n", tmp->conv);
+//	printf("conv: |%c|\n", tmp->conv);
 //	printf("conv find: %c\n", tmp->conv);
 }
 

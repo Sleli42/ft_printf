@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/03 20:49:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 09:12:14 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ char	*search_flag(char *s, int c)
 		i++;
 	while (s[i] && s[i + 1] != '%' && j < 1)
 	{
-		if (is_flag(s[i]))
+		//printf("1*s[i]: |%c|\n", s[i]);
+		if (is_flag(s[i]) == 1)
 		{
+			//printf("2*s[i]: |%c|\n", s[i]);
 			if (s[i - 1] >= '0' && s[i - 1] <= '9')
 				i++;
 			flags[j] = s[i];
@@ -41,6 +43,8 @@ char	*search_flag(char *s, int c)
 			else
 				flags[++j] == '\0';
 		}
+		if (is_conv(s[i]) == 1 || s[i] == '.')
+			break ;
 		i++;
 	}
 	flags[++j] = '\0';
@@ -82,7 +86,7 @@ int		search_prec(char *s, int c)
 	char	*pr;
 
 	i = 0;
-	prec = 0;
+	prec = -1;
 	pr = (char *)malloc(sizeof(char) + 1);
 	while (s[c] != '.' && s[c + 1] != '%')
 		c++;
@@ -92,7 +96,11 @@ int		search_prec(char *s, int c)
 		while (s[c] >= '0' && s[c] <= '9')
 			pr[i++] = s[c++];
 	}
+	else if (is_conv(s[c + 1]) == 1)
+		return (-1);
 	pr[i] = '\0';
+	if (pr[0] == '0' && pr[1] == '\0')
+		return (prec);
 	if (pr)
 		prec = ft_atoi(pr);
 	return (prec);
@@ -133,13 +141,13 @@ char	search_conv(char *s, int c)
 		{
 			while (s[c + 1] == ' ')
 				c++;
-			if (is_conv(s[c + 1]))
-				return (s[c]);
-			else
+			if (is_conv(s[c + 1]) == 1)
+				return (s[c + 1]);
+			else if ((s[c + 1] >= 'a' && s[c + 1] <= 'z'
+					|| s[c + 1] >= 'A' && s[c + 1] <= 'Z')
+					&& is_conv(s[c + 1]) == 0)
 				return ('B');
 		}
-		else if (s[c + 1] == '%' && !is_conv(s[c]))
-			return ('B');
 		c++;
 	}
 	return ('B');

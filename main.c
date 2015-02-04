@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/03 21:07:02 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 09:12:27 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int		main(void)
 	unsigned int	l;
 	char			*str;
 
-	ft_printf("{%-15Z}", 123);
+	ft_printf("{% +d}", 42);
 //	ft_printf("111%s333\n", "222");
 /*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
 
-	printf("\t\t--->[ %%d ]<---\n");
+/*	printf("\t\t--->[ %%d ]<---\n");
 	printf("\t\t--->[ %%d ]<---\n\n");
 	printf("\t\t [ MODIF ]\n\n");
 	printf("\t*********************************\n");
@@ -60,7 +60,12 @@ int		main(void)
 	printf("[printf][d]\t-->|%.7d|\n", 42);
 	ft_printf("\t[d]\t-->|%.7d|\n\n", 42);
 	printf("[printf][d]\t-->|%.7d|\n", -42);
-	ft_printf("\t[d]\t-->|%.7d|\n\n", -42);
+	ft_printf("\t[d]\t-->|%.7d|\n\n", -42);*/
+	printf("\t\t [ Space ]\n\n");
+	printf("\t*********************************\n");
+	printf("\t*********************************\n\n");
+	printf("[printf][d]\t-->|wesh % d wesh|\n", 42);
+	ft_printf("\t[d]\t-->|wesh % d wesh|\n\n", 42);
 
 /*	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 

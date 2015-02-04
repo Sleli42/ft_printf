@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/03 21:07:06 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 08:59:33 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,32 @@ int		convert_int(va_list arg, t_infos *infos)
 	if (infos->conv == 'D' || infos->modif[1] == 'l'
 			|| infos->modif[0] == 'j' || infos->modif[0] == 'z')
 		ret = ft_itoa_long(integer);
-	if (infos->flag[0] == '+' && ret[0] != '-')
+	if (infos->flag[0] == ' ' && infos->flag[1] == '+')
 		ret = addPlus(ret);
+	else if (infos->flag[0] == '+' && infos->flag[1] == '0' && integer == 0)
+	{
+		ret = addSharpOctal(ret);
+		ret = addPlus(ret);
+	}
+	else if (infos->flag[0] == '+' && infos->flag[1] == '0' && integer > 0)
+		ret = addPlus(ret);
+	else if (infos->flag[0] == ' ' && infos->flag[1] == '0')
+	{
+		ret = addSharpOctal(ret);
+		ret = addSpace(ret);
+	}
+	else if (infos->flag[0] == '+' && ret[0] != '-')
+		ret = addPlus(ret);
+	else if (infos->flag[0] == ' ' && ret[0] != '-')
+		ret = addSpace(ret);
+	//printf("ret->|%s|", ret);
 	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
 	if (infos->width > 0 && infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
+	// error
+	if (infos->prec == -1 && integer == 0)
+		return (0);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -78,6 +98,10 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 	}
 	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
+	if (infos->width > 0 && infos->width > ft_strlen(ret))
+		ret = addWidth(ret, infos->width, infos->flag);
+	if (infos->prec == -1 && u == 0)
+		return (0);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/03 21:07:08 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/04 09:12:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ char	*addSharpOctal(char *s);
 
 char	*addSharpHexa(char *s, int spec);
 char	*addPlus(char *s);
+char	*addSpace(char *s);
 
 #endif
