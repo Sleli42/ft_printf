@@ -67,7 +67,7 @@ int		search_width(char *s, int c)
 		if (s[c] >= '0' && s[c] <= '9')
 			wdt[i++] = s[c];
 		if (s[c + 1] >= 'a' && s[c + 1] <= 'z')
-			break;
+			break ;
 		c++;
 	}
 	wdt[i] = '\0';
@@ -96,6 +96,8 @@ int		search_prec(char *s, int c)
 		while (s[c] >= '0' && s[c] <= '9')
 			pr[i++] = s[c++];
 	}
+	else if (s[c] == '.' && ft_isdigit(s[c + 1]) == 0)
+		return (-1);
 	else if (is_conv(s[c + 1]) == 1)
 		return (-1);
 	pr[i] = '\0';

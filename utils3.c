@@ -73,11 +73,40 @@ char	*addPrecAddr(char *s, int prec)
 		ret[1] = 'x';
 		ret[2] = '\0';
 		return (ret);
-	}
+	}	
+	while (i < prec - len)
+		ret[i++] = '0';
 	while (*s)
 		ret[i++] = *s++;
-	while (i < (prec + len) - 1)
-		ret[i++] = '0';
 	ret[i] == '\0';
+	return (ret);
+}
+
+char	*addPrecHexa(char *s, int prec)
+{
+	char	*ret;
+	int		i;
+	int		len;
+	int 	j;
+
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + prec) + 1);
+	i = 2;
+	j = 2;
+	if (prec == -1)
+	{
+		ret[0] = '0';
+		ret[1] = 'x';
+		ret[2] = '\0';
+		return (ret);
+	}	
+	len = ft_strlen(s);
+	ret[0] = '0';
+	ret[1] = 'x';
+	while (i < (prec + len) - 2)
+		ret[i++] = '0';
+	while (s[j])
+		ret[i++] = s[j++];
+	ret[i] == '\0';
+//	printf("ret =  %d\n", ft_strlen(ret));
 	return (ret);
 }

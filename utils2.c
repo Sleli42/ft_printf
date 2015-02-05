@@ -23,7 +23,6 @@ char	*addPrecString(char *s, int prec)
 	{
 		while (i < ft_strlen(s))
 			ret[i++] = ' ';
-			
 	}
 	else if (ft_strlen(s) < prec)
 	{

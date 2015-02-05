@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:57:35 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/05 04:29:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,19 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 int		convert_string(va_list arg, t_infos *infos)
 {
 	char	*string;
+	int 	i = 0;
 
 	string = va_arg(arg, char *);
-	if (string == 0)
+	if (string == NULL && infos->width == 0)
 	{
 		ft_putstr("(null)");
 		return (6);
+	}
+	else if (string == NULL && infos->width != 0)
+	{	
+		while (i++ < infos->width)
+ 			ft_putchar('0');
+		return (i - 1);
 	}
 	if (infos->prec > 0 || infos->prec == -1)
 		string = addPrecString(string, infos->prec);
@@ -133,7 +140,7 @@ int		convert_pointer(va_list arg, t_infos *infos)
 	ret = baseHexa(addr, 0);
 	ret = add0xAddr(ret);
 	if (infos->prec > 0 || infos->prec == - 1)
-		ret = addPrecAddr(ret, infos->prec);
+		ret = addPrecHexa(ret, infos->prec);
 	if (infos->width > 0 && infos->width > ft_strlen(ret))
 		ret = addWidth0x(ret, infos->width, infos->flag);
 	ft_putstr(ret);

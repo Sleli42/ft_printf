@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:23:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:57:33 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/05 04:48:36 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ int		ft_printf(const char *rfmt, ...)
 			tmp = detect_infos((char*)rfmt, j, new);
 			//printf("rfmt[j]: |%c|\n", rfmt[j]);
 			return_value += define_convert(arg, new);
+			if (rfmt[j + 3] == '%' && rfmt[j + 4] == '\0')
+			{
+				ft_putchar('%');
+				return_value = 1;
+				break ; 
+			}
+			//printf("conv: |%c|\n", new->conv);
 			if (new->conv == 'B')
 			{
 				while (rfmt[j + 1] == ' ')
@@ -47,7 +54,6 @@ int		ft_printf(const char *rfmt, ...)
 				}
 				if (new->width > 0)
 				{
-					//printf("|%c|\n", new->flag[0]);
 					if (new->flag[0] == '-')
 					{
 						ft_putchar(rfmt[j + tmp]);
@@ -64,8 +70,6 @@ int		ft_printf(const char *rfmt, ...)
 						tmp = tmp + 1;
 						while (++i < new->width)
 						{
-							if (rfmt[j] >= '0' && rfmt[j] <= '9')
-								j++;
 							if (new->flag[0] == '0')
 								ft_putchar('0');
 							else
@@ -76,6 +80,16 @@ int		ft_printf(const char *rfmt, ...)
 				}
 				while (--tmp > 0)
 					j++;
+				if (rfmt[j] == '%' && j > 3)
+				{
+					ft_putchar('%');
+					return_value++;
+				}
+				else if (ft_isalpha(rfmt[j]) == 1 && new->flag[0] != '-')
+				{
+					ft_putchar(rfmt[j]);
+					return_value++;
+				}
 			}
 			else
 			{
@@ -89,7 +103,7 @@ int		ft_printf(const char *rfmt, ...)
 			{
 				ft_putchar('%');
 				j = j + 1;
-			}
+			}	
 			else
 				ft_putchar(rfmt[j]);
 			return_value = return_value + 1;

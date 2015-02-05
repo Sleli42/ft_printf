@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:12:27 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/05 04:53:16 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ int		main(void)
 	unsigned int	l;
 	char			*str;
 
-	ft_printf("{% +d}", 42);
+	/*printf("{%05.c}", 0);
+	printf("\n");
+	ft_printf("{%05.c}", 0);
+	printf("\n");*/
 //	ft_printf("111%s333\n", "222");
 /*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
 
-/*	printf("\t\t--->[ %%d ]<---\n");
+	printf("\t\t--->[ %%d ]<---\n");
 	printf("\t\t--->[ %%d ]<---\n\n");
 	printf("\t\t [ MODIF ]\n\n");
 	printf("\t*********************************\n");
@@ -60,14 +63,14 @@ int		main(void)
 	printf("[printf][d]\t-->|%.7d|\n", 42);
 	ft_printf("\t[d]\t-->|%.7d|\n\n", 42);
 	printf("[printf][d]\t-->|%.7d|\n", -42);
-	ft_printf("\t[d]\t-->|%.7d|\n\n", -42);*/
+	ft_printf("\t[d]\t-->|%.7d|\n\n", -42);
 	printf("\t\t [ Space ]\n\n");
 	printf("\t*********************************\n");
 	printf("\t*********************************\n\n");
 	printf("[printf][d]\t-->|wesh % d wesh|\n", 42);
 	ft_printf("\t[d]\t-->|wesh % d wesh|\n\n", 42);
 
-/*	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
+	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 
 	printf("\t\t--->[ %%s ]<---\n");
 	printf("\t\t--->[ %%s ]<---\n\n");
@@ -229,7 +232,10 @@ int		main(void)
 	printf("[printf][oth]\t-->|%%|\n");
 	ft_printf("\t[oth]\t-->|%%|\n\n");
 	printf("[printf][oth]\t-->|aa%%bb|\n");
-	ft_printf("\t[oth]\t-->|aa%%bb|\n\n");*/
+	ft_printf("\t[oth]\t-->|aa%%bb|\n\n");
 //	ft_printf("{%03c}", 'h');
+	printf("{%#.5x}\n", 0);
+	ft_printf("{%#.5x}\n", 0);
+	ft_printf("{%05.%}", 0);
 	return (0);
 }

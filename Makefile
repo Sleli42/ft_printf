@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/02/03 20:56:07 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/02/05 04:46:55 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC = convert.c\
 	  ft_putchar.c\
 	  ft_putstr.c\
 	  ft_strlen.c\
-	  ft_isdigit.c
+	  ft_isdigit.c\
+	  ft_isalpha.c
 
 OBJ = $(SRC:.c=.o)
 

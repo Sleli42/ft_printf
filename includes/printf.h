@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:57:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/05 04:46:15 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ char	*addSharpOctal(char *s);
 
 /* utils 3 */
 
+int		test_percent(char *rfmt, int j);
 char	*addSharpHexa(char *s, int spec);
 char	*addPlus(char *s);
 char	*addSpace(char *s);
 char	*addPrecAddr(char *s, int prec);
+char	*addPrecHexa(char *s, int prec);
 
 #endif
