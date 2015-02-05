@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/05 04:29:02 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/05 22:42:41 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,10 @@ int		convert_string(va_list arg, t_infos *infos)
 	int 	i = 0;
 
 	string = va_arg(arg, char *);
-	if (string == NULL && infos->width == 0)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	else if (string == NULL && infos->width != 0)
+	if ((string == NULL && infos->width == 0)
+			|| (string == 0 && infos->width  == 0))
+		string = "(null)";
+	else if (string == 0 && infos->width != 0)
 	{	
 		while (i++ < infos->width)
  			ft_putchar('0');

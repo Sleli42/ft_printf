@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/02/05 04:46:55 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/02/05 22:35:58 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = convert.c\
 	  ft_putstr.c\
 	  ft_strlen.c\
 	  ft_isdigit.c\
-	  ft_isalpha.c
+	  ft_isalpha.c\
+	  main.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -41,11 +42,22 @@ $(NAME):
 	@gcc $(INC) -c $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@echo "\n\t \033[32m[All Fine's]\033[0m\n"
 
 clean:
-	$(RM) $(OBJ)
+	@echo "RM *.o.. \t      \033[32mOK!\033[0m"
+	@$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "RM libftprintf.a..    \033[32mOK!\033[0m"
+	@$(RM) $(NAME)
 
-re: fclean all
+re: fclean all exec
+
+exec:
+	@echo "gcc *.c -I./includes/printf.h"
+	@gcc $(SRC) $(INC)
+	@echo "./a.out"
+	@./a.out
+
+.PHONY: all clean fclean re exec
