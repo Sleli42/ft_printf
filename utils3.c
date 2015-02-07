@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 20:55:02 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:57:37 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/06 18:27:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*addPrecAddr(char *s, int prec)
 		ret[i++] = '0';
 	while (*s)
 		ret[i++] = *s++;
-	ret[i] == '\0';
+	ret[i] = '\0';
 	return (ret);
 }
 
@@ -102,11 +102,11 @@ char	*addPrecHexa(char *s, int prec)
 	len = ft_strlen(s);
 	ret[0] = '0';
 	ret[1] = 'x';
-	while (i < (prec + len) - 2)
+	while (i < (prec - len) + 4)
 		ret[i++] = '0';
 	while (s[j])
 		ret[i++] = s[j++];
-	ret[i] == '\0';
+	ret[i] = '\0';
 //	printf("ret =  %d\n", ft_strlen(ret));
 	return (ret);
 }

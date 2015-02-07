@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:23:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/05 04:48:36 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/07 12:27:04 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,8 @@ int		define_convert(va_list arg, t_infos *infos)
 		val = convert_pointer(arg, tmp);
 	if (tmp->conv == 'c')
 		val = convert_char(arg, tmp);
+	if (tmp->conv == 'C')
+		val = convert_wchar(arg, tmp);
 	if (tmp->conv == 'u' || tmp->conv == 'U')
 		val = convert_unsigned(arg, tmp);
 	if (tmp->conv == 'o' || tmp->conv == 'O')

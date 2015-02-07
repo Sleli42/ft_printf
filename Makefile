@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/02/05 22:35:58 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/02/07 14:10:07 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = convert.c\
 	  printf.c\
 	  utils2.c\
 	  utils3.c\
+	  utils4.c\
 	  ft_atoi.c\
 	  ft_itoa.c\
 	  ft_uitoa.c\
@@ -30,6 +31,7 @@ SRC = convert.c\
 	  ft_strlen.c\
 	  ft_isdigit.c\
 	  ft_isalpha.c\
+	  ft_strrev.c\
 	  main.c
 
 OBJ = $(SRC:.c=.o)
@@ -55,9 +57,10 @@ fclean: clean
 re: fclean all exec
 
 exec:
-	@echo "gcc *.c -I./includes/printf.h"
+	@echo "\033[37mgcc *.c -I./includes/ ..\033[0m"
+	@echo "  \033[37m..exec ./a.out\033[0m\n"
 	@gcc $(SRC) $(INC)
-	@echo "./a.out"
+	@echo "\033[31m./a.out\033[m\n"
 	@./a.out
 
 .PHONY: all clean fclean re exec

@@ -6,21 +6,30 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/06 15:16:56 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/07 14:07:36 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <limits.h>
+#include <locale.h>
 
 int		main(void)
 {
 	int				i;
-	unsigned int	l;
-	int				ret;
+//	unsigned int	l;
 	char			*str;
+	char* l = setlocale(LC_ALL, "");
 
-	ret = 0;
+	if (l == NULL)
+		printf("Locale not set\n"); 
+	else
+		printf("Locale set to %s\n", l); 
+	printf("%C\n", 945);
+	printf("%C\n", L'α');
+	printf("%C\n", L'米');
+	ft_printf("%C\n", L'α');
+//	ft_printf("%C\n", L'a');
 	/*printf("{%05.c}", 0);
 	printf("\n");
 	ft_printf("{%05.c}", 0);
@@ -30,7 +39,7 @@ int		main(void)
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
 
-	printf("\t\t\t->[ %s%%d%s ]<-\n", BOLD_LIGHT_GREY, END);
+/*	printf("\t\t\t->[ %s%%d%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t [ %sMODIF%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
 	printf("[printf][d]\t%s-->%s|%d|\n", BOLD_RED, END, INT_MAX);
@@ -675,7 +684,7 @@ int		main(void)
 	printf("[printf][.]\t%s-->%s|%%|\n", BOLD_RED, END);
 	ft_printf("\t[.]\t%s-->%s|%%|\n", BOLD_GREEN, END);
 	printf("[printf][.]\t%s-->%s|with %% string|\n", BOLD_RED, END);
-	ft_printf("\t[.]\t%s-->%s|with %% string|\n", BOLD_GREEN, END);
+	ft_printf("\t[.]\t%s-->%s|with %% string|\n", BOLD_GREEN, END);*/
 	/*printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 
 	printf("\t\t--->[ %%x ]<---\n");

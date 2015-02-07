@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/05 22:42:41 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/06 18:17:43 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int		convert_int(va_list arg, t_infos *infos)
 	else if (infos->flag[0] == ' ' && ret[0] != '-')
 		ret = addSpace(ret);
 	//printf("ret->|%s|", ret);
-	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
+	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
-	if (infos->width > 0 && infos->width > ft_strlen(ret))
+	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
 	// error
 	if (infos->prec == -1 && integer == 0)
@@ -82,7 +82,7 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 	char				*ret;
 
 	u = va_arg(arg, unsigned long int);
-	if (infos->modif[0] == 'h')
+	if (infos->modif[0] == 'h' && infos->conv == 'u')
 	{
 		if (infos->modif[1] == 'h' && infos->conv == 'u')
 			u = (unsigned char)u;
@@ -96,9 +96,9 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 		//printf("unsigned: %U", u);
 		ret = ft_uitoa_long((unsigned long int)u);
 	}
-	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
+	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
-	if (infos->width > 0 && infos->width > ft_strlen(ret))
+	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
 	if (infos->prec == -1 && u == 0)
 		return (0);
@@ -123,7 +123,7 @@ int		convert_string(va_list arg, t_infos *infos)
 	}
 	if (infos->prec > 0 || infos->prec == -1)
 		string = addPrecString(string, infos->prec);
-	if (infos->width > 0 && infos->width > ft_strlen(string))
+	if (infos->width > 0 && (size_t)infos->width > ft_strlen(string))
 		string = addWidth(string, infos->width, infos->flag);
 	ft_putstr(string);
 	return (ft_strlen(string));
@@ -137,9 +137,9 @@ int		convert_pointer(va_list arg, t_infos *infos)
 	addr = va_arg(arg, unsigned long int);
 	ret = baseHexa(addr, 0);
 	ret = add0xAddr(ret);
-	if (infos->prec > 0 || infos->prec == - 1)
+	if (infos->prec > 0 || (infos->prec == -1 && addr == 0))
 		ret = addPrecHexa(ret, infos->prec);
-	if (infos->width > 0 && infos->width > ft_strlen(ret))
+	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth0x(ret, infos->width, infos->flag);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
@@ -154,7 +154,7 @@ int		convert_char(va_list arg, t_infos *infos)
 	c = va_arg(arg, unsigned int);
 	c = (char)c;
 	i = 0;
-	if (c >= 0 && c <= 126)
+	if (c <= 126)
 	{
 		if (infos->width > 0)
 		{

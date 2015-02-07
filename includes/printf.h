@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/05 04:46:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/07 16:07:28 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "../../libft/libft.h"
+#include "colors.h"
 
 typedef struct	s_infos
 {
@@ -53,11 +54,13 @@ int		convert_pointer(va_list arg, t_infos *infos);
 int		convert_unsigned(va_list arg, t_infos *infos);
 int		convert_octal(va_list arg, t_infos *infos);
 int		convert_hexa(va_list arg, t_infos *infos);
+int		convert_char(va_list arg, t_infos *infos);
+int		convert_wchar(va_list arg, t_infos *infos);
 
 /* utils */
 
-static int	hexaValue(int n);
-static int	hexaValueMaj(int n);
+int	hexaValue(int n);
+int	hexaValueMaj(int n);
 char	*baseHexa(unsigned long long int n, int spec);
 char	*baseOctal(unsigned long long int n);
 char	*add0xAddr(char *s);
@@ -78,5 +81,12 @@ char	*addPlus(char *s);
 char	*addSpace(char *s);
 char	*addPrecAddr(char *s, int prec);
 char	*addPrecHexa(char *s, int prec);
+
+/* utils 4 */
+
+char	*baseBinary(int n);
+int		baseDecimal(char *bin);
+void	maskUnicode(char *bin, int lenMask);
+void	splitBinary(char *bin);
 
 #endif

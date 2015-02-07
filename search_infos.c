@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:12:14 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/06 18:19:56 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*search_flag(char *s, int c)
 			if (is_flag(s[i + 1]))
 				flags[++j] = s[i + 1];
 			else
-				flags[++j] == '\0';
+				flags[++j] = '\0';
 		}
 		if (is_conv(s[i]) == 1 || s[i] == '.')
 			break ;
@@ -145,9 +145,9 @@ char	search_conv(char *s, int c)
 				c++;
 			if (is_conv(s[c + 1]) == 1)
 				return (s[c + 1]);
-			else if ((s[c + 1] >= 'a' && s[c + 1] <= 'z'
-					|| s[c + 1] >= 'A' && s[c + 1] <= 'Z')
-					&& is_conv(s[c + 1]) == 0)
+			else if ((s[c + 1] >= 'a' && s[c + 1] <= 'z')
+					|| (s[c + 1] >= 'A' && s[c + 1] <= 'Z'
+					&& is_conv(s[c + 1]) == 0))
 				return ('B');
 		}
 		c++;

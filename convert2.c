@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:28:24 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/07 16:40:14 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int		convert_octal(va_list arg, t_infos *infos)
 	ret = baseOctal(o);
 	if (infos->flag[0] == '#' && o != 0)
 		ret = addSharpOctal(ret);
-	if (infos->prec > 0 && infos->prec > ft_strlen(ret))
+	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
-	if (infos->width > 0 && infos->width > ft_strlen(ret))
+	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
@@ -70,18 +70,33 @@ int		convert_hexa(va_list arg, t_infos *infos)
 	}
 	if (infos->prec == -1 && x == 0 && infos->flag[0] == '\0')
 		return (0);
-	if (infos->prec > 0 && infos->prec > ft_strlen(ret) && infos->flag[0] != '#')
+	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret) && infos->flag[0] != '#')
 	{
 		ret = addPrecAddr(ret, infos->prec);
-		//printf("ret = %s\n", ret);
+	//	printf("ret = %s\n", ret);
 	}
-	else if (infos->prec > 0 && infos->prec > ft_strlen(ret))
+	else if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 	{
 		ret = addPrecHexa(ret, infos->prec);
 		//printf("ret = %s\n", ret);
 	}
-	if (infos->width > 0 && infos->width > ft_strlen(ret))
+	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);	
 	ft_putstr(ret);
 	return (ft_strlen(ret));
+}
+
+int		convert_wchar(va_list arg, t_infos *infos)
+{
+	wchar_t		wc;
+	int			tmp;
+	char		*bin;
+
+	wc = va_arg(arg, wchar_t);
+	tmp = (int)wc;
+	printf("%d\n", tmp);
+	bin = baseBinary(tmp);
+	printf("%s\n", bin);
+	maskUnicode(bin, ft_strlen(bin));
+	return (0);
 }

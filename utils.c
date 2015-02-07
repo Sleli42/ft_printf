@@ -6,13 +6,13 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 21:00:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 03:13:46 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/06 18:20:12 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int		hexaValue(int n)
+int		hexaValue(int n)
 {
 	if (0 <= n && n <= 9)
 		return (48 + n);
@@ -24,7 +24,7 @@ static int		hexaValue(int n)
 	return (0);
 }
 
-static int		hexaValueMaj(int n)
+int		hexaValueMaj(int n)
 {
 	if (0 <= n && n <= 9)
 		return (48 + n);
@@ -98,7 +98,6 @@ char		*baseOctal(unsigned long long int n)
 char	*add0xAddr(char *s)
 {
 	char	*ret;
-	char	*tmp;
 	int		i;
 
 	ret = (char *)malloc(sizeof(ft_strlen(s)) + 3);
