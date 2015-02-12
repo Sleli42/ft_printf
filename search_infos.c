@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/06 18:19:56 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/12 15:09:26 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,15 @@ int		search_prec(char *s, int c)
 	i = 0;
 	prec = -1;
 	pr = (char *)malloc(sizeof(char) + 1);
-	while (s[c] != '.' && s[c + 1] != '%')
+	if (is_conv(s[c + 1]) == 1 || ft_isalpha(s[c + 1]) == 1)
+		return (-1);
+	while (s[c] != '.')
+	{
+		if (s[c] == '\0' || s[c] == '%')
+			return (-1);
 		c++;
-	if (s[c + 1] >= '0' && s[c + 1] <= '9')
+	}
+	if (s[c] == '.' && s[c + 1] >= '0' && s[c + 1] <= '9')
 	{
 		c = c + 1;
 		while (s[c] >= '0' && s[c] <= '9')
@@ -98,8 +104,8 @@ int		search_prec(char *s, int c)
 	}
 	else if (s[c] == '.' && ft_isdigit(s[c + 1]) == 0)
 		return (-1);
-	else if (is_conv(s[c + 1]) == 1)
-		return (-1);
+	else
+		return (0);
 	pr[i] = '\0';
 	if (pr[0] == '0' && pr[1] == '\0')
 		return (prec);

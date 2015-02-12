@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/07 16:07:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/12 17:48:11 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_printf(const char *rfmt, ...);
 int		detect_infos(char *s, int c, t_infos *infos);
 void	display_infos(t_infos *stt);
 int		define_convert(va_list arg, t_infos *infos);
+int		initConv(char *s, int c);
 
 /* infos */
 
@@ -49,6 +50,7 @@ int		is_modif(char c);
 /* convert */
 
 int		convert_int(va_list arg, t_infos *infos);
+int		convert_long_int(va_list arg, t_infos *infos);
 int		convert_string(va_list arg, t_infos *infos);
 int		convert_pointer(va_list arg, t_infos *infos);
 int		convert_unsigned(va_list arg, t_infos *infos);
@@ -56,6 +58,7 @@ int		convert_octal(va_list arg, t_infos *infos);
 int		convert_hexa(va_list arg, t_infos *infos);
 int		convert_char(va_list arg, t_infos *infos);
 int		convert_wchar(va_list arg, t_infos *infos);
+int		convert_wchar_string(va_list arg, t_infos *infos);
 
 /* utils */
 
@@ -75,7 +78,6 @@ char	*addSharpOctal(char *s);
 
 /* utils 3 */
 
-int		test_percent(char *rfmt, int j);
 char	*addSharpHexa(char *s, int spec);
 char	*addPlus(char *s);
 char	*addSpace(char *s);
@@ -86,7 +88,14 @@ char	*addPrecHexa(char *s, int prec);
 
 char	*baseBinary(int n);
 int		baseDecimal(char *bin);
-void	maskUnicode(char *bin, int lenMask);
-void	splitBinary(char *bin);
+int		maskUnicode(char *bin, int lenMask);
+int		splitBinary(char *bin, int lenMask);
+int		displayWchar(char **tab, int nb);
+
+/* utils 5 */
+
+int		printWchar(int value);
+int		noConv(char *s, t_infos *infos);
+int		nextPercent(char *s, int c);
 
 #endif

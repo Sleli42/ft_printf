@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/07 13:06:46 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/07 16:40:12 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/12 13:50:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*baseBinary(int n)
 
 	tmp = n;
 	i = 0;
-	while (tmp > 2)
+	while (tmp >= 2)
 	{
 		tmp = tmp / 2;
 		i++;
@@ -37,6 +37,7 @@ char	*baseBinary(int n)
 			i--;
 		}
 	}
+	//printf("[binaryConv]%s\n", ret);
 	return (ret);
 }
 
@@ -66,13 +67,13 @@ int		baseDecimal(char *bin)
 	return (ret);
 }
 
-void	maskUnicode(char *bin, int lenMask)
+int		maskUnicode(char *bin, int lenMask)
 {
 	char	*tab[3];
-	char	**ret;
 	char	*tmp;
 	int		i;
 	int		j;
+	int		ret;
 
 	tab[0] = "0xxxxxxx"; 
 	tab[1] = "110xxxxx10xxxxxx";
@@ -80,11 +81,14 @@ void	maskUnicode(char *bin, int lenMask)
 	tab[3] = "11110xxx10xxxxxx10xxxxxx10xxxxxx";
 	i = 0;
 	j = lenMask - 1;
-
-//	printf("bin: %s\n", bin);
-//	printf("mask: %s\n", tab[1]);
-	tmp = ft_strrev(tab[1]);
-//	printf("tmp: %s\n", tmp);
+	if (lenMask <= 7)
+		tmp = ft_strrev(tab[0]);
+	else if (lenMask > 7 && lenMask <= 11)
+		tmp = ft_strrev(tab[1]);
+	else if (lenMask > 11 && lenMask <= 16)
+		tmp = ft_strrev(tab[2]);
+	else
+		tmp = ft_strrev(tab[3]);
 	while (tmp[i] && bin[j])
 	{
 		if (tmp[i] == 'x')
@@ -92,6 +96,8 @@ void	maskUnicode(char *bin, int lenMask)
 		i++;
 	}
 	tmp = ft_strrev(tmp);
+//	printf("bin: %s\n", bin);
+//	printf("tmp: %s\n", tmp);
 	i = 0;
 	while (tmp[i])
 	{
@@ -99,43 +105,47 @@ void	maskUnicode(char *bin, int lenMask)
 			tmp[i] = '0';
 		i++;
 	}
-	splitBinary(tmp);
+	ret = splitBinary(tmp, (ft_strlen(tmp) / 8));
+	return (ret);
 }
 
-void	splitBinary(char *bin)
+int		splitBinary(char *bin, int nbDiv)
 {
 	int		i;
 	int		j;
-	int		l;
-	int		tmp[1];
-	char	*ret[1];
+	int		ct;
+	int		div;
+	char	*ret[8];
 
-	printf("bin: %s\n", bin);
 	i = 0;
-	j = 0;
-	ret[0] = (char *)malloc(sizeof(char) * 8 + 1);
-	while (i < 8)
+	ct = 0;
+	div = 8;
+	while (ct < nbDiv)
 	{
-		ret[0][j] = bin[i];
-		i++;
-		j++;
+		j = 0;
+		ret[ct] = (char *)malloc(sizeof(char) * 8 + 1);
+		while (i < div)
+			ret[ct][j++] = bin[i++];
+		ret[ct][j] = '\0';
+		ct++;
+		div = div + 8;
 	}
-	ret[0][j] = '\0';
-	l = 0;
-	ret[1] = (char *)malloc(sizeof(char) * 8 + 1);
-	while (i < 16)
+	return (displayWchar(ret, (ct - 1)));
+}
+
+int		displayWchar(char **tab, int nb)
+{
+	int	 	tmp[nb];
+	int		i;
+
+	i = -1;
+	while (++i <= nb)
+		tmp[i] = baseDecimal(tab[i]);
+	i = 0;
+	while (i <= nb)
 	{
-		ret[1][l] = bin[i];
+		write(1, &(tmp[i]), 1);
 		i++;
-		l++;
 	}
-	ret[1][l] = '\0';
-	printf("ret[0]: %s\n", ret[0]);
-	printf("ret[1]: %s\n", ret[1]);
-	tmp[0] = baseDecimal(ret[0]);
-	tmp[1] = baseDecimal(ret[1]);
-	printf("%d\n", tmp[0]);
-	printf("%d\n", tmp[1]);
-	write(1, &(tmp[0]), 1);		/* victoire */
-	write(1, &(tmp[1]), 1);		/* victoire */
+	return (i);
 }

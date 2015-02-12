@@ -98,7 +98,7 @@ char	*addPrecHexa(char *s, int prec)
 		ret[1] = 'x';
 		ret[2] = '\0';
 		return (ret);
-	}	
+	}
 	len = ft_strlen(s);
 	ret[0] = '0';
 	ret[1] = 'x';
@@ -107,6 +107,5 @@ char	*addPrecHexa(char *s, int prec)
 	while (s[j])
 		ret[i++] = s[j++];
 	ret[i] = '\0';
-//	printf("ret =  %d\n", ft_strlen(ret));
 	return (ret);
 }

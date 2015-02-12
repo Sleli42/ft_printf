@@ -6,12 +6,13 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/02/07 14:10:07 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/02/12 17:01:48 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 RM = rm -rf
+FLAGS = -Wall -Wextra -Werror
 SRC = convert.c\
 	  convert2.c\
 	  utils.c\
@@ -21,6 +22,7 @@ SRC = convert.c\
 	  utils2.c\
 	  utils3.c\
 	  utils4.c\
+	  utils5.c\
 	  ft_atoi.c\
 	  ft_itoa.c\
 	  ft_uitoa.c\
@@ -32,6 +34,7 @@ SRC = convert.c\
 	  ft_isdigit.c\
 	  ft_isalpha.c\
 	  ft_strrev.c\
+	  ft_strdel.c\
 	  main.c
 
 OBJ = $(SRC:.c=.o)
@@ -41,7 +44,7 @@ INC = -I./includes/\
 all: $(NAME)
 
 $(NAME):
-	@gcc $(INC) -c $(SRC)
+	@gcc $(FLAGS) $(INC) -c $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "\n\t \033[32m[All Fine's]\033[0m\n"

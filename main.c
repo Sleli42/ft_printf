@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/07 14:07:36 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/12 17:48:08 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,38 @@
 
 int		main(void)
 {
-	int				i;
-//	unsigned int	l;
+	//int				i;
+	//unsigned int	l;
 	char			*str;
-	char* l = setlocale(LC_ALL, "");
+/*	char* l = setlocale(LC_ALL, "");
 
 	if (l == NULL)
 		printf("Locale not set\n"); 
 	else
-		printf("Locale set to %s\n", l); 
-	printf("%C\n", 945);
-	printf("%C\n", L'α');
-	printf("%C\n", L'米');
+		printf("Locale set to %s\n", l);*/
+	ft_printf(".... %s with string\n");
+//	printf("%p\n", 0);
+	//printf("|%-     20Z|\n");
+	//ft_printf("|%-    20Z|\n");
+//	printf("%d", printf("%C\n", 945));
+	/*printf("  [%d]\n", printf("%C\n", L'α'));
+	printf("  [%d]\n", printf("%C\n", L'米'));
+	printf("  [%d]\n", printf("%C\n", L'요'));
+	printf("  [%d]\n", printf("%C\n", L'莨'));
 	ft_printf("%C\n", L'α');
+	ft_printf("%C\n", L'米');
+	ft_printf("%C\n", L'요');
+	ft_printf("%C\n", L'莨');*/
+	//printf("  [%d]\n", printf("%S\n", L"一"));
+	//ft_printf("%S\n", L"一");
+//	printf("  [%d]\n", printf("%C\n", L'一'));
+//	ft_printf("%C\n", L'一');
+//	printf("  [%d]\n", printf("%C\n",L'只'));
+//	ft_printf("%C\n",L'只');
+/*	printf("  [%d]\n", printf("%S\n", L"α"));
+	ft_printf("%S\n", L"α");
+	printf("  [%d]\n", printf("%S\n", L"αα"));
+	ft_printf("%S\n", L"αα");*/
 //	ft_printf("%C\n", L'a');
 	/*printf("{%05.c}", 0);
 	printf("\n");
