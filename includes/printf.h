@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/12 17:48:11 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:53:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ typedef struct	s_infos
 }				t_infos;
 
 int		ft_printf(const char *rfmt, ...);
-int		detect_infos(char *s, int c, t_infos *infos);
+int		detect_infos(char *s, int c, t_infos *new);
 void	display_infos(t_infos *stt);
-int		define_convert(va_list arg, t_infos *infos);
+int		define_convert(char *s, va_list arg, t_infos *infos);
 int		initConv(char *s, int c);
+int		checkString(char *s, va_list arg);
 
 /* infos */
 
@@ -62,8 +63,8 @@ int		convert_wchar_string(va_list arg, t_infos *infos);
 
 /* utils */
 
-int	hexaValue(int n);
-int	hexaValueMaj(int n);
+int		hexaValue(int n);
+int		hexaValueMaj(int n);
 char	*baseHexa(unsigned long long int n, int spec);
 char	*baseOctal(unsigned long long int n);
 char	*add0xAddr(char *s);

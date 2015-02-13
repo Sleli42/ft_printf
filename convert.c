@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/12 17:48:05 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:53:50 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		convert_int(va_list arg, t_infos *infos)
 	integer = va_arg(arg, long long int);
 	if (integer == 0)
 		ret = "0";
-	if (is_modif(infos->modif[0]) == 0 && (infos->conv == 'd' 
+	if (is_modif(infos->modif[0]) == 0 && (infos->conv == 'd'
 				|| infos->conv == 'i'))
 	{
 		integer = (int)integer;
@@ -95,10 +95,7 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 	if (infos->conv == 'u' && is_modif(infos->modif[0]) == 0)
 		ret = ft_uitoa((unsigned int)u);
 	else
-	{
-		//printf("unsigned: %U", u);
 		ret = ft_uitoa_long((unsigned long int)u);
-	}
 	if (u == 0)
 		ret = "0";
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
@@ -131,6 +128,7 @@ int		convert_string(va_list arg, t_infos *infos)
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(string))
 		string = addWidth(string, infos->width, infos->flag);
 	ft_putstr(string);
+	//printf("str ret: %d\n", (int)ft_strlen(string));
 	return (ft_strlen(string));
 }
 

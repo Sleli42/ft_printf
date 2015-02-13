@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/10 14:12:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/12 17:48:03 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:04:59 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		noConv(char *s, t_infos *infos)
 	//printf("%s\n", s);
 	ret = 0;
 	infos = infos;
+	//printf("s: %s\n", s);
 	while (*s++)
 	{
 		if (*s == '\0')

@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/02/12 17:01:48 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/02/13 17:54:51 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,11 +50,11 @@ $(NAME):
 	@echo "\n\t \033[32m[All Fine's]\033[0m\n"
 
 clean:
-	@echo "RM *.o.. \t      \033[32mOK!\033[0m"
+	@echo "RM *.o.. \t      \033[32mOK BITCH!\033[0m"
 	@$(RM) $(OBJ)
 
 fclean: clean
-	@echo "RM libftprintf.a..    \033[32mOK!\033[0m"
+	@echo "RM libftprintf.a..    \033[32mOK BITCH!\033[0m"
 	@$(RM) $(NAME)
 
 re: fclean all exec

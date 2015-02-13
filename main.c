@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/12 17:48:08 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:53:51 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@ int		main(void)
 {
 	//int				i;
 	//unsigned int	l;
-	char			*str;
+//	char			*str;
 /*	char* l = setlocale(LC_ALL, "");
 
 	if (l == NULL)
-		printf("Locale not set\n"); 
+		printf("Locale not set\n");
 	else
 		printf("Locale set to %s\n", l);*/
-	ft_printf(".... %s with string\n");
+	printf("ret: %d\n", ft_printf(".... %s with string\n", "lala"));
+	printf("ret: %d\n", printf(".... %s with string\n", "lala"));
+	printf("ret: %d\n", ft_printf("%s\n", "abc"));
+	printf("ret: %d\n", printf("%s\n", "abc"));
+	printf("ret: %d\n", ft_printf("111 %s 333\n", "222"));
+	printf("ret: %d\n", printf("111 %s 333\n", "222"));
 //	printf("%p\n", 0);
 	//printf("|%-     20Z|\n");
 	//ft_printf("|%-    20Z|\n");
@@ -234,7 +239,7 @@ int		main(void)
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
 	printf("[printf][s]\t%s-->%s|%s|\n", BOLD_RED, END, "Y0ja on t'encule =D");
 	ft_printf("\t[s]\t%s-->%s|%0s|\n", BOLD_GREEN, END, "Y0ja on t'encule =D");
-	
+
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
 
@@ -288,7 +293,7 @@ int		main(void)
 
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
-	
+
 	printf("\t\t\t->[ %s%%c%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t[ %sBASIC%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
@@ -385,7 +390,7 @@ int		main(void)
 	ft_printf("\t[u]\t%s-->%s|%10.21u|\n", BOLD_GREEN, END, 42);
 	printf("[printf][u]\t%s-->%s|%21.42u|\n", BOLD_RED, END, ULLONG_MAX);
 	ft_printf("\t[u]\t%s-->%s|%21.42u|\n", BOLD_GREEN, END, ULLONG_MAX);
-	
+
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
 
@@ -467,7 +472,7 @@ int		main(void)
 
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
-	
+
 	printf("\t\t\t->[ %s%%o%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t[ %sBASIC%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
@@ -553,10 +558,10 @@ int		main(void)
 	ft_printf("\t[o]\t%s-->%s|%#.7o|\n", BOLD_GREEN, END, 42);
 	printf("[printf][o]\t%s-->%s|%#42.21o|\n", BOLD_RED, END, 42);
 	ft_printf("\t[o]\t%s-->%s|%#42.21o|\n", BOLD_GREEN, END, 42);
-	
+
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
-	
+
 	printf("\t\t\t->[ %s%%O%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t[ %sBASIC%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
@@ -630,10 +635,10 @@ int		main(void)
 	ft_printf("\t[O]\t%s-->%s|%10.21o|\n", BOLD_GREEN, END, 42);
 	printf("[printf][O]\t%s-->%s|%42.21o|\n", BOLD_RED, END, ULLONG_MAX);
 	ft_printf("\t[O]\t%s-->%s|%42.21o|\n", BOLD_GREEN, END, ULLONG_MAX);
-	
+
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
-	
+
 	printf("\t\t\t->[ %s%%x%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t[ %sBASIC%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
@@ -693,10 +698,10 @@ int		main(void)
 	ft_printf("\t[x]\t%s-->%s|%10.21x|\n", BOLD_GREEN, END, 42);
 	printf("[printf][x]\t%s-->%s|%42.21x|\n", BOLD_RED, END, UINT_MAX);
 	ft_printf("\t[x]\t%s-->%s|%42.21x|\n", BOLD_GREEN, END, UINT_MAX);
-	
+
 	printf("\n%s----------------------------------------------------%s", LIGHT_GREY, END);
 	printf("\n%s----------------------------------------------------%s\n\n", LIGHT_GREY, END);
-	
+
 	printf("\t\t\t->[ %s%%%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t[ %sOTHERS%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
@@ -717,7 +722,7 @@ int		main(void)
 	ft_printf("\t[x]\t-->|%o|\n", UINT_MAX);
 	printf("[printf][x]\t-->|[%x]-[%x]-[%x]|\n", 42, 21, UINT_MAX);
 	ft_printf("\t[x]\t-->|[%x]-[%x]-[%x]|\n", 42, 21, UINT_MAX);
-	
+
 	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 
 	printf("\t\t--->[ %%X ]<---\n");
@@ -731,7 +736,7 @@ int		main(void)
 	ft_printf("\t[X]\t-->|%X|\n", UINT_MAX);
 	printf("[printf][X]\t-->|[%X]-[%X]-[%X]|\n", 42, 21, UINT_MAX);
 	ft_printf("\t[X]\t-->|[%X]-[%X]-[%X]|\n", 42, 21, UINT_MAX);
-	
+
 	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
 
 	printf("\t\t--->[ oth ]<---\n");
@@ -743,9 +748,9 @@ int		main(void)
 	ft_printf("\t[oth]\t-->|%%|\n");
 	printf("[printf][oth]\t-->|aa%%bb|\n");
 	ft_printf("\t[oth]\t-->|aa%%bb|\n");
-	
+
 	printf("\n   |o|o|o|*****************************************|o|o|o|\n\n");
-	
+
 	printf("\t\t [ MULTI TEST ]\n");
 	printf("\t*********************************\n");
 	printf("\t*********************************\n");
