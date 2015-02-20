@@ -18,6 +18,7 @@ int		convert_long_int(va_list arg, t_infos *infos)
 	char		*ret;
 
 	i = va_arg(arg, long int);
+	//ret = (char *)malloc(sizeof(char) + 1);
 	if (i == 0)
 		ret = "0";
 	if (infos->modif[0] == 'h')

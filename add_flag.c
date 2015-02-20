@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   add_flag.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/03 20:55:02 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/06 18:27:02 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/02/19 19:41:15 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/02/19 23:07:15 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+char	*addSharpOctal(char *s)
+{
+	char	*ret;
+	int		i;
+
+	ret = (char *)malloc(sizeof(char) * ft_strlen(s) + 2);
+	i = 0;
+	ret[i++] = '0';
+	while (*s)
+		ret[i++] = *s++;
+	ret[i] = '\0';
+	return (ret);
+
+}
 
 char	*addSharpHexa(char *s, int spec)
 {
@@ -58,54 +73,22 @@ char	*addSpace(char *s)
 	return (ret);
 }
 
-char	*addPrecAddr(char *s, int prec)
+char	*addFlagInteger(char *flag, char *s)
 {
-	char	*ret;
-	int		i;
-	int		len;
-
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + prec) + 1);
-	i = 0;
-	len = ft_strlen(s);
-	if (prec == -1)
+	if ((flag[0] == '+' && s[0] != '-')
+			|| (flag[0] == '+' && flag[1] == '0' && s != 0))
+		s = addPlus(s);
+	else if (flag[0] == ' ' && s[0] != '-')
+		s = addSpace(s);
+	else if (flag[0] == ' ' && flag[1] == '0')
 	{
-		ret[0] = '0';
-		ret[1] = 'x';
-		ret[2] = '\0';
-		return (ret);
+		s = addSharpOctal(s);
+		s = addSpace(s);
 	}
-	while (i < prec - len)
-		ret[i++] = '0';
-	while (*s)
-		ret[i++] = *s++;
-	ret[i] = '\0';
-	return (ret);
-}
-
-char	*addPrecHexa(char *s, int prec)
-{
-	char	*ret;
-	int		i;
-	int		len;
-	int 	j;
-
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + prec) + 1);
-	i = 2;
-	j = 2;
-	if (prec == -1)
+	else if (flag[0] == '+' && flag[1] == '0' && s == 0)
 	{
-		ret[0] = '0';
-		ret[1] = 'x';
-		ret[2] = '\0';
-		return (ret);
+		s = addSharpOctal(s);
+		s = addPlus(s);
 	}
-	len = ft_strlen(s);
-	ret[0] = '0';
-	ret[1] = 'x';
-	while (i < (prec - len) + 4)
-		ret[i++] = '0';
-	while (s[j])
-		ret[i++] = s[j++];
-	ret[i] = '\0';
-	return (ret);
+	return (s);
 }

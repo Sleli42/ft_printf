@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/02/13 17:54:51 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/02/20 07:58:23 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,28 +18,30 @@ SRC = convert.c\
 	  utils.c\
 	  is_infos.c\
 	  search_infos.c\
+	  search_infos2.c\
 	  printf.c\
-	  utils2.c\
-	  utils3.c\
-	  utils4.c\
-	  utils5.c\
+	  base.c\
+	  add_width.c\
+	  add_prec.c\
+	  add_flag.c\
+	  wchar.c\
+	  init.c\
 	  ft_atoi.c\
+	  ft_atoi_long.c\
 	  ft_itoa.c\
-	  ft_uitoa.c\
 	  ft_itoa_long.c\
+	  ft_uitoa.c\
 	  ft_uitoa_long.c\
+	  ft_strlen.c\
+	  ft_strrev.c\
 	  ft_putchar.c\
 	  ft_putstr.c\
-	  ft_strlen.c\
-	  ft_isdigit.c\
 	  ft_isalpha.c\
-	  ft_strrev.c\
-	  ft_strdel.c\
-	  main.c
+	  ft_isdigit.c\
 
 OBJ = $(SRC:.c=.o)
 
-INC = -I./includes/\
+INC = -I./includes/
 
 all: $(NAME)
 
@@ -50,19 +52,20 @@ $(NAME):
 	@echo "\n\t \033[32m[All Fine's]\033[0m\n"
 
 clean:
-	@echo "RM *.o.. \t      \033[32mOK BITCH!\033[0m"
+	@echo "\nRM *.o.. \t      \033[32mOK BITCH!\033[0m"
 	@$(RM) $(OBJ)
+	@$(RM) *.o
 
 fclean: clean
 	@echo "RM libftprintf.a..    \033[32mOK BITCH!\033[0m"
 	@$(RM) $(NAME)
 
-re: fclean all exec
+re: fclean all
 
 exec:
 	@echo "\033[37mgcc *.c -I./includes/ ..\033[0m"
 	@echo "  \033[37m..exec ./a.out\033[0m\n"
-	@gcc $(SRC) $(INC)
+	@gcc *.c -g $(FLAGS) -I./includes/
 	@echo "\033[31m./a.out\033[m\n"
 	@./a.out
 

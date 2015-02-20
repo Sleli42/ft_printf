@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 21:00:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/12 14:01:26 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/20 08:16:26 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,65 +36,6 @@ int		hexaValueMaj(int n)
 	return (0);
 }
 
-char	*baseHexa(unsigned long long int n, int spec)
-{
-	char			*ret;
-	int				i;
-	unsigned long int		tmp;
-
-	tmp = n;
-	i = 0;
-	while (tmp > 16)
-	{
-		tmp = tmp / 16;
-		i++;
-	}
-	ret = (char *)malloc(sizeof(char) * i + 1);
-	if (ret)
-	{
-		ret[i + 1] = '\0';
-		while (i >= 0)
-		{
-			tmp = n % 16;
-			if (spec == 0)
-				ret[i] = hexaValue(tmp);
-			if (spec == 1)
-				ret[i] = hexaValueMaj(tmp);
-			n = n / 16;
-			i--;
-		}
-	}
-	return (ret);
-}
-
-char		*baseOctal(unsigned long long int n)
-{
-	char			*ret;
-	int				i;
-	unsigned long int		tmp;
-
-	tmp = n;
-	i = 0;
-	while (tmp > 7)
-	{
-		tmp = tmp / 8;
-		i++;
-	}
-	ret = (char *)malloc(sizeof(char) * i + 1);
-	if (ret)
-	{
-		ret[i + 1] = '\0';
-		while (i >= 0)
-		{
-			tmp = n % 8;
-			ret[i] = 48 + tmp;
-			n = n / 8;
-			i--;
-		}
-	}
-	return (ret);
-}
-
 char	*add0xAddr(char *s)
 {
 	char	*ret;
@@ -112,4 +53,40 @@ char	*add0xAddr(char *s)
 	while (*s)
 		ret[i++] = *s++;
 	return (ret);
+}
+/*
+int		noConv(char *s, t_infos *infos)
+{
+	int		ret;
+	int		i;
+
+	ret = 0;
+	infos = infos;
+	while (*s++)
+	{
+		if (s == 0)
+			return (0);
+		if (ft_isalpha(*s) == 0)
+			ret++;
+		if (*s == '%' && *(s + 1) == '%')
+		{
+			ft_putchar('%');
+			ret++;
+		}
+		else
+			break ;
+	}
+	return (ret);
+}
+*/
+int		nextPercent(char *s, int c)
+{
+	c = c + 1;
+	while (s[c] == ' ')
+	{
+		if (s[c + 1] == '%')
+			return (1);
+		c++;
+	}
+	return (0);
 }

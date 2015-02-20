@@ -6,11 +6,10 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:39:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 00:28:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/19 23:13:25 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
 #include <unistd.h>
 
 void	ft_putchar(char c)

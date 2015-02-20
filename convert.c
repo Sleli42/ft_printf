@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/13 17:53:50 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/20 01:03:17 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ int		convert_int(va_list arg, t_infos *infos)
 		integer = (long int)integer;
 		ret = ft_itoa_long(integer);
 	}
-	//printf("ret: %s\n", ret);
 	if (infos->conv == 'D' || infos->modif[1] == 'l'
 			|| infos->modif[0] == 'j' || infos->modif[0] == 'z')
 		ret = ft_itoa_long(integer);
+	ret = addFlagInteger(infos->flag, ret);
+	/*
 	if (infos->flag[0] == ' ' && infos->flag[1] == '+')
 		ret = addPlus(ret);
 	else if (infos->flag[0] == '+' && infos->flag[1] == '0' && integer == 0)
@@ -67,14 +68,11 @@ int		convert_int(va_list arg, t_infos *infos)
 		ret = addPlus(ret);
 	else if (infos->flag[0] == ' ' && ret[0] != '-')
 		ret = addSpace(ret);
-	//printf("prec: %d\n", infos->prec);
-	//printf("ret->|%s|", ret);
+	*/
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
-	// error
-	//printf("***ret: %s\n", ret);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -113,9 +111,7 @@ int		convert_string(va_list arg, t_infos *infos)
 
 	i = 0;
 	string = va_arg(arg, char *);
-//	printf("str: %s", string);
-	if ((string == NULL && infos->width == 0)
-			|| (string == '\0' && infos->width  == 0))
+	if (string == 0)
 		string = "(null)";
 	else if (string == '\0' && infos->width != 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/27 04:40:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/13 17:53:51 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/27 04:40:56 by sksourou          #+#    #+#             */
+/*   Updated: 2015/02/20 07:25:22 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@ int		main(void)
 		printf("Locale not set\n");
 	else
 		printf("Locale set to %s\n", l);*/
-	printf("ret: %d\n", ft_printf(".... %s with string\n", "lala"));
-	printf("ret: %d\n", printf(".... %s with string\n", "lala"));
+	ft_printf("%s%s%s%s%s", "1", "2", "3", "4", "5");
+	/*printf("ret: %d\n", ft_printf("....%swith string\n", "lala"));
+	printf("ret: %d\n", printf("....%swith string\n", "lala"));
 	printf("ret: %d\n", ft_printf("%s\n", "abc"));
 	printf("ret: %d\n", printf("%s\n", "abc"));
 	printf("ret: %d\n", ft_printf("111 %s 333\n", "222"));
-	printf("ret: %d\n", printf("111 %s 333\n", "222"));
+	printf("ret: %d\n", printf("111 %s 333\n", "222"));*/
 //	printf("%p\n", 0);
 	//printf("|%-     20Z|\n");
 	//ft_printf("|%-    20Z|\n");
-//	printf("%d", printf("%C\n", 945));
-	/*printf("  [%d]\n", printf("%C\n", L'α'));
+	//ft_printf("%C\n", L'α');
+/*	printf("  [%d]\n", printf("%C\n", L'α'));
 	printf("  [%d]\n", printf("%C\n", L'米'));
 	printf("  [%d]\n", printf("%C\n", L'요'));
 	printf("  [%d]\n", printf("%C\n", L'莨'));
@@ -62,8 +63,8 @@ int		main(void)
 /*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
-
-/*	printf("\t\t\t->[ %s%%d%s ]<-\n", BOLD_LIGHT_GREY, END);
+/*
+	printf("\t\t\t->[ %s%%d%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t [ %sMODIF%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
 	printf("[printf][d]\t%s-->%s|%d|\n", BOLD_RED, END, INT_MAX);

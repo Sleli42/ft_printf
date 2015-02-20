@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:23:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/01/29 00:28:06 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/19 23:13:37 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	ft_putstr(char const *s)
 		ft_putchar(s[i]);
 		i++;
 	}
-	//ft_putchar('\n');
 }

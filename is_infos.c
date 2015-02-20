@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/printf.h"
+#include "printf.h"
 
 int		is_flag(char c)
 {

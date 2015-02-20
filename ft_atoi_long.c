@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 08:42:02 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/19 23:09:54 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/27 21:13:29 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/02/19 23:10:07 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_atoi(char const *s)
+long long int	ft_atoi_long(char *s)
 {
-	unsigned int	digit;
-	int				positive;
-	int				value;
+	unsigned int				digit;
+	long long int				positive;
+	long long int				value;
 
 	value = 0;
 	digit = 0;
@@ -32,7 +32,7 @@ int	ft_atoi(char const *s)
 		return (positive == 1 ? -1 : 0);
 	while (ft_isdigit(*s) && *s)
 	{
-		digit = (int)(*s - '0');
+		digit = (long long int)(*s - '0');
 		value = (value * 10) + digit;
 		s++;
 	}
