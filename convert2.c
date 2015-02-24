@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/24 07:18:42 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/24 20:08:40 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,13 +148,27 @@ int		convert_wchar_string(va_list arg, t_infos *infos)
 	//printf("value: %C\n", ws[i + 1]);
 	while (ws[tmp])
 		tmp++;
-	if (infos->width > 0 && infos->flag[0] != '-')
+	//printf("tmp: %d\n", tmp);
+	if (infos->prec == -2)
+		ws = L"";
+	if (infos->width > 0 && infos->width < (tmp * 3)
+			&& infos->flag[0] != '-')
 		ret = addWidthWchar((infos->width - (tmp * 3)), infos->flag);
 	if (ws[i + 1] == '\0')
 		return (printWchar(ws[i]));
 	else
-		while (ws[i])
-			ret += printWchar(ws[i++]);
+	{
+		if (infos->prec > 0)
+		{
+			while (ret < infos->prec - 1)
+				ret += printWchar(ws[i++]);
+			if (infos->prec > 0 && infos->flag[0] != '-')
+				ret += addWidthWchar(infos->width - ret, infos->flag);
+		}
+		else
+			while (ws[i])
+				ret += printWchar(ws[i++]);
+	}
 	if (infos->width > 0 && infos->flag[0] == '-')
 		ret += addWidthWchar((infos->width - ret), infos->flag);
 	return (ret);
