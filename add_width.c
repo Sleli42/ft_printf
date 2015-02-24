@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:55:52 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:12:18 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/23 23:54:03 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,19 @@ char	*addWidth0x(char *s, int width, char *flag)
 			ret[i++] = *s++;
 	}
 	ret[i] = '\0';
+	return (ret);
+}
+
+int		addWidthWchar(int width, char *flag)
+{
+	int		ret;
+
+	ret = 0;
+	flag = flag;
+	while (ret < width)
+	{
+		ft_putchar(' ');
+		ret++;
+	}
 	return (ret);
 }

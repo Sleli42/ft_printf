@@ -6,6 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
+#    Updated: 2015/02/24 00:00:04 by lubaujar         ###   ########.fr        #
 #    Updated: 2015/02/20 07:58:23 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -24,6 +25,7 @@ SRC = convert.c\
 	  add_width.c\
 	  add_prec.c\
 	  add_flag.c\
+	  add_flag2.c\
 	  wchar.c\
 	  init.c\
 	  ft_atoi.c\
@@ -60,7 +62,7 @@ fclean: clean
 	@echo "RM libftprintf.a..    \033[32mOK BITCH!\033[0m"
 	@$(RM) $(NAME)
 
-re: fclean all
+re: fclean all exec
 
 exec:
 	@echo "\033[37mgcc *.c -I./includes/ ..\033[0m"

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 19:41:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/19 23:07:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/24 05:01:28 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,28 @@ char	*addSpace(char *s)
 
 char	*addFlagInteger(char *flag, char *s)
 {
-	if ((flag[0] == '+' && s[0] != '-')
-			|| (flag[0] == '+' && flag[1] == '0' && s != 0))
+	if ((flag[0] == ' ' && flag[1] == '+')
+			|| (flag[0] == '+' && flag[1] == ' '))
+	{
 		s = addPlus(s);
-	else if (flag[0] == ' ' && s[0] != '-')
+	//	printf("s= |%s|!!\n", s);
+	}
+	if (flag[0] == '+' && s[0] != '-' && flag[1] == '\0')
+		s = addPlus(s);
+	if (flag[0] == ' ' && flag[1] != '+' && flag[1] != '0' && s[0] != '-')
 		s = addSpace(s);
-	else if (flag[0] == ' ' && flag[1] == '0')
+	if (flag[0] == ' ' && flag[1] == '0')
 	{
 		s = addSharpOctal(s);
 		s = addSpace(s);
 	}
-	else if (flag[0] == '+' && flag[1] == '0' && s == 0)
+	if (flag[0] == '+' && flag[1] == '0')
 	{
-		s = addSharpOctal(s);
+		if (s[0] == '0')
+			s = addSharpOctal(s);
 		s = addPlus(s);
 	}
+	//else
+	//	s = addFlagInteger2(flag, s);
 	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/20 08:16:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/24 07:23:00 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_itoa_long(long long int n);
 char	*ft_uitoa(unsigned int n);
 char	*ft_uitoa_long(unsigned long int n);
 size_t	ft_strlen(char const *s);
-char	*ft_strrev(char *s);
+char	*ft_strrev(char const *s);
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 int		ft_isdigit(int c);
@@ -52,7 +52,8 @@ int		ft_isalpha(int c);
 /* printf.c */
 int		ft_printf(const char *rfmt, ...);
 int		checkString(char *s, va_list arg, t_infos *new, t_chkStr *chk);
-int		noConv(char *s, int c, t_infos *infos);
+void	noConv(char *s, int c, t_infos *infos, t_chkStr *chk);
+int		noConvSpec(char *s, int c, t_infos *infos);
 
 /* init.c */
 t_chkStr	*initChkStr(t_chkStr *chk);
@@ -61,7 +62,7 @@ int		define_convert(va_list arg, t_infos *infos);
 
 /* search_infos.c */
 char	*search_flag(char *s, int c);
-char	*ft_help_flag(char *flag, char *s, int i);
+char	*ft_help_flag(char *s, int i);
 char	skipSpaces(char *s, int c);
 char	search_conv(char *s, int c);
 
@@ -98,6 +99,7 @@ char	*baseOctal(unsigned long long int n);
 /* add_width.c */
 char	*addWidth(char *s, int width, char *flag);
 char	*addWidth0x(char *s, int width, char *flag);
+int		addWidthWchar(int width, char *flag);
 
 /* add_prec.c */
 char	*addPrec(char *s, int prec);
@@ -112,6 +114,9 @@ char	*addPlus(char *s);
 char	*addSpace(char *s);
 char	*addFlagInteger(char *flag, char *s);
 
+/* add_flag2.c */
+char	*addFlagInteger2(char *flag, char *s);
+
 /* wchar.c */
 int		printWchar(int value);
 int		maskUnicode(char *bin, int lenMask);
@@ -123,5 +128,6 @@ int		hexaValue(int n);
 int		hexaValueMaj(int n);
 char	*add0xAddr(char *s);
 int		nextPercent(char *s, int c);
+int		defineLenString(char *s, int c, t_infos *infos);
 
 #endif

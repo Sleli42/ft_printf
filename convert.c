@@ -6,6 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 20:42:39 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/02/24 07:22:53 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 01:03:17 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -18,6 +19,7 @@ int		convert_int(va_list arg, t_infos *infos)
 	char			*ret;
 
 	integer = va_arg(arg, long long int);
+	//printf("prec: %d\n", infos->prec);
 	if (integer == 0)
 		ret = "0";
 	if (is_modif(infos->modif[0]) == 0 && (infos->conv == 'd'
@@ -49,30 +51,12 @@ int		convert_int(va_list arg, t_infos *infos)
 			|| infos->modif[0] == 'j' || infos->modif[0] == 'z')
 		ret = ft_itoa_long(integer);
 	ret = addFlagInteger(infos->flag, ret);
-	/*
-	if (infos->flag[0] == ' ' && infos->flag[1] == '+')
-		ret = addPlus(ret);
-	else if (infos->flag[0] == '+' && infos->flag[1] == '0' && integer == 0)
-	{
-		ret = addSharpOctal(ret);
-		ret = addPlus(ret);
-	}
-	else if (infos->flag[0] == '+' && infos->flag[1] == '0' && integer > 0)
-		ret = addPlus(ret);
-	else if (infos->flag[0] == ' ' && infos->flag[1] == '0')
-	{
-		ret = addSharpOctal(ret);
-		ret = addSpace(ret);
-	}
-	else if (infos->flag[0] == '+' && ret[0] != '-')
-		ret = addPlus(ret);
-	else if (infos->flag[0] == ' ' && ret[0] != '-')
-		ret = addSpace(ret);
-	*/
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 		ret = addPrec(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
+	if (integer == 0 && (infos->prec == -2 || infos->prec == -3))
+		ret = "";
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -100,6 +84,8 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 		ret = addPrec(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
+	if (u == 0 && (infos->prec == -2 || infos->prec == -3))
+		ret = "";
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -119,6 +105,8 @@ int		convert_string(va_list arg, t_infos *infos)
  			ft_putchar('0');
 		return (i - 1);
 	}
+	if (infos->prec == -2 || infos->prec == -3)
+		string = "";
 	if (infos->prec > 0)
 		string = addPrecString(string, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(string))
@@ -135,6 +123,8 @@ int		convert_pointer(va_list arg, t_infos *infos)
 
 	addr = va_arg(arg, unsigned long int);
 	ret = baseHexa(addr, 0);
+	if (addr == 0 && (infos->prec == -2 || infos->prec == -3))
+		ret = "";
 	ret = add0xAddr(ret);
 	//printf("prec: %d\n", infos->prec);
 	if (infos->prec > 0)

@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/12 15:10:05 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/24 07:18:42 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int		convert_octal(va_list arg, t_infos *infos)
 		ret = addPrec(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
+	if (o == 0 && (infos->prec == -2 || infos->prec == -3)
+		   	&& infos->flag[0] != '#')
+		ret = "";
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -63,8 +66,8 @@ int		convert_hexa(va_list arg, t_infos *infos)
 
 	x = va_arg(arg, unsigned long long int);
 
-	if (x == 0 && infos->flag[0] == '#' && infos->prec == -1)
-		return (0);
+	if (x == 0)
+		ret = "0";
 	if (infos->modif[0] == 'h')
 	{
 		if (infos->modif[1] == 'h')
@@ -84,8 +87,6 @@ int		convert_hexa(va_list arg, t_infos *infos)
 		if (infos->flag[0] == '#' && x != 0)
 			ret = addSharpHexa(ret, 1);
 	}
-	if (x == 0)
-		ret = "0";
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret) && infos->flag[0] != '#')
 	{
 		ret = addPrecAddr(ret, infos->prec);
@@ -98,6 +99,8 @@ int		convert_hexa(va_list arg, t_infos *infos)
 	}
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);	
+	if (x == 0 && (infos->prec == -2 || infos->prec == -3))
+		ret = "";
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }
@@ -131,27 +134,28 @@ int		convert_wchar_string(va_list arg, t_infos *infos)
 	wchar_t		*ws;
 	int			i;
 	int			ret;
+	int			tmp;
 
 	i = 0;
 	ret = 0;
-	infos = infos;
+	tmp = 0;
 	ws = va_arg(arg, wchar_t *);
 	if (ws == NULL)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
-	//printf("value: %C\n", ws[i]);
 	//printf("value: %C\n", ws[i + 1]);
+	while (ws[tmp])
+		tmp++;
+	if (infos->width > 0 && infos->flag[0] != '-')
+		ret = addWidthWchar((infos->width - (tmp * 3)), infos->flag);
 	if (ws[i + 1] == '\0')
 		return (printWchar(ws[i]));
 	else
-	{
 		while (ws[i])
-		{
-			ret += printWchar(ws[i]);
-			i++;
-		}
-	}
+			ret += printWchar(ws[i++]);
+	if (infos->width > 0 && infos->flag[0] == '-')
+		ret += addWidthWchar((infos->width - ret), infos->flag);
 	return (ret);
 }

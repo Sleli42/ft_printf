@@ -6,6 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 21:00:32 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/02/23 01:57:16 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 08:16:26 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -54,31 +55,7 @@ char	*add0xAddr(char *s)
 		ret[i++] = *s++;
 	return (ret);
 }
-/*
-int		noConv(char *s, t_infos *infos)
-{
-	int		ret;
-	int		i;
 
-	ret = 0;
-	infos = infos;
-	while (*s++)
-	{
-		if (s == 0)
-			return (0);
-		if (ft_isalpha(*s) == 0)
-			ret++;
-		if (*s == '%' && *(s + 1) == '%')
-		{
-			ft_putchar('%');
-			ret++;
-		}
-		else
-			break ;
-	}
-	return (ret);
-}
-*/
 int		nextPercent(char *s, int c)
 {
 	c = c + 1;
@@ -90,3 +67,26 @@ int		nextPercent(char *s, int c)
 	}
 	return (0);
 }
+/*
+int		defineLenString(char *s, int c, t_infos *infos)
+{
+	int		i;
+
+	i = 0;
+	if (infos->width > 0)
+		while (c < c + (int)ft_strlen(ft_itoa(infos->width)))
+			c++;
+	if (infos->prec > 0)
+		while (c < c + (int)ft_strlen(ft_itoa(infos->prec)))
+			c++;
+	if (ft_isalpha(s[c]) == 1)
+	{
+		while (ft_isalpha(s[c]) == 1 || s[c] == 32)
+		{
+			printf("s[c]: %c-", s[c]);
+			i++;
+		}
+	}
+	printf("i: %d\n", i);
+	return (i);
+}*/

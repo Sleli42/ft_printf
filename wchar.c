@@ -6,6 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 19:47:10 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/02/23 23:33:58 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/19 19:52:34 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -26,6 +27,7 @@ int		printWchar(int value)
 	}
 	else
 		ret = maskUnicode(bin, ft_strlen(bin));
+//	printf("ret: %d\n", ret);
 	return (ret);
 }
 
@@ -43,6 +45,7 @@ int		maskUnicode(char *bin, int lenMask)
 	tab[3] = "11110xxx10xxxxxx10xxxxxx10xxxxxx";
 	i = 0;
 	j = lenMask - 1;
+//	printf("bin: %s\n", bin);
 	if (lenMask <= 7)
 		tmp = ft_strrev(tab[0]);
 	else if (lenMask > 7 && lenMask <= 11)
@@ -51,6 +54,7 @@ int		maskUnicode(char *bin, int lenMask)
 		tmp = ft_strrev(tab[2]);
 	else
 		tmp = ft_strrev(tab[3]);
+//	printf("-> %s\n", tmp);
 	while (tmp[i] && bin[j])
 	{
 		if (tmp[i] == 'x')
@@ -100,7 +104,10 @@ int		displayWchar(char **tab, int nb)
 
 	i = -1;
 	while (++i <= nb)
+	{
 		tmp[i] = baseDecimal(tab[i]);
+		//printf("tmp[%d] : %d", i, *tab[i]);
+	}
 	i = 0;
 	while (i <= nb)
 	{

@@ -6,19 +6,24 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:52:30 by sksourou          #+#    #+#             */
+/*   Updated: 2015/02/24 04:52:58 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/13 16:16:21 by sksourou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*ft_help_flag(char *flag, char *s, int i)
+char	*ft_help_flag(char *s, int i)
 {
-	int	j;
+	char	*flag;
+	int		j;
 
 	j = 0;
-	if (s[i - 1] >= '0' && s[i - 1] <= '9')
+	flag = (char *)malloc(sizeof(char) * 2);
+	if (s[i - 1] >= '1' && s[i - 1] <= '9')
 		i++;
+	if (!is_flag(s[i]))
+		return (flag);
 	flag[j] = s[i];
 	if (is_flag(s[i + 1]))
 		flag[++j] = s[i + 1];
@@ -38,27 +43,21 @@ char	skipSpaces(char *s, int c)
 char	*search_flag(char *s, int c)
 {
 	char	*flags;
-	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
 	flags = (char *)malloc(sizeof(char) * 2);
-	if (s[c + 1] == ' ' && s[c + 2] == ' ')
-		c = skipSpaces(s, c);
-	while (i < c)
-		i++;
-	while (s[i] && s[i + 1] != '%' && j < 1)
+	while (s[c] && s[c + 1] != '%')
 	{
-		if (is_flag(s[i]) == 1)
-			flags = ft_help_flag(flags, s, i);
-		if (is_conv(s[i]) == 1 || s[i] == '.')
+		//if (s[c + 1] == ' ' && s[c + 2] == ' ')
+		//	c = skipSpaces(s, c);
+		if (is_flag(s[c]) == 1)
+		{
+			flags = ft_help_flag(s, c);
 			break ;
-		i++;
+		}
+		if (is_conv(s[c]) == 1 || s[c] == '.')
+			break ;
+		c++;
 	}
-	flags[++j] = '\0';
-	if (!is_flag(flags[0]))
-		flags[0] = '\0';
 	return (flags);
 }
 

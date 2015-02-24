@@ -6,6 +6,7 @@
 /*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by sksourou          #+#    #+#             */
+/*   Updated: 2015/02/24 05:33:04 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 07:25:22 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,13 +20,32 @@ int		main(void)
 	//int				i;
 	//unsigned int	l;
 //	char			*str;
+
+
+
+	/*ft_printf("%-d\n", 42);
+	ft_printf("%+d\n", 42);
+	ft_printf("% d\n", 42);
+	ft_printf("%#d\n", 42);
+	ft_printf("%-21d\n", 42);
+	ft_printf("%+21d\n", 42);
+	ft_printf("% 21d\n", 42);
+	ft_printf("%#21d\n", 42);*/
 /*	char* l = setlocale(LC_ALL, "");
 
 	if (l == NULL)
 		printf("Locale not set\n");
 	else
-		printf("Locale set to %s\n", l);*/
-	ft_printf("%s%s%s%s%s", "1", "2", "3", "4", "5");
+	printf("Locale set to %s\n", l);
+	ft_printf("%lc%lc", 0, 42);
+	printf("Locale set to %s\n", l);
+	printf("{% S}", L"");
+	ft_printf("{% S}", L"");*/
+	ft_printf("{%03.2d}", 0);
+	ft_printf("{%03d}", 0);
+	/*
+	printf("ret: %d\n", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
+	printf("ret: %d\n", ft_printf("%S", L"لحم خنزير"));*/
 	/*printf("ret: %d\n", ft_printf("....%swith string\n", "lala"));
 	printf("ret: %d\n", printf("....%swith string\n", "lala"));
 	printf("ret: %d\n", ft_printf("%s\n", "abc"));

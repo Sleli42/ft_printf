@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   add_flag2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:49:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/23 02:19:07 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/02/23 23:56:08 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/02/24 04:52:50 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-size_t	ft_strlen(char const *s)
+char	*addFlagInteger2(char *flag, char *s)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
+	flag = flag;
+	printf("yolo\n");
+	return (s);
 }
