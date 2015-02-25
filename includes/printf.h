@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/24 20:08:45 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/25 03:20:14 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int		printWchar(int value);
 int		maskUnicode(char *bin, int lenMask);
 int		splitBinary(char *bin, int lenMask);
 int		displayWchar(char **tab, int nb);
+int	definePrecWchar(int prec);
 
 /* utils */
 int		hexaValue(int n);

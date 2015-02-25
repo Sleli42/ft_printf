@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/24 20:08:40 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/02/25 03:20:12 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		convert_octal(va_list arg, t_infos *infos)
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);
 	if (o == 0 && (infos->prec == -2 || infos->prec == -3)
-		   	&& infos->flag[0] != '#')
+			&& infos->flag[0] != '#')
 		ret = "";
 	ft_putstr(ret);
 	return (ft_strlen(ret));
@@ -90,7 +90,7 @@ int		convert_hexa(va_list arg, t_infos *infos)
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret) && infos->flag[0] != '#')
 	{
 		ret = addPrecAddr(ret, infos->prec);
-	//	printf("ret = %s\n", ret);
+		//	printf("ret = %s\n", ret);
 	}
 	else if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
 	{
@@ -109,8 +109,8 @@ int		convert_wchar(va_list arg, t_infos *infos)
 {
 	wchar_t		wc;
 	int			tmp;
-//	int			ret;
-//	char		*bin;
+	//	int			ret;
+	//	char		*bin;
 
 	wc = va_arg(arg, wchar_t);
 	tmp = (int)wc;
@@ -121,12 +121,22 @@ int		convert_wchar(va_list arg, t_infos *infos)
 	infos = infos;
 	if ((int)ft_strlen(bin) <= 7)
 	{
-		write(1, &tmp, 1);
-		ret = 1;
+	write(1, &tmp, 1);
+	ret = 1;
 	}
 	else
-		ret = maskUnicode(bin, ft_strlen(bin));*/
+	ret = maskUnicode(bin, ft_strlen(bin));*/
 	return (printWchar(tmp));
+}
+
+int		wstrlen(wchar_t *s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 int		convert_wchar_string(va_list arg, t_infos *infos)
@@ -135,41 +145,89 @@ int		convert_wchar_string(va_list arg, t_infos *infos)
 	int			i;
 	int			ret;
 	int			tmp;
+	int			tmp2;
 
 	i = 0;
 	ret = 0;
 	tmp = 0;
+	tmp2 = 0;
 	ws = va_arg(arg, wchar_t *);
 	if (ws == NULL)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
-	//printf("value: %C\n", ws[i + 1]);
-	while (ws[tmp])
-		tmp++;
-	//printf("tmp: %d\n", tmp);
 	if (infos->prec == -2)
 		ws = L"";
-	if (infos->width > 0 && infos->width < (tmp * 3)
-			&& infos->flag[0] != '-')
-		ret = addWidthWchar((infos->width - (tmp * 3)), infos->flag);
-	if (ws[i + 1] == '\0')
+	if (infos->prec > 0 || infos->prec == -2)
+	{
+		tmp = definePrecWchar(infos->prec - 1);
+		if (infos->width >= 0 && tmp >= 0)
+		{
+			while (infos->width > tmp++)
+			{
+				if (infos->flag[0] == '0')
+					ft_putchar('0'), tmp2++;
+				else
+					ft_putchar(' '), tmp2++;
+			}
+		}
+	}
+	else
+	{
+		if (infos->width > 0)
+		{
+			while (infos->width-- > (wstrlen(ws) * 3))
+			{
+				if (infos->flag[0] == '0')
+					ft_putchar('0'), tmp2++;
+				else
+					ft_putchar(' '), tmp2++;
+			}
+		}
+	}
+	if (ws[i + 1] == '\0' && infos->prec != -2)
 		return (printWchar(ws[i]));
 	else
 	{
 		if (infos->prec > 0)
 		{
-			while (ret < infos->prec - 1)
-				ret += printWchar(ws[i++]);
-			if (infos->prec > 0 && infos->flag[0] != '-')
-				ret += addWidthWchar(infos->width - ret, infos->flag);
+			if (infos->prec > 1)
+				while (ret < infos->prec - 1)
+					ret += printWchar(ws[i++]);
+			else if (infos->prec == 1)
+			{
+				while (ret < infos->prec)
+					ret += printWchar(ws[i++]);
+			}
 		}
 		else
 			while (ws[i])
 				ret += printWchar(ws[i++]);
 	}
-	if (infos->width > 0 && infos->flag[0] == '-')
-		ret += addWidthWchar((infos->width - ret), infos->flag);
+	if (tmp2 > 0)
+		ret += tmp2;
 	return (ret);
+}
+
+int		definePrecWchar(int prec)
+{
+	//	printf("prec recu: |%d|\n", prec);
+	if (prec < 0)
+		return (0);
+	else if (prec == 0)
+		return (1);
+	else if (prec > 1 && prec <= 3)
+		return (3);
+	else if (prec <= 6)
+		return (6);
+	else if (prec <= 9)
+		return (9);
+	else if (prec <= 12)
+		return (12);
+	else if (prec <= 15)
+		return (15);
+	else if (prec <= 18)
+		return (18);
+	return (0);
 }
