@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/28 21:08:52 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/19 23:11:37 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/03/02 06:02:22 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/03/02 06:02:40 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_uitoa(unsigned int n)
 {
-	char	*ret;
+	char				*ret;
 	unsigned int		temp_n;
-	size_t		size_ret;
-	char	sign;
+	size_t				size_ret;
+	char				sign;
 
 	sign = 1;
 	size_ret = 2;

@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_infos2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 13:54:38 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 04:24:30 by lubaujar         ###   ########.fr       */
-/*   Updated: 2014/11/08 14:10:50 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/03/02 06:12:49 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/03/02 06:12:51 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +50,13 @@ int		search_prec(char *s, int c)
 		if (s[c] == '0')
 			return (-3);
 		if (ft_isdigit(s[c]) == 0 || is_conv(s[c]) == 1)
-			return (-2); /* invalid prec */
+			return (-2);
 		while (ft_isdigit(s[c]) == 1)
 			pr[i++] = s[c++];
 		pr[i] = '\0';
 	}
 	else
-		return (-1);	/* No prec */
+		return (-1);
 	return (ft_atoi(pr));
 }
 

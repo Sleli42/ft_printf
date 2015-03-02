@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:55:52 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/23 02:05:04 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 05:17:31 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	*baseBinary(int n)
 			i--;
 		}
 	}
-	//printf("[binaryConv]%s\n", ret);
 	return (ret);
 }
 
@@ -69,17 +68,14 @@ int		baseDecimal(char *bin)
 
 char	*baseHexa(unsigned long long int n, int spec)
 {
-	char			*ret;
-	int			i;
+	char				*ret;
+	int					i;
 	unsigned long int	tmp;
 
 	tmp = n;
 	i = 0;
 	while (tmp > 16)
-	{
-		tmp = tmp / 16;
-		i++;
-	}
+		tmp = tmp / 16, i++;
 	ret = (char *)malloc(sizeof(char) * i + 1);
 	if (ret)
 	{
@@ -91,17 +87,16 @@ char	*baseHexa(unsigned long long int n, int spec)
 				ret[i] = hexaValue(tmp);
 			if (spec == 1)
 				ret[i] = hexaValueMaj(tmp);
-			n = n / 16;
-			i--;
+			n = n / 16, i--;
 		}
 	}
 	return (ret);
 }
 
-char		*baseOctal(unsigned long long int n)
+char	*baseOctal(unsigned long long int n)
 {
-	char			*ret;
-	int			i;
+	char				*ret;
+	int					i;
 	unsigned long int	tmp;
 
 	tmp = n;

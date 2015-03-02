@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/27 21:00:32 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/23 01:57:16 by lubaujar         ###   ########.fr       */
-/*   Updated: 2015/02/20 08:16:26 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/03/02 06:12:14 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/03/02 06:12:16 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +66,3 @@ int		nextPercent(char *s, int c)
 	}
 	return (0);
 }
-/*
-int		defineLenString(char *s, int c, t_infos *infos)
-{
-	int		i;
-
-	i = 0;
-	if (infos->width > 0)
-		while (c < c + (int)ft_strlen(ft_itoa(infos->width)))
-			c++;
-	if (infos->prec > 0)
-		while (c < c + (int)ft_strlen(ft_itoa(infos->prec)))
-			c++;
-	if (ft_isalpha(s[c]) == 1)
-	{
-		while (ft_isalpha(s[c]) == 1 || s[c] == 32)
-		{
-			printf("s[c]: %c-", s[c]);
-			i++;
-		}
-	}
-	printf("i: %d\n", i);
-	return (i);
-}*/

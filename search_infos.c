@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/27 03:52:30 by sksourou          #+#    #+#             */
-/*   Updated: 2015/02/24 04:52:58 by lubaujar         ###   ########.fr       */
-/*   Updated: 2015/02/13 16:16:21 by sksourou         ###   ########.fr       */
+/*   Created: 2015/03/02 06:08:35 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/03/02 06:08:53 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +46,6 @@ char	*search_flag(char *s, int c)
 	flags = (char *)malloc(sizeof(char) * 2);
 	while (s[c] && s[c + 1] != '%')
 	{
-		//if (s[c + 1] == ' ' && s[c + 2] == ' ')
-		//	c = skipSpaces(s, c);
 		if (is_flag(s[c]) == 1)
 		{
 			flags = ft_help_flag(s, c);

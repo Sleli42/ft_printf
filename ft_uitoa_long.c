@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 06:20:01 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/19 23:29:22 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 06:03:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_uitoa_long(unsigned long int n)
 {
-	char	*ret;
+	char					*ret;
 	unsigned long int		temp_n;
-	size_t	size_ret;
-	char	sign;
+	size_t					size_ret;
+	char					sign;
 
 	sign = 1;
 	size_ret = 2;

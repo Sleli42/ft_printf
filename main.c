@@ -6,7 +6,7 @@
 /*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by sksourou          #+#    #+#             */
-/*   Updated: 2015/03/02 04:24:33 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 05:28:08 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 07:25:22 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -57,7 +57,7 @@ int		main(void)
 	//ft_printf("{%-15Z}");
 	//printf("%.3%");
 //	printf("{%05.c}", 0);
-	ft_printf("{%05.%}", 0);
+//	ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خن");
 /*	printf("  [%d]\n", printf("%C\n", L'α'));
 	printf("  [%d]\n", printf("%C\n", L'米'));
 	printf("  [%d]\n", printf("%C\n", L'요'));

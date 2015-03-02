@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 21:15:31 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/19 23:11:25 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 06:01:23 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_itoa_long(long long int n)
 {
-	char	*ret;
+	char				*ret;
 	long long int		temp_n;
-	size_t	size_ret;
-	char	sign;
+	size_t				size_ret;
+	char				sign;
 
 	sign = (n < 0) ? -1 : 1;
 	size_ret = 2 + (n < 0);

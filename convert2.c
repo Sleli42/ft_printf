@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 01:51:21 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/03/02 05:34:36 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/03/02 05:36:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		convert_long_int(va_list arg, t_infos *infos)
 	char		*ret;
 
 	i = va_arg(arg, long int);
-	//ret = (char *)malloc(sizeof(char) + 1);
 	if (i == 0)
 		ret = "0";
 	if (infos->modif[0] == 'h')
@@ -31,7 +30,7 @@ int		convert_long_int(va_list arg, t_infos *infos)
 int		convert_octal(va_list arg, t_infos *infos)
 {
 	unsigned long long int	o;
-	char				*ret;
+	char					*ret;
 
 	o = va_arg(arg, unsigned long long int);
 	if (infos->modif[0] == 'h')
@@ -62,7 +61,7 @@ int		convert_octal(va_list arg, t_infos *infos)
 int		convert_hexa(va_list arg, t_infos *infos)
 {
 	unsigned long long int	x;
-	char				*ret;
+	char					*ret;
 
 	x = va_arg(arg, unsigned long long int);
 
@@ -87,16 +86,11 @@ int		convert_hexa(va_list arg, t_infos *infos)
 		if (infos->flag[0] == '#' && x != 0)
 			ret = addSharpHexa(ret, 1);
 	}
-	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret) && infos->flag[0] != '#')
-	{
+	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret)
+			&& infos->flag[0] != '#')
 		ret = addPrecAddr(ret, infos->prec);
-		//	printf("ret = %s\n", ret);
-	}
 	else if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
-	{
 		ret = addPrecHexa(ret, infos->prec);
-		//printf("ret = %s\n", ret);
-	}
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
 		ret = addWidth(ret, infos->width, infos->flag);	
 	if (x == 0 && (infos->prec == -2 || infos->prec == -3))
@@ -109,23 +103,10 @@ int		convert_wchar(va_list arg, t_infos *infos)
 {
 	wchar_t		wc;
 	int			tmp;
-	//	int			ret;
-	//	char		*bin;
 
 	wc = va_arg(arg, wchar_t);
 	tmp = (int)wc;
 	infos = infos;
-	/*ret = 0;
-	//printf("bin: %s\n", bin);
-	bin = baseBinary(tmp);
-	infos = infos;
-	if ((int)ft_strlen(bin) <= 7)
-	{
-	write(1, &tmp, 1);
-	ret = 1;
-	}
-	else
-	ret = maskUnicode(bin, ft_strlen(bin));*/
 	return (printWchar(tmp));
 }
 

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:55:52 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/04 09:12:18 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 05:15:11 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	*addPrec(char *s, int prec)
 		ret[i++] = '-';
 		while ((size_t)i <= (prec - ft_strlen(s) + 1))
 			ret[i++] = '0';
-		//(*s)++;
 		while (*s++)
 			ret[i++] = *s;
 	}
@@ -81,7 +80,7 @@ char	*addPrecAddr(char *s, int prec)
 		ret[1] = 'x';
 		ret[2] = '\0';
 		return (ret);
-	}	
+	}
 	while (i < prec - len)
 		ret[i++] = '0';
 	while (*s)
@@ -95,7 +94,7 @@ char	*addPrecHexa(char *s, int prec)
 	char	*ret;
 	int		i;
 	int		len;
-	int 	j;
+	int		j;
 
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + prec) + 1);
 	i = 2;
