@@ -6,7 +6,7 @@
 /*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by sksourou          #+#    #+#             */
-/*   Updated: 2015/02/25 02:15:42 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 04:24:33 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 07:25:22 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -45,7 +45,7 @@ int		main(void)
 //	ft_printf("{%03d}", 0);
 	
 	//printf("ret: %d\n", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير"));
-	ft_printf("%S", L"我是一只猫。");
+//	ft_printf("%S", L"我是一只猫。");
 	/*printf("ret: %d\n", ft_printf("....%swith string\n", "lala"));
 	printf("ret: %d\n", printf("....%swith string\n", "lala"));
 	printf("ret: %d\n", ft_printf("%s\n", "abc"));
@@ -54,8 +54,10 @@ int		main(void)
 	printf("ret: %d\n", printf("111 %s 333\n", "222"));*/
 //	printf("%p\n", 0);
 	//printf("|%-     20Z|\n");
-	//ft_printf("|%-    20Z|\n");
-	//ft_printf("%C\n", L'α');
+	//ft_printf("{%-15Z}");
+	//printf("%.3%");
+//	printf("{%05.c}", 0);
+	ft_printf("{%05.%}", 0);
 /*	printf("  [%d]\n", printf("%C\n", L'α'));
 	printf("  [%d]\n", printf("%C\n", L'米'));
 	printf("  [%d]\n", printf("%C\n", L'요'));

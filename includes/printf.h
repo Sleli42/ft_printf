@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:44:37 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/25 03:20:14 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 04:24:34 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int		ft_isalpha(int c);
 int		ft_printf(const char *rfmt, ...);
 int		checkString(char *s, va_list arg, t_infos *new, t_chkStr *chk);
 void	noConv(char *s, int c, t_infos *infos, t_chkStr *chk);
-int		noConvSpec(char *s, int c, t_infos *infos);
+int		noConvSpec(char *s, int c, t_chkStr *chk);
+int		checkIfAnotherPercent(char *s, int c, t_chkStr *chk);
 
 /* init.c */
 t_chkStr	*initChkStr(t_chkStr *chk);
@@ -70,6 +71,7 @@ char	search_conv(char *s, int c);
 int		search_width(char *s, int c);
 int		search_prec(char *s, int c);
 char	*search_modif(char *s, int c, char conv);
+char	*searchChar(char *s, int c);
 
 /* is_infos.c */
 int		is_flag(char c);
@@ -122,7 +124,7 @@ int		printWchar(int value);
 int		maskUnicode(char *bin, int lenMask);
 int		splitBinary(char *bin, int lenMask);
 int		displayWchar(char **tab, int nb);
-int	definePrecWchar(int prec);
+int		definePrecWchar(int prec);
 
 /* utils */
 int		hexaValue(int n);

@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 13:49:56 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/23 02:19:07 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 04:04:07 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(char const *s)
 	size_t	i;
 
 	i = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i])
 	{
 		i++;

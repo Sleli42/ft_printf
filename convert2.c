@@ -6,7 +6,7 @@
 /*   By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 21:42:21 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/25 03:20:12 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 01:51:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ int		convert_wchar_string(va_list arg, t_infos *infos)
 	}
 	else
 	{
-		if (infos->width > 0)
+		if (infos->width > 0 && infos->flag[0] != '-')
 		{
 			while (infos->width-- > (wstrlen(ws) * 3))
 			{
@@ -204,6 +204,17 @@ int		convert_wchar_string(va_list arg, t_infos *infos)
 		else
 			while (ws[i])
 				ret += printWchar(ws[i++]);
+	}
+	if (infos->flag[0] == '-' && infos->width > (wstrlen(ws) * 3))
+	{
+		while (infos->width - (wstrlen(ws) * 3) > 0)
+		{
+			if (infos->flag[1] == '0')
+				ft_putchar('0'), tmp2++;
+			else
+				ft_putchar(' '), tmp2++;
+			infos->width--;
+		}
 	}
 	if (tmp2 > 0)
 		ret += tmp2;

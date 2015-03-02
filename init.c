@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 22:21:53 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/24 07:22:59 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 04:16:57 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 07:58:49 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -33,7 +33,7 @@ int		detect_infos(char *s, int c, t_infos *new)
 		i += ft_strlen(new->flag);
 	//printf("[flag]i value : |%d|\n", i);
 	//printf("*tmp: |%d|\n", i);
-	//printf("flag : |%s|\n", new->flag);
+//	printf("flag : |%s|\n", new->flag);
 	new->width = search_width(s, c);
 	if (new->width > 0)
 		i += ft_strlen(ft_itoa(new->width));
