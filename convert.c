@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 05:18:14 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 05:34:22 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 14:21:24 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int		convert_int(va_list arg, t_infos *infos)
 	if (integer == 0)
 		ret = "0";
 	ret = define_modif_int(infos, integer);
-	ret = addFlagInteger(infos->flag, ret);
+	ret = add_flag_integer(infos->flag, ret);
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
-		ret = addPrec(ret, infos->prec);
+		ret = add_prec(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
-		ret = addWidth(ret, infos->width, infos->flag);
+		ret = add_width(ret, infos->width, infos->flag);
 	if (integer == 0 && (infos->prec == -2 || infos->prec == -3))
 		ret = "";
 	ft_putstr(ret);
@@ -52,9 +52,9 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 	if (u == 0)
 		ret = "0";
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))
-		ret = addPrec(ret, infos->prec);
+		ret = add_prec(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
-		ret = addWidth(ret, infos->width, infos->flag);
+		ret = add_width(ret, infos->width, infos->flag);
 	if (u == 0 && (infos->prec == -2 || infos->prec == -3))
 		ret = "";
 	ft_putstr(ret);
@@ -79,9 +79,9 @@ int		convert_string(va_list arg, t_infos *infos)
 	if (infos->prec == -2 || infos->prec == -3)
 		string = "";
 	if (infos->prec > 0)
-		string = addPrecString(string, infos->prec);
+		string = add_prec_string(string, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(string))
-		string = addWidth(string, infos->width, infos->flag);
+		string = add_width(string, infos->width, infos->flag);
 	ft_putstr(string);
 	return (ft_strlen(string));
 }
@@ -92,14 +92,14 @@ int		convert_pointer(va_list arg, t_infos *infos)
 	char				*ret;
 
 	addr = va_arg(arg, unsigned long int);
-	ret = baseHexa(addr, 0);
+	ret = base_hexa(addr, 0);
 	if (addr == 0 && (infos->prec == -2 || infos->prec == -3))
 		ret = "";
-	ret = add0xAddr(ret);
+	ret = add_0x_addr(ret);
 	if (infos->prec > 0)
-		ret = addPrecHexa(ret, infos->prec);
+		ret = add_prec_hexa(ret, infos->prec);
 	if (infos->width > 0 && (size_t)infos->width > ft_strlen(ret))
-		ret = addWidth0x(ret, infos->width, infos->flag);
+		ret = add_width_0x(ret, infos->width, infos->flag);
 	ft_putstr(ret);
 	return (ft_strlen(ret));
 }

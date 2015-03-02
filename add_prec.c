@@ -6,13 +6,13 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:55:52 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 05:15:11 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 15:21:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*addPrecString(char *s, int prec)
+char	*add_prec_string(char *s, int prec)
 {
 	char	*ret;
 	int		i;
@@ -39,7 +39,7 @@ char	*addPrecString(char *s, int prec)
 	return (ret);
 }
 
-char	*addPrec(char *s, int prec)
+char	*add_prec(char *s, int prec)
 {
 	char	*ret;
 	int		i;
@@ -65,7 +65,7 @@ char	*addPrec(char *s, int prec)
 	return (ret);
 }
 
-char	*addPrecAddr(char *s, int prec)
+char	*add_prec_addr(char *s, int prec)
 {
 	char	*ret;
 	int		i;
@@ -89,7 +89,7 @@ char	*addPrecAddr(char *s, int prec)
 	return (ret);
 }
 
-char	*addPrecHexa(char *s, int prec)
+char	*add_prec_hexa(char *s, int prec)
 {
 	char	*ret;
 	int		i;
@@ -115,4 +115,22 @@ char	*addPrecHexa(char *s, int prec)
 		ret[i++] = s[j++];
 	ret[i] = '\0';
 	return (ret);
+}
+
+void	add_prec_wchar(t_wc *wc, t_infos *infos, wchar_t *ws)
+{
+	if (infos->prec > 0)
+	{
+		if (infos->prec > 1)
+			while (wc->ret < infos->prec - 1)
+				wc->ret += print_wchar(ws[wc->i++]);
+		else if (infos->prec == 1)
+		{
+			while (wc->ret < infos->prec)
+				wc->ret += print_wchar(ws[wc->i++]);
+		}
+	}
+	else
+		while (ws[wc->i])
+			wc->ret += print_wchar(ws[wc->i++]);
 }

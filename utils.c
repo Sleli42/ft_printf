@@ -6,13 +6,13 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 06:12:14 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 06:12:16 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 14:19:17 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		hexaValue(int n)
+int		hexa_value(int n)
 {
 	if (0 <= n && n <= 9)
 		return (48 + n);
@@ -24,7 +24,7 @@ int		hexaValue(int n)
 	return (0);
 }
 
-int		hexaValueMaj(int n)
+int		hexa_value_maj(int n)
 {
 	if (0 <= n && n <= 9)
 		return (48 + n);
@@ -36,7 +36,7 @@ int		hexaValueMaj(int n)
 	return (0);
 }
 
-char	*add0xAddr(char *s)
+char	*add_0x_addr(char *s)
 {
 	char	*ret;
 	int		i;
@@ -55,7 +55,7 @@ char	*add0xAddr(char *s)
 	return (ret);
 }
 
-int		nextPercent(char *s, int c)
+int		next_percent(char *s, int c)
 {
 	c = c + 1;
 	while (s[c] == ' ')

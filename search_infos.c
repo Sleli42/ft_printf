@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 06:08:35 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 06:08:53 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 16:29:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_help_flag(char *s, int i)
 	return (flag);
 }
 
-char	skipSpaces(char *s, int c)
+char	skip_spaces(char *s, int c)
 {
 	c = c + 1;
 	while (s[c] == ' ')

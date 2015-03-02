@@ -6,13 +6,13 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 06:10:16 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 06:10:48 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 14:36:13 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-t_chkStr	*initChkStr(t_chkStr *chk)
+t_chkStr	*init_chkstr(t_chkStr *chk)
 {
 	t_chkStr *tmp;
 
@@ -51,30 +51,28 @@ int			detect_infos(char *s, int c, t_infos *new)
 
 int			define_convert(va_list arg, t_infos *infos)
 {
-	t_infos	*tmp;
 	int		val;
 
-	tmp = infos;
 	val = 0;
-	if (tmp->conv == 'd' || tmp->conv == 'i')
-		val = convert_int(arg, tmp);
-	if (tmp->conv == 'D')
-		val = convert_long_int(arg, tmp);
-	if (tmp->conv == 's' && tmp->modif[0] != 'l')
-		val = convert_string(arg, tmp);
-	if (tmp->conv == 'c' && tmp->modif[0] != 'l')
-		val = convert_char(arg, tmp);
-	if (tmp->conv == 'C' || (tmp->conv == 'c' && tmp->modif[0] == 'l'))
-		val = convert_wchar(arg, tmp);
-	if (tmp->conv == 'p')
-		val = convert_pointer(arg, tmp);
-	if (tmp->conv == 'S' || (tmp->conv == 's' && tmp->modif[0] == 'l'))
-		val = convert_wchar_string(arg, tmp);
-	if (tmp->conv == 'u' || tmp->conv == 'U')
-		val = convert_unsigned(arg, tmp);
-	if (tmp->conv == 'o' || tmp->conv == 'O')
-		val = convert_octal(arg, tmp);
-	if (tmp->conv == 'x' || tmp->conv == 'X')
-		val = convert_hexa(arg, tmp);
+	if (infos->conv == 'd' || infos->conv == 'i')
+		val = convert_int(arg, infos);
+	if (infos->conv == 'D')
+		val = convert_long_int(arg, infos);
+	if (infos->conv == 's' && infos->modif[0] != 'l')
+		val = convert_string(arg, infos);
+	if (infos->conv == 'c' && infos->modif[0] != 'l')
+		val = convert_char(arg, infos);
+	if (infos->conv == 'C' || (infos->conv == 'c' && infos->modif[0] == 'l'))
+		val = convert_wchar(arg, infos);
+	if (infos->conv == 'p')
+		val = convert_pointer(arg, infos);
+	if (infos->conv == 'S' || (infos->conv == 's' && infos->modif[0] == 'l'))
+		val = convert_wchar_string(arg, infos);
+	if (infos->conv == 'u' || infos->conv == 'U')
+		val = convert_unsigned(arg, infos);
+	if (infos->conv == 'o' || infos->conv == 'O')
+		val = convert_octal(arg, infos);
+	if (infos->conv == 'x' || infos->conv == 'X')
+		val = convert_hexa(arg, infos);
 	return (val);
 }

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 06:12:49 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 06:12:51 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 14:31:45 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*search_modif(char *s, int c, char conv)
 	return (modif);
 }
 
-char	*searchChar(char *s, int c)
+char	*search_char(char *s, int c)
 {
 	char	*ret;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 06:05:45 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 06:10:07 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 17:32:39 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ int			ft_printf(const char *rfmt, ...)
 	chk = NULL;
 	new = (t_infos *)malloc(sizeof(t_infos));
 	chk = (t_chkStr *)malloc(sizeof(t_chkStr));
-	chk = initChkStr(chk);
-	i = checkString((char *)rfmt, arg, new, chk);
+	chk = init_chkstr(chk);
+	i = check_string((char *)rfmt, arg, new, chk);
+	free(chk);
 	va_end(arg);
 	return (i);
 }
 
-int			noConvSpec(char *s, int c, t_chkStr *chk)
+int			no_conv_spec(char *s, int c, t_chkStr *chk)
 {
 	int		i;
 
 	i = 0;
 	if (s[c] == '%' && s[c + 1] != '%')
-		i = checkIfAnotherPercent(s, c, chk);
+		i = check_if_another_percent(s, c, chk);
 	else if (s[c] == '%' && s[c + 1] == '%')
 		ft_putchar('%'), i++, chk->return_val++;
 	if (s[c] == '%' && s[c + 1] == ' ' && s[c + 2] == '%')
@@ -45,7 +46,7 @@ int			noConvSpec(char *s, int c, t_chkStr *chk)
 	return (i);
 }
 
-int			checkIfAnotherPercent(char *s, int c, t_chkStr *chk)
+int			check_if_another_percent(char *s, int c, t_chkStr *chk)
 {
 	int		i;
 
@@ -61,48 +62,19 @@ int			checkIfAnotherPercent(char *s, int c, t_chkStr *chk)
 	return (i);
 }
 
-void		noConv(char *s, int c, t_infos *infos, t_chkStr *chk)
+void		no_conv(char *s, int c, t_infos *infos, t_chkStr *chk)
 {
-	char		*str;
-	int			len;
-
-	c = c;
-	s = s;
-	len = 0;
 	if (infos->width == -1)
-		chk->tmp = noConvSpec(s, c, chk);
+		chk->tmp = no_conv_spec(s, c, chk);
 	if (infos->prec > 0)
 		chk->tmp += ft_strlen(ft_itoa(infos->prec)) + 1;
 	if (infos->width > 0)
-	{
-		str = searchChar(s, c);
-		if (str != NULL)
-			len = (int)ft_strlen(str);
-		else
-			len = 1;
-		if (infos->flag[0] != '-')
-		{
-			if (infos->flag[0] != '0')
-				while (infos->width-- > len)
-					ft_putchar(' '), chk->return_val++;
-			else if (infos->flag[0] == '0')
-				while (infos->width-- > len)
-					ft_putchar('0'), chk->return_val++;
-			if (str == NULL && checkIfAnotherPercent(s, c, chk) == 1)
-				str = NULL;
-		}
-		if (str != NULL)
-			ft_putstr(str), chk->return_val++;
-		if (infos->flag[0] == '-')
-			while (infos->width - (int)ft_strlen(str) > 0)
-				ft_putchar(' '), chk->return_val++, infos->width--;
-		chk->tmp += ft_strlen(ft_itoa(infos->width));
-	}
+		add_infos_no_conv(infos, chk, s, c);
 	if (infos->flag[0] == ' ')
 		chk->tmp = chk->tmp + 1;
 }
 
-int			checkString(char *s, va_list arg, t_infos *new, t_chkStr *chk)
+int			check_string(char *s, va_list arg, t_infos *new, t_chkStr *chk)
 {
 	int		i;
 
@@ -114,7 +86,7 @@ int			checkString(char *s, va_list arg, t_infos *new, t_chkStr *chk)
 			chk->tmp = detect_infos(s, i, new);
 			chk->return_val += define_convert(arg, new);
 			if (new->conv == 'B')
-				noConv(s, i, new, chk);
+				no_conv(s, i, new, chk);
 			while (chk->tmp-- > 0)
 				i++;
 		}

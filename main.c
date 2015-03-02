@@ -6,7 +6,7 @@
 /*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 04:40:56 by sksourou          #+#    #+#             */
-/*   Updated: 2015/03/02 05:28:08 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 17:32:33 by lubaujar         ###   ########.fr       */
 /*   Updated: 2015/02/20 07:25:22 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,7 +23,8 @@ int		main(void)
 
 
 
-	/*ft_printf("%-d\n", 42);
+	printf("\nret: %d", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خن"));
+	/*ft_print, f("%-d\n", 42);
 	ft_printf("%+d\n", 42);
 	ft_printf("% d\n", 42);
 	ft_printf("%#d\n", 42);

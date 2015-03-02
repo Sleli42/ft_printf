@@ -6,7 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/03/02 03:04:24 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/03/02 17:19:26 by lubaujar         ###   ########.fr        #
 #    Updated: 2015/02/20 07:58:23 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -17,6 +17,8 @@ FLAGS = -Wall -Wextra -Werror
 SRC = convert.c\
 	  convert2.c\
 	  utils.c\
+	  utils2.c\
+	  utils3.c\
 	  is_infos.c\
 	  search_infos.c\
 	  search_infos2.c\
@@ -40,6 +42,7 @@ SRC = convert.c\
 	  ft_putstr.c\
 	  ft_isalpha.c\
 	  ft_isdigit.c\
+	  wstrlen.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -62,7 +65,7 @@ fclean: clean
 	@echo "RM libftprintf.a..    \033[32mOK BITCH!\033[0m"
 	@$(RM) $(NAME)
 
-re: fclean all exec
+re: fclean all
 
 exec:
 	@echo "\033[37mgcc *.c -I./includes/ ..\033[0m"

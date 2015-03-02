@@ -6,13 +6,13 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/27 03:55:52 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 05:17:31 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 14:32:09 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*baseBinary(int n)
+char	*base_binary(int n)
 {
 	char			*ret;
 	int				i;
@@ -40,7 +40,7 @@ char	*baseBinary(int n)
 	return (ret);
 }
 
-int		baseDecimal(char *bin)
+int		base_decimal(char *bin)
 {
 	int		tab[7];
 	int		i;
@@ -66,7 +66,7 @@ int		baseDecimal(char *bin)
 	return (ret);
 }
 
-char	*baseHexa(unsigned long long int n, int spec)
+char	*base_hexa(unsigned long long int n, int spec)
 {
 	char				*ret;
 	int					i;
@@ -84,16 +84,16 @@ char	*baseHexa(unsigned long long int n, int spec)
 		{
 			tmp = n % 16;
 			if (spec == 0)
-				ret[i] = hexaValue(tmp);
+				ret[i] = hexa_value(tmp);
 			if (spec == 1)
-				ret[i] = hexaValueMaj(tmp);
+				ret[i] = hexa_value_maj(tmp);
 			n = n / 16, i--;
 		}
 	}
 	return (ret);
 }
 
-char	*baseOctal(unsigned long long int n)
+char	*base_octal(unsigned long long int n)
 {
 	char				*ret;
 	int					i;

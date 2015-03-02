@@ -6,13 +6,13 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/19 19:41:15 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 05:13:18 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/02 14:26:26 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*addSharpOctal(char *s)
+char	*add_sharp_octal(char *s)
 {
 	char	*ret;
 	int		i;
@@ -26,7 +26,7 @@ char	*addSharpOctal(char *s)
 	return (ret);
 }
 
-char	*addSharpHexa(char *s, int spec)
+char	*add_sharp_hexa(char *s, int spec)
 {
 	char	*ret;
 	int		i;
@@ -44,7 +44,7 @@ char	*addSharpHexa(char *s, int spec)
 	return (ret);
 }
 
-char	*addPlus(char *s)
+char	*add_plus(char *s)
 {
 	char	*ret;
 	int		i;
@@ -58,7 +58,7 @@ char	*addPlus(char *s)
 	return (ret);
 }
 
-char	*addSpace(char *s)
+char	*add_space(char *s)
 {
 	char	*ret;
 	int		i;
@@ -72,25 +72,25 @@ char	*addSpace(char *s)
 	return (ret);
 }
 
-char	*addFlagInteger(char *flag, char *s)
+char	*add_flag_integer(char *flag, char *s)
 {
 	if ((flag[0] == ' ' && flag[1] == '+')
 			|| (flag[0] == '+' && flag[1] == ' '))
-		s = addPlus(s);
+		s = add_plus(s);
 	if (flag[0] == '+' && s[0] != '-' && flag[1] == '\0')
-		s = addPlus(s);
+		s = add_plus(s);
 	if (flag[0] == ' ' && flag[1] != '+' && flag[1] != '0' && s[0] != '-')
-		s = addSpace(s);
+		s = add_space(s);
 	if (flag[0] == ' ' && flag[1] == '0')
 	{
-		s = addSharpOctal(s);
-		s = addSpace(s);
+		s = add_sharp_octal(s);
+		s = add_space(s);
 	}
 	if (flag[0] == '+' && flag[1] == '0')
 	{
 		if (s[0] == '0')
-			s = addSharpOctal(s);
-		s = addPlus(s);
+			s = add_sharp_octal(s);
+		s = add_plus(s);
 	}
 	return (s);
 }
