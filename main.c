@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/27 04:40:56 by sksourou          #+#    #+#             */
-/*   Updated: 2015/03/02 17:32:33 by lubaujar         ###   ########.fr       */
-/*   Updated: 2015/02/20 07:25:22 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/01/27 04:40:56 by tetdebit          #+#    #+#             */
+/*   Updated: 2015/03/05 23:56:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +16,87 @@
 
 int		main(void)
 {
-	//int				i;
+	int				i;
 	//unsigned int	l;
-//	char			*str;
+	char			*str;
 
 
+	printf("{%3c}", 0);
+	ft_printf("{%3c}", 0);
 
-	printf("\nret: %d", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خن"));
+/*		colors 			*/
+	
+	ft_printf("#[E_RED]%s##[E_BLUE]%s#[E_END]\n", "blabla", "tamer");
+	ft_printf("#[E_MAGENTA]%s#[E_END] #[E_CYAN]%s#[E_END]\n", "encule", "c'est vulgaire");
+	ft_printf("#[E_RED]%s#[E_END]\n", "encule groos bite");
+	
+/*		binary conv 	*/
+
+/*	
+	ft_printf("|%b|\n", 42);
+	ft_printf("|%b|\n", 42214221);
+	ft_printf("|%b--%b--%b|\n", 42, 21, 42);
+	ft_printf("|%b|\n", 42142857);
+	ft_printf("|%b|\n", UINT_MAX);
+	ft_printf("|%b|\n", 0);
+	ft_printf("|%B|\n", 42);
+	ft_printf("|%B|\n", 42142857);
+	ft_printf("|%B|\n", ULONG_MAX);
+	ft_printf("|%B--%B--%B|\n", 42, 21, 42);
+	ft_printf("|%B|\n", 0);
+	*/
+
+	/* soutenance */
+	/* soutenance */
+	/* soutenance */
+
+/*	char* l = setlocale(LC_ALL, "");
+
+	if (l == NULL)
+		printf("Locale not set\n");
+	else
+	printf("Locale set to %s\n", l);
+
+
+	ft_printf("%%\n");
+	printf("%%\n");
+	ft_printf("%s\n", "baba au whum");
+	printf("%s\n", "baba au whum");
+	ft_printf("%s   %s %s    %s%s%s\n", "un", "deux", "trois", "quatre", "cinq", "six");
+	printf("%s   %s %s    %s%s%s\n", "un", "deux", "trois", "quatre", "cinq", "six");
+	ft_printf("%S\n", L"αα");
+	printf("%S\n", L"αα");
+	ft_printf("%D\n", LONG_MAX);
+	printf("%D\n", LONG_MAX);
+	ft_printf("%i\n", INT_MAX);
+	printf("%i\n", INT_MAX);
+	ft_printf("%u\n", UINT_MAX);
+	printf("%u\n", UINT_MAX);
+	ft_printf("%U\n", ULONG_MAX);
+	printf("%U\n", ULONG_MAX);
+	ft_printf("%x\n", UINT_MAX);
+	printf("%x\n", UINT_MAX);
+	ft_printf("%X\n", UINT_MAX);
+	printf("%X\n", UINT_MAX);
+	ft_printf("%c\n", 'Z');
+	printf("%c\n", 'Z');
+	ft_printf("%C\n",L'只');
+	printf("%C\n",L'只');
+	ft_printf("%s %C %d %c %x\n", "baba au whum", L'只', 42, 'C', 42422142);
+	printf("%s %C %d %c %x\n", "baba au whum", L'只', 42, 'C', 42422142);
+	//ft_printf("%b\n", 42);
+	printf("\n\n %%a: %a\n", 42.42);
+	printf("\n\n %%a: %a\n", 42.0);
+	printf("\n\n %%f: %f\n", 42.42);
+	printf("\n\n %%f: %f\n", 4242.42212121);
+	printf("\n\n %%f: %f\n", 0.0);
+	printf("\n\n %%f: %f\n", 42.0);
+	printf("\n\n %%f: %f\n", 1.42);*/
+
+	/* soutenance */
+	/* soutenance */
+	/* soutenance */
+
 	/*ft_print, f("%-d\n", 42);
 	ft_printf("%+d\n", 42);
 	ft_printf("% d\n", 42);
@@ -32,7 +105,7 @@ int		main(void)
 	ft_printf("%+21d\n", 42);
 	ft_printf("% 21d\n", 42);
 	ft_printf("%#21d\n", 42);*/
-/*	char* l = setlocale(LC_ALL, "");
+	/*char* l = setlocale(LC_ALL, "");
 
 	if (l == NULL)
 		printf("Locale not set\n");
@@ -41,6 +114,7 @@ int		main(void)
 	ft_printf("%lc%lc", 0, 42);
 	printf("Locale set to %s\n", l);
 	printf("{% S}", L"");
+	printf("\nret: %d", ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'該', 42, &free, 42, L"لحم خن"));
 	ft_printf("{% S}", L"");*/
 //	ft_printf("{%03.2d}", 0);
 //	ft_printf("{%03d}", 0);
@@ -86,8 +160,8 @@ int		main(void)
 /*	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);
 	printf("\n");
 	ft_printf("[infos] %d %i %s %p\n", 0, 0, "babaauwhum", &str);*/
-/*
-	printf("\t\t\t->[ %s%%d%s ]<-\n", BOLD_LIGHT_GREY, END);
+
+/*	printf("\t\t\t->[ %s%%d%s ]<-\n", BOLD_LIGHT_GREY, END);
 	printf("\t\t\t [ %sMODIF%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
 	printf("[printf][d]\t%s-->%s|%d|\n", BOLD_RED, END, INT_MAX);
@@ -397,6 +471,7 @@ int		main(void)
 	printf("\t\t     [ %sWIDTH + .PREC%s ]\n", RED, END);
 	printf("\t\t%s***************************%s\n", BOLD_BLACK, END);
 	printf("[printf][u]\t%s-->%s|%1.0u|\n", BOLD_RED, END, 42);
+	printf("Locale set to %s\n", l);
 	ft_printf("\t[u]\t%s-->%s|%1.0u|\n", BOLD_GREEN, END, 42);
 	printf("[printf][u]\t%s-->%s|%10.1u|\n", BOLD_RED, END, 42);
 	ft_printf("\t[u]\t%s-->%s|%10.1u|\n", BOLD_GREEN, END, 42);

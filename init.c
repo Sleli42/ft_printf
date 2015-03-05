@@ -6,15 +6,15 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 06:10:16 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/02 14:36:13 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/06 00:06:23 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-t_chkStr	*init_chkstr(t_chkStr *chk)
+t_chkstr	*init_chkstr(t_chkstr *chk)
 {
-	t_chkStr *tmp;
+	t_chkstr *tmp;
 
 	tmp = chk;
 	tmp->return_val = 0;
@@ -41,7 +41,7 @@ int			detect_infos(char *s, int c, t_infos *new)
 	if (new->prec == -3)
 		i += 2;
 	new->conv = search_conv(s, c);
-	if (new->conv != 'B')
+	if (new->conv != 'H')
 		i += 1;
 	new->modif = search_modif(s, c, new->conv);
 	if (new->modif[0] != '\0')
@@ -64,6 +64,13 @@ int			define_convert(va_list arg, t_infos *infos)
 		val = convert_char(arg, infos);
 	if (infos->conv == 'C' || (infos->conv == 'c' && infos->modif[0] == 'l'))
 		val = convert_wchar(arg, infos);
+	else
+		val = define_convert2(arg, infos, val);
+	return (val);
+}
+
+int			define_convert2(va_list arg, t_infos *infos, int val)
+{
 	if (infos->conv == 'p')
 		val = convert_pointer(arg, infos);
 	if (infos->conv == 'S' || (infos->conv == 's' && infos->modif[0] == 'l'))
@@ -74,5 +81,14 @@ int			define_convert(va_list arg, t_infos *infos)
 		val = convert_octal(arg, infos);
 	if (infos->conv == 'x' || infos->conv == 'X')
 		val = convert_hexa(arg, infos);
+	else
+		val = define_convert3(arg, infos, val);
+	return (val);
+}
+
+int			define_convert3(va_list arg, t_infos *infos, int val)
+{
+	if (infos->conv == 'b' || infos->conv == 'B')
+		val = convert_binary(arg, infos);
 	return (val);
 }
