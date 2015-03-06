@@ -6,8 +6,7 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/03/06 00:06:20 by lubaujar         ###   ########.fr        #
-#    Updated: 2015/02/20 07:58:23 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/03/06 18:02:32 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +21,17 @@ SRC = \
 	  printf.c base.c\
 	  add_width.c add_prec.c add_flag.c add_flag2.c\
 	  wchar.c colors.c init.c\
-	  OBJ = $(SRC:.c=.o)
+	  libft/src/ft_atoi.c libft/src/ft_isalpha.c libft/src/ft_isdigit.c\
+	  libft/src/ft_itoa.c libft/src/ft_itoa_long.c libft/src/ft_putchar.c\
+	  libft/src/ft_putstr.c libft/src/ft_strcmp.c libft/src/ft_strlen.c\
+	  libft/src/ft_strrev.c libft/src/ft_uitoa.c libft/src/uitoa_long.c\
+	  libft/src/wstrlen.c\
+
+OBJ = $(SRC:.c=.o)
 	SRCDIR	= ./src/
 	OBJDIR	= ./obj/
 	INCDIR	= ./include/
+	LIBDIR  = ./libft/
 	SRCS	= $(addprefix $(SRCDIR), $(SRC))
 	OBJS	= $(addprefix $(OBJDIR), $(OBJ))
 	INCS	= $(addprefix $(INCDIR), $(INC))
@@ -33,8 +39,9 @@ SRC = \
 all: $(NAME)
 
 $(NAME): $(OBJS) $(INCS)
-	@gcc $(FLAGS) -o $@ $^ -L.libft/
-	@ar rc $(NAME) $(OBJ)
+	@echo "\n\t \033[32mIndexing lib ..\033[0m\n"
+	@gcc $(FLAGS) -o $@ $^ -L./libft/
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "\n\t \033[32m[All Fine's]\033[0m\n"
 
@@ -49,16 +56,9 @@ clean:
 	@$(RM) *.o
 
 fclean: clean
-	@echo "RM libftprintf.a..    \033[32mOK BITCH!\033[0m"
+	@echo "RM libftprintf.a..\t      \033[32mOK BITCH!\033[0m"
 	@$(RM) $(NAME)
 
 re: fclean all
 
-exec:
-	@echo "\033[37mgcc *.c -I./includes/ ..\033[0m"
-	@echo "  \033[37m..exec ./a.out\033[0m\n"
-	@gcc *.c -g -I./includes/
-	@echo "\033[31m./a.out\033[m\n"
-	@./a.out
-
-.PHONY: all clean fclean re exec
+.PHONY: all clean fclean re

@@ -6,14 +6,13 @@
 #    By: lubaujar </var/mail/lubaujar>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 00:15:17 by lubaujar          #+#    #+#              #
-#    Updated: 2015/03/06 00:05:20 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/03/06 15:21:25 by lubaujar         ###   ########.fr        #
 #    Updated: 2015/02/20 07:58:23 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 RM = rm -rf
-FLAGS = -Wall -Wextra -Werror
 LDFLAGS = -I./include/
 SRC = \
 	ft_itoa_long.c  ft_putchar.c     ft_strdel.c      ft_strnstr.c\
@@ -44,16 +43,18 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INCS)
-	@gcc $(FLAGS) -o $@ $^
-	@ar rc $(NAME) $(OBJ)
+$(NAME): makedir $(OBJS)
+	@echo "\n\t \033[32mIndexing lib ..\033[0m\n"
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "\n\t \033[32m[All Fine's]\033[0m\n"
 
-$(OBJS): $(SRCS)
-	@gcc $(FLAGS) -c $(SRCS) $(LDFLAGS)
-	@mkdir -p $(OBJDIR)
-	@mv $(OBJ) $(OBJDIR)
+makedir:
+	@echo "\n\t \033[32mGen objects ..\033[0m\n"
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o: $(SRCDIR)/%.c
+	@gcc -c -o $@ $< $(LDFLAGS)
 
 clean:
 	@echo "\nRM *.o.. \t      \033[32mOK BITCH!\033[0m"
@@ -61,7 +62,7 @@ clean:
 	@$(RM) *.o
 
 fclean: clean
-	@echo "RM libft.a..    \033[32mOK BITCH!\033[0m"
+	@echo "RM libft.a..\t      \033[32mOK BITCH!\033[0m"
 	@$(RM) $(NAME)
 
 re: fclean all

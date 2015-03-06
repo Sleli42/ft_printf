@@ -6,7 +6,7 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 05:18:14 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/03/05 20:51:13 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/06 14:42:14 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		convert_unsigned(va_list arg, t_infos *infos)
 	if (infos->conv == 'u' && is_modif(infos->modif[0]) == 0)
 		ret = ft_uitoa((unsigned int)u);
 	else
-		ret = ft_uitoa_long((unsigned long int)u);
+		ret = ft_uitoa_long(u);
 	if (u == 0)
 		ret = "0";
 	if (infos->prec > 0 && (size_t)infos->prec > ft_strlen(ret))

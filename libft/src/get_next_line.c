@@ -6,12 +6,10 @@
 /*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/05 05:37:53 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/02/05 05:37:59 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/03/06 13:58:35 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "get_next_line.h"
 
 static int		gnl_check_stock(char **stock, char **line)
